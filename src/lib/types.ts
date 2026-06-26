@@ -1,0 +1,276 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Core domain types for the IMC + HMC preparation platform.
+//
+// Design goals:
+//  - One schema covers both IMC (25 MCQ, 60 min) and Hamilton (6 written, 2 hr).
+//  - Lessons interleave theory with inline interactive checks (never passive).
+//  - Every Problem carries rich metadata so the bank is fully filterable.
+//  - Progress/analytics types are storage-agnostic (persisted via zustand).
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Top-level subject areas. Kept deliberately small; subtopics add granularity. */
+export type TopicId =
+  | "foundations"
+  | "number"
+  | "number-theory"
+  | "algebra"
+  | "sequences"
+  | "ratio-proportion"
+  | "geometry-angles"
+  | "geometry-area"
+  | "geometry-circles"
+  | "coordinate-geometry"
+  | "mensuration-3d"
+  | "counting-probability"
+  | "logic-strategy";
+
+export type Difficulty =
+  | "foundation" // brush-up / prerequisite level
+  | "easy" // early IMC (Q1–10)
+  | "medium" // mid IMC (Q11–18)
+  | "hard" // late IMC (Q19–25)
+  | "olympiad"; // Hamilton written-solution level
+
+/** Which competition a piece of content is oriented toward. */
+export type ExamFocus = "IMC" | "HMC" | "both";
+
+export type ProblemFormat = "mcq" | "written" | "numeric";
+
+export type ProblemSource =
+  | "IMC"
+  | "Hamilton"
+  | "Cayley"
+  | "Maclaurin"
+  | "JMC"
+  | "Kangaroo"
+  | "original";
+
+// ─── Math / rendering ────────────────────────────────────────────────────────
+
+/** Inline SVG diagram (string markup) with accessibility text. */
+export interface Diagram {
+  svg: string;
+  alt: string;
+  /** Optional caption shown below the figure. */
+  caption?: string;
+}
+
+// ─── Problems ──────────────────────────────────────────────────────────────--
+
+export interface MCQOption {
+  /** Label shown to the student, e.g. "A". */
+  label: string;
+  /** Option text; may contain LaTeX delimited by $…$. */
+  text: string;
+}
+
+export interface Problem {
+  id: string;
+  /** Statement text; LaTeX allowed with $…$ (inline) and $$…$$ (display). */
+  statement: string;
+  format: ProblemFormat;
+  /** Present when format === "mcq". */
+  options?: MCQOption[];
+  /**
+   * Canonical answer.
+   *  - mcq: the correct option label (e.g. "C")
+   *  - numeric: the exact value as a string ("42", "3/4", "2\\sqrt{3}")
+   *  - written: a model final answer / key result
+   */
+  answer: string;
+  /** Accepted alternative numeric forms, e.g. ["0.75"] for "3/4". */
+  acceptedAnswers?: string[];
+
+  // — Metadata (all filterable in the problem bank) —
+  topic: TopicId;
+  subtopic: string;
+  concepts: string[];
+  difficulty: Difficulty;
+  source: ProblemSource;
+  /** Competition year if from a real past paper. */
+  year?: number;
+  /** Question number in its source paper, if known. */
+  paperNumber?: number;
+  skills: string[];
+  /** Estimated solving time in minutes. */
+  estMinutes: number;
+  tags: string[];
+  /** IDs of similar problems for "more like this". */
+  similar?: string[];
+
+  // — Help —
+  /** Progressive hints, revealed one at a time. */
+  hints: string[];
+  /** Full worked solution (LaTeX allowed). */
+  solution: string;
+  /** Ordered solution steps for the step-by-step reveal UI. */
+  solutionSteps?: string[];
+  diagram?: Diagram;
+}
+
+// ─── Lessons & theory ──────────────────────────────────────────────────────--
+
+/**
+ * A lesson is an ordered list of blocks. Theory blocks are interleaved with
+ * `check` blocks so the student is continuously prompted to engage.
+ */
+export type LessonBlock =
+  | ProseBlock
+  | CalloutBlock
+  | ExampleBlock
+  | CheckBlock
+  | DiagramBlock;
+
+export interface ProseBlock {
+  kind: "prose";
+  /** Markdown-lite + LaTeX. Newlines split paragraphs. */
+  content: string;
+  heading?: string;
+}
+
+export interface CalloutBlock {
+  kind: "callout";
+  variant: "intuition" | "tip" | "warning" | "definition" | "trap";
+  title?: string;
+  content: string;
+}
+
+export interface DiagramBlock {
+  kind: "diagram";
+  diagram: Diagram;
+}
+
+/** A fully worked example with reasoning narrative. */
+export interface ExampleBlock {
+  kind: "example";
+  title?: string;
+  statement: string;
+  /** Narrated approach before the solution. */
+  approach?: string;
+  solution: string;
+  /** Optional alternative/faster method. */
+  alternative?: string;
+  diagram?: Diagram;
+}
+
+/** An inline interactive check the student must answer to continue. */
+export interface CheckBlock {
+  kind: "check";
+  id: string;
+  prompt: string;
+  /** mcq → choose option; numeric/text → typed input validated loosely. */
+  format: "mcq" | "numeric" | "text";
+  options?: MCQOption[];
+  answer: string;
+  acceptedAnswers?: string[];
+  hint?: string;
+  /** Shown after a correct (or revealed) answer. */
+  explanation: string;
+}
+
+// ─── Chapters ─────────────────────────────────────────────────────────────--
+
+export interface ChapterIntro {
+  whyItMatters: string;
+  whereItAppears: string;
+  typicalPatterns: string[];
+  commonMistakes: string[];
+}
+
+export interface ChapterSummary {
+  keyFormulas: string[];
+  bigIdeas: string[];
+  patternTips: string[];
+  traps: string[];
+  revisionNotes: string[];
+}
+
+export interface Chapter {
+  id: string;
+  title: string;
+  topic: TopicId;
+  /** Order within the overall curriculum. */
+  order: number;
+  examFocus: ExamFocus;
+  difficulty: Difficulty;
+  estMinutes: number;
+  /** Chapter IDs that should be completed first. */
+  prerequisites: string[];
+  blurb: string;
+  intro: ChapterIntro;
+  /** The teaching body: theory interleaved with interactive checks. */
+  lesson: LessonBlock[];
+  /** Standalone worked examples beyond those embedded in the lesson. */
+  workedExamples: ExampleBlock[];
+  /** Practice problems, ascending difficulty. References into the bank. */
+  practiceProblemIds: string[];
+  /** Hardest, multi-concept problems. References into the bank. */
+  challengeProblemIds: string[];
+  summary: ChapterSummary;
+}
+
+// ─── Curriculum metadata ─────────────────────────────────────────────────────
+
+export interface TopicMeta {
+  id: TopicId;
+  name: string;
+  /** Short description for the topic browser. */
+  description: string;
+  /** Tailwind-friendly accent for cards. */
+  accent: string;
+  icon: string; // lucide icon name
+}
+
+// ─── Mock exams ───────────────────────────────────────────────────────────--
+
+export interface MockExam {
+  id: string;
+  title: string;
+  exam: "IMC" | "HMC";
+  /** Time limit in minutes. */
+  minutes: number;
+  problemIds: string[];
+  description: string;
+}
+
+// ─── User progress & analytics ───────────────────────────────────────────────
+
+export type CheckResult = "correct" | "incorrect" | "revealed";
+
+export interface ProblemAttempt {
+  problemId: string;
+  correct: boolean;
+  /** Epoch ms. */
+  at: number;
+  /** Seconds spent, if measured. */
+  seconds?: number;
+  hintsUsed: number;
+}
+
+/** SM-2 style spaced-repetition record. */
+export interface ReviewItem {
+  problemId: string;
+  nextReview: number; // epoch ms
+  intervalDays: number;
+  ease: number;
+  reps: number;
+}
+
+export interface ChapterProgress {
+  /** Completed lesson block check IDs. */
+  checksPassed: string[];
+  /** 0–100 derived completion. */
+  percent: number;
+  lastVisited: number;
+  completed: boolean;
+}
+
+export interface MockResult {
+  examId: string;
+  at: number;
+  score: number;
+  maxScore: number;
+  /** Per-problem correctness. */
+  answers: Record<string, { given: string; correct: boolean }>;
+  secondsTaken: number;
+}
