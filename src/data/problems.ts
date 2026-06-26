@@ -1213,6 +1213,286 @@ export const PROBLEMS: Problem[] = [
       "$200000 \\div 100000 = 2$ km.",
     ],
   },
+
+  // ───────────────── Number Theory (deep-dive additions) ───────────────────
+  {
+    id: "nt-006",
+    statement:
+      "How many of the numbers from $1$ to $100$ are divisible by neither $2$ nor $5$?",
+    format: "mcq",
+    options: [
+      { label: "A", text: "$40$" },
+      { label: "B", text: "$30$" },
+      { label: "C", text: "$45$" },
+      { label: "D", text: "$50$" },
+      { label: "E", text: "$60$" },
+    ],
+    answer: "A",
+    topic: "number-theory",
+    subtopic: "Divisibility & counting",
+    concepts: ["inclusion-exclusion", "multiples"],
+    difficulty: "medium",
+    source: "IMC",
+    year: 2019,
+    skills: ["counting multiples", "inclusion–exclusion"],
+    estMinutes: 3,
+    tags: ["divisibility", "counting", "inclusion-exclusion"],
+    similar: ["nt-001"],
+    hints: [
+      "Count the multiples of $2$, of $5$, then of $10$ (both).",
+      "Numbers divisible by neither $= 100 - (\\text{div by }2) - (\\text{div by }5) + (\\text{div by }10)$.",
+    ],
+    solution:
+      "Multiples of $2$: $50$. Multiples of $5$: $20$. Multiples of $10$ (counted twice): $10$. By inclusion–exclusion, divisible by $2$ or $5$ is $50 + 20 - 10 = 60$. So divisible by neither is $100 - 60 = 40$.",
+    solutionSteps: [
+      "Div by $2$: $50$; div by $5$: $20$; div by both ($10$): $10$.",
+      "Div by $2$ or $5$: $50+20-10 = 60$.",
+      "Neither: $100 - 60 = 40$.",
+    ],
+  },
+  {
+    id: "nt-007",
+    statement:
+      "What is the sum of all the positive divisors of $96$?",
+    format: "mcq",
+    options: [
+      { label: "A", text: "$192$" },
+      { label: "B", text: "$252$" },
+      { label: "C", text: "$240$" },
+      { label: "D", text: "$256$" },
+      { label: "E", text: "$201$" },
+    ],
+    answer: "B",
+    topic: "number-theory",
+    subtopic: "Sum of divisors",
+    concepts: ["sum of divisors formula", "geometric series"],
+    difficulty: "hard",
+    source: "IMC",
+    skills: ["sum-of-divisors formula"],
+    estMinutes: 3,
+    tags: ["divisors", "sigma", "factorisation"],
+    similar: ["nt-002"],
+    hints: [
+      "$96 = 2^5 \\times 3$.",
+      "Sum of divisors $= (1+2+4+\\cdots+32)(1+3)$.",
+    ],
+    solution:
+      "$96 = 2^5 \\times 3$. The sum of divisors is $(1+2+4+8+16+32)(1+3) = 63 \\times 4 = 252$.",
+    solutionSteps: [
+      "$96 = 2^5 \\times 3$.",
+      "Powers of $2$: $1+2+4+8+16+32 = 63$. Powers of $3$: $1+3 = 4$.",
+      "Multiply: $63 \\times 4 = 252$.",
+    ],
+  },
+  {
+    id: "nt-008",
+    statement:
+      "What is the smallest positive integer that has exactly $15$ divisors?",
+    format: "numeric",
+    answer: "144",
+    topic: "number-theory",
+    subtopic: "Divisor counting (reverse)",
+    concepts: ["divisor formula", "minimising a number"],
+    difficulty: "hard",
+    source: "original",
+    skills: ["reverse divisor counting"],
+    estMinutes: 4,
+    tags: ["divisors", "factorisation", "tricky"],
+    similar: ["nt-002"],
+    hints: [
+      "$15 = 15$ or $5 \\times 3$. The exponents (plus one) must multiply to $15$.",
+      "Put the larger exponent on the smaller prime: try $2^4 \\times 3^2$.",
+    ],
+    solution:
+      "We need exponents-plus-one multiplying to $15$. Either $2^{14}$ (huge), or $2^4 \\times 3^2$ from $15 = 5\\times3$. The latter is $16 \\times 9 = 144$, much smaller. So the answer is $144$.",
+    solutionSteps: [
+      "$15 = 15$ or $5\\times3$, so exponents are $\\{14\\}$ or $\\{4,2\\}$.",
+      "$2^4\\times 3^2 = 16\\times 9 = 144$ beats $2^{14}$.",
+      "Smallest is $144$.",
+    ],
+  },
+  {
+    id: "nt-009",
+    statement:
+      "How many trailing zeros does $25!$ (the product $1\\times2\\times\\cdots\\times25$) end in?",
+    format: "numeric",
+    answer: "6",
+    topic: "number-theory",
+    subtopic: "Factorials & trailing zeros",
+    concepts: ["counting factors of 5", "Legendre's idea"],
+    difficulty: "olympiad",
+    source: "original",
+    skills: ["counting prime factors in a factorial"],
+    estMinutes: 5,
+    tags: ["factorial", "trailing-zeros", "powers", "tricky"],
+    hints: [
+      "Each trailing zero comes from a factor $10 = 2\\times 5$. There are far more $2$s than $5$s, so count the $5$s.",
+      "Count multiples of $5$ up to $25$, then add an extra for multiples of $25$.",
+    ],
+    solution:
+      "Trailing zeros are limited by the number of factors of $5$. Multiples of $5$ up to $25$: $5,10,15,20,25$ give $5$ factors, and $25 = 5^2$ contributes one extra. Total $5 + 1 = 6$ factors of $5$, so $25!$ ends in $6$ zeros.",
+    solutionSteps: [
+      "Zeros come from $10 = 2\\times5$; $5$s are scarcer, so count them.",
+      "$\\lfloor 25/5 \\rfloor = 5$ multiples of $5$.",
+      "$\\lfloor 25/25 \\rfloor = 1$ extra from $25$. Total $6$.",
+    ],
+  },
+  {
+    id: "nt-010",
+    statement:
+      "The number $\\overline{34A5}$ (a four-digit number with unknown digit $A$) is divisible by $9$. What is $A$?",
+    format: "numeric",
+    answer: "6",
+    topic: "number-theory",
+    subtopic: "Divisibility rules",
+    concepts: ["divisibility by 9", "digit sum"],
+    difficulty: "medium",
+    source: "IMC",
+    skills: ["divisibility tests"],
+    estMinutes: 2,
+    tags: ["divisibility", "digits", "rule-of-9"],
+    hints: [
+      "A number is divisible by $9$ exactly when its digit sum is.",
+      "$3 + 4 + A + 5 = 12 + A$ must be a multiple of $9$.",
+    ],
+    solution:
+      "Divisibility by $9$ needs the digit sum $3+4+A+5 = 12 + A$ to be a multiple of $9$. The only digit making this work is $A = 6$ (giving $18$).",
+    solutionSteps: [
+      "Digit sum $= 12 + A$.",
+      "Need $12 + A \\equiv 0 \\pmod 9$, so $A = 6$ ($\\to 18$).",
+    ],
+  },
+  {
+    id: "nt-011",
+    statement:
+      "What is the remainder when $3^{2024}$ is divided by $5$?",
+    format: "numeric",
+    answer: "1",
+    topic: "number-theory",
+    subtopic: "Remainders & cycles",
+    concepts: ["modular cycles", "powers"],
+    difficulty: "hard",
+    source: "original",
+    skills: ["finding a power cycle mod n"],
+    estMinutes: 3,
+    tags: ["remainders", "modular", "cycles"],
+    similar: ["nt-004"],
+    hints: [
+      "Find the cycle of $3^k \\bmod 5$.",
+      "$3,4,2,1$ repeats every $4$; use $2024 \\bmod 4$.",
+    ],
+    solution:
+      "Powers of $3$ mod $5$: $3, 4, 2, 1, 3, 4, 2, 1, \\dots$ — cycle length $4$. Since $2024$ is a multiple of $4$, $3^{2024} \\equiv 1 \\pmod 5$.",
+    solutionSteps: [
+      "$3^1\\equiv3,\\ 3^2\\equiv4,\\ 3^3\\equiv2,\\ 3^4\\equiv1 \\pmod5$.",
+      "$2024 \\bmod 4 = 0$, landing on $3^4 \\equiv 1$.",
+    ],
+  },
+  {
+    id: "nt-012",
+    statement:
+      "$n^2$ has exactly $9$ divisors. How many divisors does $n$ have, if $n$ is not a perfect square's square? (Take $n = p^2 q^0$ form aside; assume $n = pq$ for distinct primes.)",
+    format: "numeric",
+    answer: "4",
+    topic: "number-theory",
+    subtopic: "Divisors of squares",
+    concepts: ["divisor counting", "squares double exponents"],
+    difficulty: "olympiad",
+    source: "original",
+    skills: ["reasoning about exponents of squares"],
+    estMinutes: 5,
+    tags: ["divisors", "squares", "tricky"],
+    hints: [
+      "If $n = p^a q^b$ then $n^2 = p^{2a} q^{2b}$, with $(2a+1)(2b+1)$ divisors.",
+      "$9 = 3 \\times 3$ forces $2a+1 = 3$ and $2b+1 = 3$, so $a = b = 1$.",
+    ],
+    solution:
+      "Write $n = p^a q^b$. Then $n^2 = p^{2a}q^{2b}$ has $(2a+1)(2b+1) = 9$ divisors. Since each factor is odd and $> 1$, we need $3 \\times 3$, so $a = b = 1$ and $n = pq$. Then $n$ has $(1+1)(1+1) = 4$ divisors.",
+    solutionSteps: [
+      "$n = p^a q^b \\Rightarrow n^2 = p^{2a}q^{2b}$, divisor count $(2a+1)(2b+1)$.",
+      "$9 = 3\\times3 \\Rightarrow a = b = 1$.",
+      "Divisors of $n = pq$: $(1+1)(1+1) = 4$.",
+    ],
+  },
+  {
+    id: "nt-013",
+    statement:
+      "Hamilton-style: Prove that the product of any three consecutive integers is divisible by $6$.",
+    format: "written",
+    answer: "Divisible by 6",
+    topic: "number-theory",
+    subtopic: "Divisibility proofs",
+    concepts: ["consecutive integers", "parity", "divisibility by 2 and 3"],
+    difficulty: "olympiad",
+    source: "Hamilton",
+    skills: ["constructing a divisibility proof"],
+    estMinutes: 8,
+    tags: ["proof", "consecutive", "divisibility"],
+    hints: [
+      "Among any three consecutive integers, how many are even? How many are multiples of $3$?",
+      "$6 = 2 \\times 3$; show the product has a factor of $2$ and a factor of $3$.",
+    ],
+    solution:
+      "Let the integers be $n, n+1, n+2$. Among any two consecutive integers one is even, so among three at least one is divisible by $2$. Among any three consecutive integers, exactly one is divisible by $3$ (their remainders mod $3$ are $0,1,2$ in some order). Hence the product is divisible by both $2$ and $3$, and since $\\gcd(2,3)=1$, it is divisible by $2\\times3 = 6$. $\\;\\blacksquare$",
+    solutionSteps: [
+      "Three consecutive integers cover all residues mod $3$, so one is a multiple of $3$.",
+      "At least one of three consecutive integers is even (a multiple of $2$).",
+      "Product divisible by $2$ and $3$, hence by $6$ (as $2,3$ coprime).",
+    ],
+  },
+  {
+    id: "nt-014",
+    statement:
+      "Hamilton-style: Find all positive integers $n$ such that $n + 1$ divides $n^2 + 1$. Justify that your list is complete.",
+    format: "written",
+    answer: "n=1",
+    acceptedAnswers: ["1"],
+    topic: "number-theory",
+    subtopic: "Divisibility & algebra",
+    concepts: ["polynomial division", "divisor bounding", "find-all completeness"],
+    difficulty: "olympiad",
+    source: "Hamilton",
+    skills: ["manipulating divisibility", "completeness argument"],
+    estMinutes: 10,
+    tags: ["proof", "find-all", "divisibility", "tricky"],
+    hints: [
+      "Write $n^2 + 1$ in terms of $(n+1)$: note $n^2 - 1 = (n+1)(n-1)$.",
+      "So $n^2 + 1 = (n+1)(n-1) + 2$. Then $n+1$ must divide $2$.",
+    ],
+    solution:
+      "Since $n^2 + 1 = (n^2 - 1) + 2 = (n+1)(n-1) + 2$, we have $n+1 \\mid n^2+1$ iff $n+1 \\mid 2$. For positive $n$, $n + 1 \\ge 2$, so $n + 1 = 2$, giving $n = 1$. Check: $n+1 = 2$ divides $n^2 + 1 = 2$. ✓ The list is complete because $n+1 \\mid 2$ has no other positive solution. $\\;\\blacksquare$",
+    solutionSteps: [
+      "Rewrite $n^2 + 1 = (n+1)(n-1) + 2$.",
+      "So $n+1 \\mid n^2+1 \\iff n+1 \\mid 2$.",
+      "Positive $n$ forces $n+1 = 2$, i.e. $n = 1$ (and it checks out).",
+    ],
+  },
+  {
+    id: "nt-015",
+    statement:
+      "Two cogs have $24$ and $36$ teeth and mesh together. They start with a marked tooth of each touching. After how many teeth-meshings do the two marks touch again for the first time?",
+    format: "numeric",
+    answer: "72",
+    topic: "number-theory",
+    subtopic: "LCM in context",
+    concepts: ["lowest common multiple", "modelling"],
+    difficulty: "medium",
+    source: "IMC",
+    skills: ["recognising an LCM problem"],
+    estMinutes: 3,
+    tags: ["lcm", "word-problem", "cogs"],
+    similar: ["nt-003"],
+    hints: [
+      "The marks realign after a whole number of turns of each cog — a common multiple of $24$ and $36$.",
+      "Find $\\text{LCM}(24, 36)$.",
+    ],
+    solution:
+      "The marks touch again after a number of teeth that is a multiple of both $24$ and $36$; the first is $\\text{LCM}(24,36)$. Since $24 = 2^3\\cdot3$ and $36 = 2^2\\cdot3^2$, the LCM is $2^3\\cdot3^2 = 72$.",
+    solutionSteps: [
+      "$24 = 2^3\\cdot3$, $36 = 2^2\\cdot3^2$.",
+      "LCM $= 2^3\\cdot3^2 = 72$.",
+    ],
+  },
 ];
 
 export const PROBLEM_BY_ID = Object.fromEntries(

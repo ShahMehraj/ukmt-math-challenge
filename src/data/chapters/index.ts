@@ -62,11 +62,13 @@ export const CURRICULUM: PlannedChapter[] = [
     status: "planned",
   },
   toPlanned(numberTheoryFoundations, [
-    "Divisibility",
+    "Divisibility & rules",
     "Primes & factorisation",
-    "Divisor counting",
+    "Divisor counting & sum",
     "HCF & LCM",
+    "Coprimality & parity",
     "Remainders & cycles",
+    "Divisibility proofs",
   ]),
   {
     id: "ch-algebra-1",
