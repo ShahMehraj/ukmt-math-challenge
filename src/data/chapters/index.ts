@@ -114,10 +114,13 @@ export const CURRICULUM: PlannedChapter[] = [
   },
   toPlanned(countingChapter, [
     "Multiplication principle",
-    "Arrangements",
-    "Choosing/handshakes",
-    "Probability",
-    "Lattice routes",
+    "Arrangements & repeats",
+    "Combinations & Pascal",
+    "Complementary counting",
+    "Restricted arrangements",
+    "Probability (multi-stage)",
+    "Expected frequency",
+    "Pigeonhole principle",
   ]),
   {
     id: "ch-angles-1",

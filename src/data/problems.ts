@@ -1493,6 +1493,254 @@ export const PROBLEMS: Problem[] = [
       "LCM $= 2^3\\cdot3^2 = 72$.",
     ],
   },
+
+  // ──────────── Counting & Probability (deep-dive additions) ───────────────
+  {
+    id: "cp-004",
+    statement:
+      "A pizza shop offers $7$ toppings. How many different pizzas can be made using exactly $3$ different toppings?",
+    format: "mcq",
+    options: [
+      { label: "A", text: "$21$" },
+      { label: "B", text: "$35$" },
+      { label: "C", text: "$210$" },
+      { label: "D", text: "$343$" },
+      { label: "E", text: "$120$" },
+    ],
+    answer: "B",
+    topic: "counting-probability",
+    subtopic: "Combinations",
+    concepts: ["choosing without order", "binomial coefficient"],
+    difficulty: "medium",
+    source: "IMC",
+    skills: ["computing C(n,r)"],
+    estMinutes: 2,
+    tags: ["combinations", "choose"],
+    similar: ["cp-001"],
+    hints: [
+      "Order of toppings doesn't matter, so this is 'choose $3$ from $7$'.",
+      "$\\binom{7}{3} = \\frac{7\\times6\\times5}{3\\times2\\times1}$.",
+    ],
+    solution:
+      "Choosing $3$ toppings from $7$ where order is irrelevant is $\\binom{7}{3} = \\frac{7\\times6\\times5}{3\\times2\\times1} = \\frac{210}{6} = 35$.",
+    solutionSteps: [
+      "Unordered choice → $\\binom{7}{3}$.",
+      "$\\frac{7\\times6\\times5}{6} = 35$.",
+    ],
+  },
+  {
+    id: "cp-005",
+    statement:
+      "How many three-digit numbers contain at least one digit $7$?",
+    format: "mcq",
+    options: [
+      { label: "A", text: "$252$" },
+      { label: "B", text: "$200$" },
+      { label: "C", text: "$648$" },
+      { label: "D", text: "$300$" },
+      { label: "E", text: "$271$" },
+    ],
+    answer: "A",
+    topic: "counting-probability",
+    subtopic: "Complementary counting",
+    concepts: ["complement", "at least one"],
+    difficulty: "hard",
+    source: "IMC",
+    skills: ["counting by complement"],
+    estMinutes: 3,
+    tags: ["counting", "complement", "at-least-one", "tricky"],
+    hints: [
+      "'At least one' is easier as: total minus those with NO $7$.",
+      "Three-digit numbers: $900$ total. No $7$: first digit $8$ ways, others $9$ each.",
+    ],
+    solution:
+      "There are $900$ three-digit numbers ($100$–$999$). Those with no $7$: the hundreds digit has $8$ choices ($1$–$9$ except $7$), tens and units $9$ each ($0$–$9$ except $7$): $8\\times9\\times9 = 648$. So at least one $7$: $900 - 648 = 252$.",
+    solutionSteps: [
+      "Total three-digit numbers: $900$.",
+      "No $7$ at all: $8\\times9\\times9 = 648$.",
+      "At least one $7$: $900 - 648 = 252$.",
+    ],
+  },
+  {
+    id: "cp-006",
+    statement:
+      "In how many ways can $5$ people sit in a row if two particular people, Anya and Ben, must sit next to each other?",
+    format: "numeric",
+    answer: "48",
+    topic: "counting-probability",
+    subtopic: "Arrangements with restrictions",
+    concepts: ["glue/block method", "arrangements"],
+    difficulty: "hard",
+    source: "original",
+    skills: ["block method for adjacency"],
+    estMinutes: 3,
+    tags: ["arrangements", "restriction", "block", "tricky"],
+    hints: [
+      "Treat Anya+Ben as a single 'block', so you arrange $4$ items.",
+      "Then the block itself can be ordered $2$ ways (Anya–Ben or Ben–Anya).",
+    ],
+    solution:
+      "Glue Anya and Ben into one block: that leaves $4$ items to arrange in $4! = 24$ ways. The block can be internally ordered $2$ ways, giving $24 \\times 2 = 48$.",
+    solutionSteps: [
+      "Treat the pair as one block → $4$ items → $4! = 24$.",
+      "The pair orders $2$ ways internally.",
+      "$24 \\times 2 = 48$.",
+    ],
+  },
+  {
+    id: "cp-007",
+    statement:
+      "A bag has $5$ red and $3$ blue balls. Two are drawn at random without replacement. What is the probability that both are red? Give a fraction in lowest terms.",
+    format: "text",
+    answer: "5/14",
+    acceptedAnswers: ["10/28"],
+    topic: "counting-probability",
+    subtopic: "Probability without replacement",
+    concepts: ["multi-stage probability", "combinations"],
+    difficulty: "hard",
+    source: "IMC",
+    skills: ["dependent-event probability"],
+    estMinutes: 3,
+    tags: ["probability", "without-replacement", "tricky"],
+    hints: [
+      "P(1st red) $= 5/8$; then only $4$ red of $7$ remain.",
+      "Multiply the two stage probabilities — or use $\\binom{5}{2}/\\binom{8}{2}$.",
+    ],
+    solution:
+      "Stage by stage: $\\frac{5}{8} \\times \\frac{4}{7} = \\frac{20}{56} = \\frac{5}{14}$. Equivalently $\\binom{5}{2}/\\binom{8}{2} = 10/28 = 5/14$.",
+    solutionSteps: [
+      "P(first red) $= 5/8$.",
+      "P(second red | first red) $= 4/7$.",
+      "$\\frac{5}{8}\\times\\frac{4}{7} = \\frac{5}{14}$.",
+    ],
+  },
+  {
+    id: "cp-008",
+    statement:
+      "A spinner is split into $3$ equal sections coloured red, and $1$ section blue (4 equal sections total). It is spun $60$ times. How many times would you expect it to land on blue?",
+    format: "numeric",
+    answer: "15",
+    topic: "counting-probability",
+    subtopic: "Expected frequency",
+    concepts: ["expected count", "probability × trials"],
+    difficulty: "medium",
+    source: "IMC",
+    skills: ["expected frequency"],
+    estMinutes: 2,
+    tags: ["probability", "expected-value"],
+    hints: ["P(blue) $= 1/4$. Expected count $=$ probability $\\times$ number of trials."],
+    solution:
+      "P(blue) $= \\frac{1}{4}$, so the expected number of blues in $60$ spins is $\\frac{1}{4}\\times 60 = 15$.",
+    solutionSteps: [
+      "P(blue) $= 1/4$.",
+      "Expected $= \\frac{1}{4}\\times 60 = 15$.",
+    ],
+  },
+  {
+    id: "cp-009",
+    statement:
+      "How many diagonals does a regular polygon with $10$ sides (a decagon) have?",
+    format: "numeric",
+    answer: "35",
+    topic: "counting-probability",
+    subtopic: "Combinations in geometry",
+    concepts: ["choosing pairs of vertices", "subtracting edges"],
+    difficulty: "hard",
+    source: "IMC",
+    skills: ["counting via pairs"],
+    estMinutes: 3,
+    tags: ["combinations", "diagonals", "polygons", "tricky"],
+    hints: [
+      "A diagonal joins two vertices that aren't already adjacent.",
+      "Count all vertex-pairs $\\binom{10}{2}$, then subtract the $10$ sides.",
+    ],
+    solution:
+      "Each pair of vertices gives a segment: $\\binom{10}{2} = 45$. Of these, $10$ are sides of the polygon, not diagonals. So diagonals $= 45 - 10 = 35$.",
+    solutionSteps: [
+      "Vertex pairs: $\\binom{10}{2} = 45$.",
+      "Subtract the $10$ edges: $45 - 10 = 35$.",
+    ],
+  },
+  {
+    id: "cp-010",
+    statement:
+      "Hamilton-style: A drawer contains socks of $4$ different colours, jumbled up. What is the smallest number of socks you must pull out (without looking) to be certain of having a matching pair? Justify your answer.",
+    format: "numeric",
+    answer: "5",
+    acceptedAnswers: ["five"],
+    topic: "counting-probability",
+    subtopic: "Pigeonhole principle",
+    concepts: ["pigeonhole principle", "worst case"],
+    difficulty: "olympiad",
+    source: "Hamilton",
+    skills: ["pigeonhole reasoning", "worst-case justification"],
+    estMinutes: 6,
+    tags: ["pigeonhole", "proof", "worst-case", "tricky"],
+    hints: [
+      "Think about the worst possible case before you get a pair.",
+      "With $4$ colours you could draw $4$ socks all different; the next must repeat.",
+    ],
+    solution:
+      "In the worst case the first $4$ socks are all different colours — one of each. The $5$th sock must match one of those colours, since there are only $4$ colours (pigeonhole: $5$ socks into $4$ colour-boxes forces two in one box). With only $4$ socks it is possible to have no pair, so $4$ is not enough. Hence the answer is $\\boxed{5}$. $\\;\\blacksquare$",
+    solutionSteps: [
+      "Worst case: first $4$ socks are one of each colour — still no pair.",
+      "A $5$th sock, with only $4$ colours available, must repeat a colour (pigeonhole).",
+      "So $5$ guarantees a pair, and $4$ does not.",
+    ],
+  },
+  {
+    id: "cp-011",
+    statement:
+      "Three fair coins are tossed. What is the probability of getting exactly two heads? Give a fraction in lowest terms.",
+    format: "text",
+    answer: "3/8",
+    topic: "counting-probability",
+    subtopic: "Probability by listing",
+    concepts: ["equally likely outcomes", "counting favourable"],
+    difficulty: "medium",
+    source: "IMC",
+    skills: ["enumerate sample space"],
+    estMinutes: 2,
+    tags: ["probability", "coins"],
+    hints: [
+      "There are $2^3 = 8$ equally likely outcomes.",
+      "Count those with exactly two H: HHT, HTH, THH.",
+    ],
+    solution:
+      "The $8$ equally likely outcomes have $3$ with exactly two heads (HHT, HTH, THH), so the probability is $\\frac{3}{8}$.",
+    solutionSteps: [
+      "Total outcomes: $2^3 = 8$.",
+      "Exactly two heads: HHT, HTH, THH — $3$ ways.",
+      "$3/8$.",
+    ],
+  },
+  {
+    id: "cp-012",
+    statement:
+      "Hamilton-style: In how many ways can $7$ be written as an ordered sum of one or more positive integers (e.g. $3+4$ and $4+3$ count as different)? Justify the count.",
+    format: "numeric",
+    answer: "64",
+    acceptedAnswers: ["2^6"],
+    topic: "counting-probability",
+    subtopic: "Compositions",
+    concepts: ["gaps method", "powers of two"],
+    difficulty: "olympiad",
+    source: "Hamilton",
+    skills: ["bijection / gaps argument"],
+    estMinutes: 8,
+    tags: ["compositions", "proof", "bijection", "tricky"],
+    hints: [
+      "Picture $7$ as seven $1$s in a row with $6$ gaps between them.",
+      "Each gap is either 'cut' or 'not cut'; each choice gives a different ordered sum.",
+    ],
+    solution:
+      "Write $7$ as $1+1+1+1+1+1+1$ with $6$ gaps between the units. Each gap is independently either a '+' that splits the sum or left joined; every distinct pattern of cuts gives a distinct ordered composition, and vice versa. With $6$ gaps each having $2$ choices, there are $2^6 = 64$ compositions. $\\;\\blacksquare$",
+    solutionSteps: [
+      "Seven $1$s create $6$ internal gaps.",
+      "Each gap is cut or not — $2$ independent choices.",
+      "$2^6 = 64$ ordered sums.",
+    ],
+  },
 ];
 
 export const PROBLEM_BY_ID = Object.fromEntries(
