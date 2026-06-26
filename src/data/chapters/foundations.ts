@@ -131,7 +131,7 @@ export const foundationsChapter: Chapter = {
       kind: "prose",
       heading: "3 · Percentages",
       content:
-        "A percentage is a fraction out of $100$. To find $15\\%$ of $80$: $\\frac{15}{100}\\times 80 = 12$. The power move is the **multiplier**: a $r\\%$ *increase* multiplies by $\\left(1+\\frac{r}{100}\\right)$, and a $r\\%$ *decrease* multiplies by $\\left(1-\\frac{r}{100}\\right)$. So $+20\\%$ is $\\times 1.2$ and $-25\\%$ is $\\times 0.75$.",
+        "A percentage is a fraction out of $100$. To find $15\\%$ of $80$: $\\frac{15}{100}\\times 80 = 12$. The power move is the **multiplier** — increasing or decreasing by $r\\%$ means $$\\text{increase: } \\times\\left(1+\\frac{r}{100}\\right), \\qquad \\text{decrease: } \\times\\left(1-\\frac{r}{100}\\right).$$ So $+20\\%$ is $\\times 1.2$ and $-25\\%$ is $\\times 0.75$.",
     },
     {
       kind: "check",
@@ -193,7 +193,7 @@ export const foundationsChapter: Chapter = {
       variant: "definition",
       title: "The index laws",
       content:
-        "$a^m \\times a^n = a^{m+n}$  ·  $\\dfrac{a^m}{a^n} = a^{m-n}$  ·  $(a^m)^n = a^{mn}$  ·  $a^0 = 1$  ·  $a^{-n} = \\dfrac{1}{a^n}$  ·  $a^{1/n} = \\sqrt[n]{a}$.",
+        "$$\\begin{aligned} a^m \\times a^n &= a^{m+n} & \\frac{a^m}{a^n} &= a^{m-n} & (a^m)^n &= a^{mn} \\\\[4pt] a^0 &= 1 & a^{-n} &= \\frac{1}{a^n} & a^{1/n} &= \\sqrt[n]{a} \\end{aligned}$$",
     },
     {
       kind: "callout",
@@ -284,7 +284,7 @@ export const foundationsChapter: Chapter = {
       variant: "tip",
       title: "Two identities worth memorising",
       content:
-        "**Difference of two squares:** $a^2 - b^2 = (a-b)(a+b)$. **Perfect square:** $(a+b)^2 = a^2 + 2ab + b^2$. Spotting these turns hard-looking expressions into one-liners — e.g. $49 - x^2 = (7-x)(7+x)$.",
+        "$$a^2 - b^2 = (a-b)(a+b) \\qquad (a+b)^2 = a^2 + 2ab + b^2$$ The first is the **difference of two squares**, the second a **perfect square**. Spotting them turns hard-looking expressions into one-liners — e.g. $49 - x^2 = (7-x)(7+x)$.",
     },
     {
       kind: "check",
@@ -415,7 +415,7 @@ export const foundationsChapter: Chapter = {
       kind: "prose",
       heading: "14 · Coordinates & straight lines",
       content:
-        "On a grid, the **distance** between two points uses Pythagoras: $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}$. The **midpoint** is the average of the coordinates. A straight line is $y = mx + c$, where $m$ is the **gradient** $\\frac{\\Delta y}{\\Delta x}$ and $c$ is where it crosses the $y$-axis.",
+        "On a grid, the **distance** between two points and the **midpoint** are $$d = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2}, \\qquad M = \\left(\\frac{x_1+x_2}{2},\\ \\frac{y_1+y_2}{2}\\right).$$ A straight line is $y = mx + c$, where the **gradient** is $m = \\dfrac{\\Delta y}{\\Delta x}$ and $c$ is where it crosses the $y$-axis.",
     },
     {
       kind: "check",
@@ -434,7 +434,7 @@ export const foundationsChapter: Chapter = {
       kind: "prose",
       heading: "15 · Core geometry facts",
       content:
-        "You must know these cold: angles on a straight line sum to $180^\\circ$; angles around a point sum to $360^\\circ$; angles in a triangle sum to $180^\\circ$ and in a quadrilateral to $360^\\circ$; vertically opposite angles are equal. **Pythagoras**: $a^2 + b^2 = c^2$ for a right triangle. **Areas**: rectangle $= bh$, triangle $= \\frac{1}{2}bh$, circle $= \\pi r^2$, circle circumference $= 2\\pi r$.",
+        "You must know these cold: angles on a straight line sum to $180^\\circ$; angles around a point sum to $360^\\circ$; angles in a triangle sum to $180^\\circ$ and in a quadrilateral to $360^\\circ$; vertically opposite angles are equal. **Pythagoras** for a right triangle, and the essential **areas**: $$a^2 + b^2 = c^2 \\qquad A_{\\text{rect}} = bh \\qquad A_{\\triangle} = \\tfrac{1}{2}bh \\qquad A_{\\circ} = \\pi r^2 \\qquad C_{\\circ} = 2\\pi r$$",
     },
     {
       kind: "callout",

@@ -64,7 +64,7 @@ export const countingChapter: Chapter = {
       kind: "prose",
       heading: "Arrangements (order matters)",
       content:
-        "To arrange $n$ distinct objects in a row, there are $n$ choices for the first position, $n-1$ for the next, and so on: $n \\times (n-1) \\times \\cdots \\times 1 = n!$ ('$n$ factorial'). Arranging $4$ different books gives $4! = 24$ orders.",
+        "To arrange $n$ distinct objects in a row, there are $n$ choices for the first position, $n-1$ for the next, and so on: $$n \\times (n-1) \\times \\cdots \\times 2 \\times 1 = n! \\quad (\\text{'}n\\text{ factorial'}).$$ Arranging $4$ different books gives $4! = 24$ orders.",
     },
     {
       kind: "check",
