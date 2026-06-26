@@ -194,8 +194,8 @@ export const numberTheoryFoundations: Chapter = {
 
   summary: {
     keyFormulas: [
-      "Divisor count of $n = p_1^{a_1}\\cdots p_k^{a_k}$ is $(a_1+1)\\cdots(a_k+1)$.",
-      "$\\text{HCF}(a,b)\\times\\text{LCM}(a,b) = a\\times b$.",
+      "Divisor count of $n = p_1^{a_1}\\cdots p_k^{a_k}$ $$(a_1+1)(a_2+1)\\cdots(a_k+1)$$",
+      "Product of HCF and LCM $$\\text{HCF}(a,b)\\times\\text{LCM}(a,b) = a\\times b$$",
       "HCF: lowest powers of shared primes; LCM: highest powers of all primes.",
     ],
     bigIdeas: [

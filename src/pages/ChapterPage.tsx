@@ -217,6 +217,43 @@ function SummaryList({
   mono?: boolean;
 }) {
   if (!items.length) return null;
+
+  // "Key formulas" (mono): each item is "lead text $$display formula$$".
+  // Render the lead text as a label with the formula in a centered block tile.
+  if (mono) {
+    return (
+      <div>
+        <h3 className="text-sm font-bold uppercase tracking-wide text-slate-500">
+          {title}
+        </h3>
+        <div className="mt-2 grid gap-2 sm:grid-cols-2">
+          {items.map((it, i) => {
+            const start = it.indexOf("$$");
+            const lead = start === -1 ? it : it.slice(0, start).trim();
+            const formula = start === -1 ? "" : it.slice(start);
+            return (
+              <div
+                key={i}
+                className="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 dark:border-slate-700 dark:bg-slate-900/50"
+              >
+                {lead && (
+                  <div className="text-xs font-medium text-slate-500">
+                    <MathText>{lead}</MathText>
+                  </div>
+                )}
+                {formula && (
+                  <div className="mt-1 text-[0.95rem]">
+                    <MathText>{formula}</MathText>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h3 className="text-sm font-bold uppercase tracking-wide text-slate-500">
@@ -226,7 +263,7 @@ function SummaryList({
         {items.map((it, i) => (
           <li key={i} className="flex gap-2">
             <span className="text-brand-500">•</span>
-            <span className={mono ? "font-medium" : ""}>
+            <span>
               <MathText>{it}</MathText>
             </span>
           </li>

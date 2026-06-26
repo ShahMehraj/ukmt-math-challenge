@@ -185,9 +185,9 @@ export const countingChapter: Chapter = {
   summary: {
     keyFormulas: [
       "Multiplication principle: multiply independent choices.",
-      "Arrangements of $n$ distinct objects: $n!$.",
-      "Choosing a pair from $n$ (handshakes): $\\frac{n(n-1)}{2}$.",
-      "Probability $=\\frac{\\text{favourable}}{\\text{total equally-likely}}$.",
+      "Arrangements of $n$ distinct objects $$n! = n \\times (n-1) \\times \\cdots \\times 2 \\times 1$$",
+      "Choosing a pair from $n$ (handshakes) $$\\frac{n(n-1)}{2}$$",
+      "Probability $$P = \\frac{\\text{favourable outcomes}}{\\text{total equally-likely outcomes}}$$",
     ],
     bigIdeas: [
       "Count by stages, then correct for any overcounting.",

@@ -539,13 +539,13 @@ export const foundationsChapter: Chapter = {
 
   summary: {
     keyFormulas: [
-      "BIDMAS order: Brackets, Indices, ÷×, +−.",
-      "Index laws: $a^m a^n = a^{m+n}$, $a^m/a^n = a^{m-n}$, $(a^m)^n = a^{mn}$, $a^0=1$, $a^{-n}=1/a^n$.",
-      "$r\\%$ increase → $\\times(1+\\frac{r}{100})$; decrease → $\\times(1-\\frac{r}{100})$.",
-      "Difference of squares: $a^2 - b^2 = (a-b)(a+b)$.",
-      "Quadratic formula: $x = \\dfrac{-b \\pm \\sqrt{b^2-4ac}}{2a}$.",
-      "Distance: $\\sqrt{(\\Delta x)^2 + (\\Delta y)^2}$; line: $y = mx + c$.",
-      "Pythagoras: $a^2 + b^2 = c^2$; circle area $\\pi r^2$, circumference $2\\pi r$.",
+      "BIDMAS order: Brackets, Indices, ÷×, +− (left to right within a level).",
+      "Index laws $$a^m a^n = a^{m+n}, \\quad \\frac{a^m}{a^n} = a^{m-n}, \\quad (a^m)^n = a^{mn}, \\quad a^{-n} = \\frac{1}{a^n}$$",
+      "Percentage change $$\\text{increase } \\times\\left(1+\\tfrac{r}{100}\\right), \\quad \\text{decrease } \\times\\left(1-\\tfrac{r}{100}\\right)$$",
+      "Difference of two squares $$a^2 - b^2 = (a-b)(a+b)$$",
+      "Quadratic formula $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$",
+      "Distance between points, and a straight line $$d = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2}, \\quad y = mx + c$$",
+      "Pythagoras and circle measures $$a^2 + b^2 = c^2, \\quad A = \\pi r^2, \\quad C = 2\\pi r$$",
     ],
     bigIdeas: [
       "Speed and accuracy here buy you thinking time everywhere else.",
