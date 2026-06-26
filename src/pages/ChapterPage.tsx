@@ -109,7 +109,7 @@ export function ChapterPage() {
       </aside>
 
       {/* Main content column — fills the space beside the sidebar */}
-      <article className="min-w-0 max-w-4xl flex-1 space-y-10 scroll-mt-24">
+      <article className="min-w-0 flex-1 space-y-10 scroll-mt-24">
         {/* Header (compact back-link only shows on small screens via sidebar) */}
         <header className="lg:hidden">
         <Link
