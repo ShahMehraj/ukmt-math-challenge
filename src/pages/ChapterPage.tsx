@@ -45,10 +45,73 @@ export function ChapterPage() {
     .map((pid) => PROBLEM_BY_ID[pid])
     .filter(Boolean);
 
+  const sections = [
+    { id: "intro", label: "Introduction" },
+    { id: "lesson", label: "Theory & learning" },
+    ...(chapter.workedExamples.length
+      ? [{ id: "examples", label: "Worked examples" }]
+      : []),
+    ...(practice.length ? [{ id: "practice", label: "Practice problems" }] : []),
+    ...(challenges.length ? [{ id: "challenges", label: "Challenge problems" }] : []),
+    { id: "summary", label: "Chapter summary" },
+  ];
+
   return (
-    <article className="mx-auto max-w-3xl space-y-10">
-      {/* Header */}
-      <header>
+    <div className="mx-auto flex max-w-6xl gap-10">
+      {/* Sticky sidebar — fills the otherwise-idle width on large screens */}
+      <aside className="hidden w-60 shrink-0 lg:block">
+        <div className="sticky top-24 space-y-4">
+          <Link
+            to="/curriculum"
+            className="text-sm font-medium text-brand-600 hover:underline"
+          >
+            ← Curriculum
+          </Link>
+          <div className="card p-4">
+            <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+              {topic?.name}
+            </div>
+            <div className="mt-1 font-bold leading-snug">{chapter.title}</div>
+            <div className="mt-3 flex flex-wrap gap-1.5 text-xs">
+              <DifficultyBadge difficulty={chapter.difficulty} />
+              <FocusBadge focus={chapter.examFocus} />
+              <span className="chip bg-slate-100 text-slate-500 dark:bg-slate-800">
+                <Clock size={11} /> {chapter.estMinutes} min
+              </span>
+            </div>
+            {prog && totalChecks > 0 && (
+              <div className="mt-4">
+                <div className="mb-1 flex justify-between text-xs text-slate-500">
+                  <span>Progress</span>
+                  <span>{prog.percent}%</span>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    className="h-full rounded-full bg-brand-500 transition-all"
+                    style={{ width: `${prog.percent}%` }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+          <nav className="card p-2">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-50 hover:text-brand-700 dark:text-slate-300 dark:hover:bg-brand-900/30 dark:hover:text-brand-300"
+              >
+                {s.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      {/* Main content column — fills the space beside the sidebar */}
+      <article className="min-w-0 max-w-4xl flex-1 space-y-10 scroll-mt-24">
+        {/* Header (compact back-link only shows on small screens via sidebar) */}
+        <header className="lg:hidden">
         <Link
           to="/curriculum"
           className="text-sm font-medium text-brand-600 hover:underline"
@@ -85,7 +148,7 @@ export function ChapterPage() {
       </header>
 
       {/* Introduction */}
-      <section className="card space-y-4 p-6">
+      <section id="intro" className="card scroll-mt-24 space-y-4 p-6">
         <h2 className="flex items-center gap-2 text-xl font-bold">
           <Target size={20} className="text-brand-600" /> Introduction
         </h2>
@@ -134,7 +197,7 @@ export function ChapterPage() {
       </section>
 
       {/* Lesson */}
-      <section>
+      <section id="lesson" className="scroll-mt-24">
         <h2 className="mb-2 text-xl font-bold">Theory & interactive learning</h2>
         <LessonRenderer
           blocks={chapter.lesson}
@@ -144,7 +207,7 @@ export function ChapterPage() {
 
       {/* Worked examples */}
       {chapter.workedExamples.length > 0 && (
-        <section>
+        <section id="examples" className="scroll-mt-24">
           <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
             <ListChecks size={20} className="text-brand-600" /> Worked examples
           </h2>
@@ -156,7 +219,7 @@ export function ChapterPage() {
 
       {/* Practice */}
       {practice.length > 0 && (
-        <section>
+        <section id="practice" className="scroll-mt-24">
           <h2 className="mb-3 text-xl font-bold">Practice problems</h2>
           <div className="space-y-4">
             {practice.map((p) => (
@@ -168,7 +231,7 @@ export function ChapterPage() {
 
       {/* Challenges */}
       {challenges.length > 0 && (
-        <section>
+        <section id="challenges" className="scroll-mt-24">
           <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
             <Trophy size={20} className="text-amber-500" /> Challenge problems
           </h2>
@@ -181,7 +244,7 @@ export function ChapterPage() {
       )}
 
       {/* Summary */}
-      <section className="card space-y-5 p-6">
+      <section id="summary" className="card scroll-mt-24 space-y-5 p-6">
         <h2 className="flex items-center gap-2 text-xl font-bold">
           <ScrollText size={20} className="text-brand-600" /> Chapter summary
         </h2>
@@ -203,7 +266,8 @@ export function ChapterPage() {
           {prog?.completed ? "Chapter completed" : "Mark chapter complete"}
         </button>
       </div>
-    </article>
+      </article>
+    </div>
   );
 }
 
