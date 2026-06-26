@@ -34,7 +34,7 @@ export type Difficulty =
 /** Which competition a piece of content is oriented toward. */
 export type ExamFocus = "IMC" | "HMC" | "both";
 
-export type ProblemFormat = "mcq" | "written" | "numeric";
+export type ProblemFormat = "mcq" | "written" | "numeric" | "text";
 
 export type ProblemSource =
   | "IMC"

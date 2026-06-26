@@ -22,7 +22,9 @@ export function ProblemBank() {
   const [topic, setTopic] = useState<TopicId | "all">("all");
   const [difficulty, setDifficulty] = useState<Difficulty | "all">("all");
   const [source, setSource] = useState<ProblemSource | "all">("all");
-  const [format, setFormat] = useState<"all" | "mcq" | "written" | "numeric">("all");
+  const [format, setFormat] = useState<
+    "all" | "mcq" | "written" | "numeric" | "text"
+  >("all");
   const [query, setQuery] = useState("");
   const [onlyBookmarks, setOnlyBookmarks] = useState(false);
 
@@ -140,6 +142,7 @@ export function ProblemBank() {
             <option value="all">All formats</option>
             <option value="mcq">Multiple choice</option>
             <option value="numeric">Numeric</option>
+            <option value="text">Short answer</option>
             <option value="written">Written solution</option>
           </Select>
         </div>

@@ -30,7 +30,23 @@ export interface PlannedChapter {
 
 /** The complete curriculum map — full chapters plus the planned roadmap. */
 export const CURRICULUM: PlannedChapter[] = [
-  toPlanned(foundationsChapter, ["BIDMAS", "Fractions", "Percentages", "Linear equations"]),
+  toPlanned(foundationsChapter, [
+    "BIDMAS & negatives",
+    "Fractions",
+    "Percentages",
+    "Ratio",
+    "Indices",
+    "Surds",
+    "Standard form",
+    "Expanding & factorising",
+    "Linear equations",
+    "Simultaneous equations",
+    "Quadratics",
+    "Inequalities",
+    "Rearranging formulae",
+    "Coordinates & lines",
+    "Core geometry",
+  ]),
   {
     id: "ch-num-1",
     title: "Number Sense & Clever Calculation",
