@@ -45,73 +45,10 @@ export function ChapterPage() {
     .map((pid) => PROBLEM_BY_ID[pid])
     .filter(Boolean);
 
-  const sections = [
-    { id: "intro", label: "Introduction" },
-    { id: "lesson", label: "Theory & learning" },
-    ...(chapter.workedExamples.length
-      ? [{ id: "examples", label: "Worked examples" }]
-      : []),
-    ...(practice.length ? [{ id: "practice", label: "Practice problems" }] : []),
-    ...(challenges.length ? [{ id: "challenges", label: "Challenge problems" }] : []),
-    { id: "summary", label: "Chapter summary" },
-  ];
-
   return (
-    <div className="mx-auto flex max-w-6xl gap-10">
-      {/* Sticky sidebar — fills the otherwise-idle width on large screens */}
-      <aside className="hidden w-60 shrink-0 lg:block">
-        <div className="sticky top-24 space-y-4">
-          <Link
-            to="/curriculum"
-            className="text-sm font-medium text-brand-600 hover:underline"
-          >
-            ← Curriculum
-          </Link>
-          <div className="card p-4">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-              {topic?.name}
-            </div>
-            <div className="mt-1 font-bold leading-snug">{chapter.title}</div>
-            <div className="mt-3 flex flex-wrap gap-1.5 text-xs">
-              <DifficultyBadge difficulty={chapter.difficulty} />
-              <FocusBadge focus={chapter.examFocus} />
-              <span className="chip bg-slate-100 text-slate-500 dark:bg-slate-800">
-                <Clock size={11} /> {chapter.estMinutes} min
-              </span>
-            </div>
-            {prog && totalChecks > 0 && (
-              <div className="mt-4">
-                <div className="mb-1 flex justify-between text-xs text-slate-500">
-                  <span>Progress</span>
-                  <span>{prog.percent}%</span>
-                </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-                  <div
-                    className="h-full rounded-full bg-brand-500 transition-all"
-                    style={{ width: `${prog.percent}%` }}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-          <nav className="card p-2">
-            {sections.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-50 hover:text-brand-700 dark:text-slate-300 dark:hover:bg-brand-900/30 dark:hover:text-brand-300"
-              >
-                {s.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </aside>
-
-      {/* Main content column — fills the space beside the sidebar */}
-      <article className="min-w-0 flex-1 space-y-10 scroll-mt-24">
-        {/* Header (compact back-link only shows on small screens via sidebar) */}
-        <header className="lg:hidden">
+    <article className="space-y-10">
+      {/* Header */}
+      <header>
         <Link
           to="/curriculum"
           className="text-sm font-medium text-brand-600 hover:underline"
@@ -266,8 +203,7 @@ export function ChapterPage() {
           {prog?.completed ? "Chapter completed" : "Mark chapter complete"}
         </button>
       </div>
-      </article>
-    </div>
+    </article>
   );
 }
 
