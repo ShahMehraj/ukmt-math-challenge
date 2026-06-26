@@ -3,6 +3,8 @@ import { persist } from "zustand/middleware";
 import type {
   ChapterProgress,
   MockResult,
+  PaperResult,
+  PaperSession,
   ProblemAttempt,
   ReviewItem,
   TopicId,
@@ -31,6 +33,19 @@ interface ProgressState {
   mockResults: MockResult[];
   recordMock: (r: MockResult) => void;
 
+  // — Past papers (PYQ) —
+  paperResults: PaperResult[];
+  recordPaper: (r: PaperResult) => void;
+
+  // In-progress paper attempts, keyed by paperId, so a reload resumes the
+  // same timer and answers instead of starting over.
+  paperSessions: Record<string, PaperSession>;
+  /** Begin a fresh attempt, discarding any prior session for this paper. */
+  startPaperSession: (paperId: string, questionCount: number) => void;
+  /** Toggle the answer for one question (clears it if the same option repeats). */
+  choosePaperAnswer: (paperId: string, index: number, opt: string) => void;
+  submitPaperSession: (paperId: string) => void;
+
   // — Derived helpers (computed in selectors below) —
   reset: () => void;
 }
@@ -42,6 +57,8 @@ const empty = {
   notes: {},
   reviews: {},
   mockResults: [],
+  paperResults: [],
+  paperSessions: {},
 };
 
 export const useProgress = create<ProgressState>()(
@@ -153,6 +170,51 @@ export const useProgress = create<ProgressState>()(
 
       recordMock: (r) =>
         set((s) => ({ mockResults: [...s.mockResults, r].slice(-100) })),
+
+      recordPaper: (r) =>
+        set((s) => ({ paperResults: [...s.paperResults, r].slice(-200) })),
+
+      // Begin a brand-new attempt, discarding any prior session for this paper.
+      // Callers invoke this only on an intentful "Start" click; a page reload
+      // (which drops the autostart flag) just resumes the persisted session.
+      startPaperSession: (paperId, questionCount) =>
+        set((s) => ({
+          paperSessions: {
+            ...s.paperSessions,
+            [paperId]: {
+              paperId,
+              startedAt: Date.now(),
+              given: Array<string>(questionCount).fill(""),
+              submitted: false,
+            },
+          },
+        })),
+
+      choosePaperAnswer: (paperId, index, opt) =>
+        set((s) => {
+          const prev = s.paperSessions[paperId];
+          if (!prev || prev.submitted) return s;
+          const given = [...prev.given];
+          given[index] = given[index] === opt ? "" : opt;
+          return {
+            paperSessions: {
+              ...s.paperSessions,
+              [paperId]: { ...prev, given },
+            },
+          };
+        }),
+
+      submitPaperSession: (paperId) =>
+        set((s) => {
+          const prev = s.paperSessions[paperId];
+          if (!prev) return s;
+          return {
+            paperSessions: {
+              ...s.paperSessions,
+              [paperId]: { ...prev, submitted: true },
+            },
+          };
+        }),
 
       reset: () => set({ ...empty }),
     }),

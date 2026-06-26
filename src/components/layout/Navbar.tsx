@@ -6,8 +6,8 @@ import { cn } from "@/lib/cn";
 
 const links = [
   { to: "/curriculum", label: "Curriculum" },
-  { to: "/foundations", label: "Foundations" },
   { to: "/problems", label: "Problem Bank" },
+  { to: "/papers", label: "Past Papers" },
   { to: "/mock", label: "Mock Exams" },
   { to: "/dashboard", label: "Dashboard" },
 ];

@@ -233,6 +233,89 @@ export interface MockExam {
   description: string;
 }
 
+// ─── Past papers (PYQ) ──────────────────────────────────────────────────────
+//
+// Papers come in two flavours:
+//
+//  1. In-app papers — the question text, options and diagrams are transcribed
+//     into structured data so students read and answer the whole paper inside
+//     the app, then get instant authentic scoring. Used for our flagship
+//     practice papers.
+//  2. Self-mark papers — to respect UKMT copyright at scale we don't host the
+//     text; the entry links to UKMT's official question/solution PDFs and
+//     stores only the answer key (facts), wrapping it with a timer, self-mark
+//     grid and authentic scoring.
+//
+// A paper is "in-app" when `questions` is present; otherwise it is self-mark.
+
+export type PaperExam = "IMC" | "HMC";
+
+/** A single transcribed question for an in-app paper. */
+export interface PaperQuestion {
+  /** 1-based number in the paper. */
+  number: number;
+  /** Statement text; LaTeX allowed with $…$ (inline) and $$…$$ (display). */
+  statement: string;
+  /** Options A–E (IMC is always 5-way multiple choice). */
+  options: MCQOption[];
+  /** Optional figure that accompanies the question. */
+  diagram?: Diagram;
+}
+
+export interface PastPaper {
+  id: string;
+  exam: PaperExam;
+  year: number;
+  /** Number of questions (25 for IMC). */
+  questionCount: number;
+  minutes: number;
+  /** Official UKMT question paper URL (opens externally / in a new tab). */
+  questionsUrl?: string;
+  /** Official UKMT solutions URL. */
+  solutionsUrl?: string;
+  /**
+   * Answer key, one entry per question in order. For IMC each is a letter A–E.
+   * Empty/undefined entries mean "not yet sourced" so the paper can still list.
+   */
+  answers: string[];
+  /** True when the answer key has been verified against an official source. */
+  verified: boolean;
+  /** Where the answer key came from (for provenance). */
+  answerSource?: string;
+  /**
+   * Transcribed questions for in-app attempts. When present, the runner shows
+   * the questions on-page; when absent, the runner is the self-mark grid that
+   * links out to the official PDF.
+   */
+  questions?: PaperQuestion[];
+  notes?: string;
+}
+
+/** A saved attempt at a past paper (self-marked against the key). */
+export interface PaperResult {
+  paperId: string;
+  at: number;
+  /** Learner's chosen answers, one per question (may contain blanks). */
+  given: string[];
+  score: number;
+  maxScore: number;
+  correctCount: number;
+  secondsTaken: number;
+}
+
+/**
+ * An in-progress (or just-finished) paper attempt, persisted so a page reload
+ * resumes the same timer and answers instead of restarting. `startedAt` is an
+ * absolute epoch-ms timestamp; the countdown is derived from it so it stays
+ * accurate across reloads and backgrounded tabs.
+ */
+export interface PaperSession {
+  paperId: string;
+  startedAt: number;
+  given: string[];
+  submitted: boolean;
+}
+
 // ─── User progress & analytics ───────────────────────────────────────────────
 
 export type CheckResult = "correct" | "incorrect" | "revealed";

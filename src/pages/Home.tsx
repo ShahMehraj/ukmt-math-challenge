@@ -56,11 +56,11 @@ export function Home() {
             built to take you from the basics to olympiad-level confidence.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/foundations" className="btn-primary px-6 py-3 text-base">
-              Start with a readiness check <ArrowRight size={18} />
+            <Link to="/curriculum" className="btn-primary px-6 py-3 text-base">
+              Explore the curriculum <ArrowRight size={18} />
             </Link>
-            <Link to="/curriculum" className="btn-ghost px-6 py-3 text-base">
-              Explore the curriculum
+            <Link to="/papers" className="btn-ghost px-6 py-3 text-base">
+              Sit a past paper
             </Link>
           </div>
         </div>

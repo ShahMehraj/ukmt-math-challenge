@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 150">
+  <!-- frame (shaded border) between outer square and inner picture -->
+  <path d="M20 15 H140 V135 H20 Z M32 27 V123 H128 V27 Z" fill="#9ca3af" fill-opacity="0.5" fill-rule="evenodd"/>
+  <rect x="20" y="15" width="120" height="120" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="32" y="27" width="96" height="96" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <!-- 4 cm label with leader to the frame width -->
+  <text x="2" y="20" font-size="12" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">4 cm</text>
+  <!-- 80 cm dimension below -->
+  <g stroke="currentColor" stroke-width="1.2">
+    <line x1="20" y1="145" x2="140" y2="145"/>
+    <line x1="20" y1="141" x2="20" y2="149"/>
+    <line x1="140" y1="141" x2="140" y2="149"/>
+  </g>
+  <text x="62" y="142" font-size="12" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">80 cm</text>
+</svg>

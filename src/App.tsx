@@ -7,6 +7,8 @@ import { Foundations } from "@/pages/Foundations";
 import { ProblemBank } from "@/pages/ProblemBank";
 import { MockList } from "@/pages/MockList";
 import { MockRunner } from "@/pages/MockRunner";
+import { PastPapers } from "@/pages/PastPapers";
+import { PaperRunner } from "@/pages/PaperRunner";
 import { Dashboard } from "@/pages/Dashboard";
 import { NotFound } from "@/pages/NotFound";
 
@@ -23,6 +25,8 @@ export default function App() {
           <Route path="/problems" element={<ProblemBank />} />
           <Route path="/mock" element={<MockList />} />
           <Route path="/mock/:id" element={<MockRunner />} />
+          <Route path="/papers" element={<PastPapers />} />
+          <Route path="/papers/:id" element={<PaperRunner />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

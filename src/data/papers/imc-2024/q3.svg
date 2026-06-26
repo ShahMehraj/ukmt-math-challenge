@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.17 -12.67 110.83 118.47">
+<path d="M 91.445312 88.589844 L 16.988281 14.132812 L 16.988281 51.363281 L 91.445312 88.589844 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 16.988 88.59 L 91.445 88.59 L 91.445 14.133 L 16.988 14.133 Z M 16.988 88.59" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 91.445 88.59 L 16.988 14.133 L 16.988 51.363 Z M 91.445 88.59" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="7.05" y="12.48" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">P</text>
+<text x="5.58" y="98.8" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">Q</text>
+<text x="93.66" y="98.8" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">R</text>
+<text x="93.36" y="12.27" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">S</text>
+<text x="6.56" y="55.64" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">T</text>
+</svg>

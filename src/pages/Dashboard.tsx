@@ -15,7 +15,8 @@ import { useProgress } from "@/store/progress";
 import { cn } from "@/lib/cn";
 
 export function Dashboard() {
-  const { attempts, chapters, bookmarks, mockResults, reset } = useProgress();
+  const { attempts, chapters, bookmarks, mockResults, paperResults, reset } =
+    useProgress();
 
   const stats = useMemo(() => {
     const total = attempts.length;
@@ -54,7 +55,11 @@ export function Dashboard() {
 
   const accuracy = stats.total ? Math.round((stats.correct / stats.total) * 100) : 0;
 
-  const empty = stats.total === 0 && completedChapters === 0;
+  const empty =
+    stats.total === 0 &&
+    completedChapters === 0 &&
+    mockResults.length === 0 &&
+    paperResults.length === 0;
 
   return (
     <div className="space-y-8">
@@ -176,6 +181,27 @@ export function Dashboard() {
                     <span className="font-medium">{r.examId}</span>
                     <span className="text-slate-500">
                       {r.score}/{r.maxScore} · {Math.round(r.secondsTaken / 60)} min
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Past paper history */}
+          {paperResults.length > 0 && (
+            <section className="card p-6">
+              <h2 className="mb-3 text-lg font-bold">Past paper history</h2>
+              <div className="space-y-2">
+                {[...paperResults].reverse().slice(0, 8).map((r, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm dark:bg-slate-800/50"
+                  >
+                    <span className="font-medium">{r.paperId}</span>
+                    <span className="text-slate-500">
+                      {r.score}/{r.maxScore} · {r.correctCount} correct ·{" "}
+                      {Math.round(r.secondsTaken / 60)} min
                     </span>
                   </div>
                 ))}
