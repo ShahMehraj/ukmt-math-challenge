@@ -126,7 +126,7 @@ export const numberTheoryFoundations: Chapter = {
       variant: "tip",
       title: "The product shortcut",
       content:
-        "For any two numbers, $\\text{HCF}(a,b) \\times \\text{LCM}(a,b) = a \\times b$. If you know three of these four quantities, you can find the fourth instantly.",
+        "For any two numbers, $$\\text{HCF}(a,b) \\times \\text{LCM}(a,b) = a \\times b.$$ If you know three of these four quantities, you can find the fourth instantly.",
     },
     {
       kind: "check",
