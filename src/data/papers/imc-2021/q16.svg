@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="52.54 0.58 91.5 91.5">
+
+<path d="M 119.156 67.199 C 130.684 67.199 140.031 57.852 140.031 46.324 C 140.031 34.797 130.684 25.449 119.156 25.449" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 119.156 25.449 C 119.156 13.922 109.809 4.578 98.281 4.578 C 86.754 4.578 77.406 13.922 77.406 25.449" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 77.406 25.449 C 65.879 25.449 56.535 34.797 56.535 46.324 C 56.535 57.852 65.879 67.199 77.406 67.199" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 77.406 67.199 C 77.406 78.727 86.754 88.074 98.281 88.074 C 109.809 88.074 119.156 78.727 119.156 67.199" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 119.156 67.199 L 119.156 25.449 L 77.406 25.449 L 77.406 67.199 Z M 119.156 67.199" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="92" y="61" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">2π</text>
+</svg>

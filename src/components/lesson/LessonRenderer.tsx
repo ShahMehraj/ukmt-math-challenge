@@ -1,5 +1,5 @@
 import type { LessonBlock } from "@/lib/types";
-import { Prose } from "@/components/Math";
+import { MathText, Prose } from "@/components/Math";
 import { Callout, DiagramView, WorkedExample } from "./Blocks";
 import { InteractiveCheck } from "./InteractiveCheck";
 
@@ -23,7 +23,7 @@ export function LessonRenderer({
               <div key={i}>
                 {block.heading && (
                   <h3 className="mt-6 mb-1 text-lg font-bold text-slate-900 dark:text-slate-100">
-                    {block.heading}
+                    <MathText>{block.heading}</MathText>
                   </h3>
                 )}
                 <Prose text={block.content} />

@@ -34,7 +34,7 @@ export function Callout({ block }: { block: CalloutBlock }) {
     <div className={cn("my-4 rounded-xl border-l-4 p-4", s.ring)}>
       <div className="mb-1 flex items-center gap-2 text-sm font-bold">
         <Icon size={16} />
-        {block.title ?? s.label}
+        <MathText>{block.title ?? s.label}</MathText>
       </div>
       <Prose text={block.content} className="prose-math text-sm" />
     </div>
@@ -69,7 +69,7 @@ export function WorkedExample({ block }: { block: ExampleBlock }) {
   return (
     <div className="my-5 rounded-2xl border border-slate-200 bg-slate-50/70 p-4 dark:border-slate-700 dark:bg-slate-900/50">
       <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
-        Worked example{block.title ? ` · ${block.title}` : ""}
+        Worked example{block.title ? <> · <MathText>{block.title}</MathText></> : ""}
       </div>
       <Prose text={block.statement} className="prose-math font-medium" />
       {block.diagram && <Figure diagram={block.diagram} />}

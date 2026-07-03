@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.86 -0.7 92.54 92.54">
+<path d="M 3.144531 3.296875 L 45.414062 45.566406 L 24.28125 87.835938 L 3.144531 87.835938 L 3.144531 3.296875 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 87.683594 87.835938 L 45.414062 45.566406 L 66.550781 3.296875 L 87.683594 3.296875 L 87.683594 87.835938 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 24.281 87.836 L 24.281 3.297" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 45.414 87.836 L 45.414 3.297" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 66.551 87.836 L 66.551 3.297" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.145 66.699 L 87.684 66.699" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.145 45.566 L 87.684 45.566" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.145 24.43 L 87.684 24.43" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.145 87.836 L 87.684 87.836 L 87.684 3.297 L 3.145 3.297 Z M 3.145 87.836" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 24.281 87.836 L 66.551 3.297" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 3.145 3.297 L 87.684 87.836" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+</svg>

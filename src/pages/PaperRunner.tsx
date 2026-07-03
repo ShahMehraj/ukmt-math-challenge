@@ -23,6 +23,7 @@ export function PaperRunner() {
     paperSessions,
     startPaperSession,
     choosePaperAnswer,
+    setFreeAnswer,
     submitPaperSession,
   } = useProgress();
 
@@ -195,7 +196,9 @@ export function PaperRunner() {
           {paper.questions!.map((q, i) => {
             const key = paper.answers[i];
             const g = given[i];
-            const marks = imcQuestionMarks(i);
+            const marks = paper.exam === "HMC"
+              ? { points: 10, penalty: 0 }
+              : imcQuestionMarks(i);
             const correct = submitted && paper.verified && g && g === key;
             const wrong = submitted && paper.verified && g && g !== key;
             return (
@@ -227,7 +230,19 @@ export function PaperRunner() {
 
                 {q.diagram && <Figure diagram={q.diagram} />}
 
-                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                {/* Written olympiad: free-text answer field(s) */}
+                {!q.options && (
+                  <AnswerInputs
+                    parts={q.parts}
+                    value={g}
+                    disabled={submitted}
+                    onChange={(val) =>
+                      setFreeAnswer(paper!.id, i, val)
+                    }
+                  />
+                )}
+
+                {q.options && <div className="mt-3 grid gap-2 sm:grid-cols-2">
                   {q.options.map((opt) => {
                     const chosen = g === opt.label;
                     const isKey =
@@ -255,7 +270,7 @@ export function PaperRunner() {
                       </button>
                     );
                   })}
-                </div>
+                </div>}
               </div>
             );
           })}
@@ -343,6 +358,78 @@ export function PaperRunner() {
           />
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Renders one or more answer inputs for written-olympiad questions.
+ * Single-part: one input. Multi-part (parts=["a","b"]): one labelled input
+ * per part, stored as JSON in the single `value` string.
+ */
+function AnswerInputs({
+  parts,
+  value,
+  disabled,
+  onChange,
+}: {
+  parts?: string[];
+  value: string;
+  disabled: boolean;
+  onChange: (val: string) => void;
+}) {
+  const inputClass =
+    "mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100";
+
+  if (!parts || parts.length <= 1) {
+    // Single answer field
+    return (
+      <div className="mt-3">
+        <label className="text-xs font-medium text-slate-500">
+          Your answer
+        </label>
+        <input
+          type="text"
+          disabled={disabled}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Type your final answer…"
+          className={inputClass}
+        />
+      </div>
+    );
+  }
+
+  // Multi-part: parse JSON from stored value
+  let parsed: Record<string, string> = {};
+  try {
+    parsed = value ? JSON.parse(value) : {};
+  } catch {
+    parsed = {};
+  }
+
+  function setPart(part: string, text: string) {
+    const next = { ...parsed, [part]: text };
+    onChange(JSON.stringify(next));
+  }
+
+  return (
+    <div className="mt-3 space-y-2">
+      {parts.map((part) => (
+        <div key={part}>
+          <label className="text-xs font-medium text-slate-500">
+            ({part}) Your answer
+          </label>
+          <input
+            type="text"
+            disabled={disabled}
+            value={parsed[part] ?? ""}
+            onChange={(e) => setPart(part, e.target.value)}
+            placeholder={`Part (${part})…`}
+            className={inputClass}
+          />
+        </div>
+      ))}
     </div>
   );
 }

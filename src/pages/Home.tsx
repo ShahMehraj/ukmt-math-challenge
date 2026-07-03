@@ -9,7 +9,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { CURRICULUM, FULL_CHAPTERS } from "@/data/chapters";
-import { PROBLEMS } from "@/data/problems";
+import { ALL_PROBLEMS as PROBLEMS } from "@/data/problems";
 import { TOPICS } from "@/data/topics";
 
 const features = [

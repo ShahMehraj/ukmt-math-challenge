@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100">
+<g stroke="currentColor" fill="none" stroke-width="1.4">
+<polygon points="10,95 60,95 60,55 10,55"/>
+<polygon points="62,95 130,95 130,60 62,60"/>
+<polygon points="55,53 90,10 130,53 90,53"/>
+</g>
+<g font-size="10" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">
+<text x="48" y="52">27°</text>
+<text x="20" y="58">75°</text>
+<text x="120" y="58">24°</text>
+<text x="18" y="92">26°</text>
+<text x="110" y="92">23°</text>
+<text x="108" y="65" font-style="italic">x°</text>
+</g>
+</svg>

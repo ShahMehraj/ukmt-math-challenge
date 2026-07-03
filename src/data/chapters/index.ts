@@ -2,12 +2,18 @@ import type { Chapter, TopicId, ExamFocus, Difficulty } from "@/lib/types";
 import { foundationsChapter } from "./foundations";
 import { numberTheoryFoundations } from "./number-theory";
 import { countingChapter } from "./counting";
+import { ratioChapter } from "./ratio";
+import { algebraChapter } from "./algebra";
+import { numberSenseChapter } from "./number-sense";
 
 /** Fully-authored chapters available to study now. */
 export const FULL_CHAPTERS: Chapter[] = [
   foundationsChapter,
   numberTheoryFoundations,
   countingChapter,
+  ratioChapter,
+  algebraChapter,
+  numberSenseChapter,
 ];
 
 /**
@@ -47,20 +53,16 @@ export const CURRICULUM: PlannedChapter[] = [
     "Coordinates & lines",
     "Core geometry",
   ]),
-  {
-    id: "ch-num-1",
-    title: "Number Sense & Clever Calculation",
-    topic: "number",
-    order: 10,
-    examFocus: "IMC",
-    difficulty: "easy",
-    estMinutes: 60,
-    prerequisites: ["ch-found-1"],
-    blurb:
-      "Place value, powers and roots, and the calculation shortcuts that win time on the early IMC questions.",
-    subtopics: ["Place value", "Powers & roots", "Estimation", "Difference of squares tricks"],
-    status: "planned",
-  },
+  toPlanned(numberSenseChapter, [
+    "Place value & digits",
+    "Powers & last-digit cycles",
+    "Difference of squares",
+    "Special number tricks",
+    "Fractions & recurring decimals",
+    "Percentage shortcuts",
+    "Telescoping & pairing",
+    "Competition patterns",
+  ]),
   toPlanned(numberTheoryFoundations, [
     "Divisibility & rules",
     "Primes & factorisation",
@@ -70,20 +72,16 @@ export const CURRICULUM: PlannedChapter[] = [
     "Remainders & cycles",
     "Divisibility proofs",
   ]),
-  {
-    id: "ch-algebra-1",
-    title: "Algebraic Manipulation & Equations",
-    topic: "algebra",
-    order: 30,
-    examFocus: "both",
-    difficulty: "medium",
-    estMinutes: 70,
-    prerequisites: ["ch-found-1"],
-    blurb:
-      "Expanding, factorising, linear & simultaneous equations, and forming equations from word problems.",
-    subtopics: ["Expanding & factorising", "Linear equations", "Simultaneous equations", "Forming equations"],
-    status: "planned",
-  },
+  toPlanned(algebraChapter, [
+    "Expanding & factorising",
+    "Algebraic identities",
+    "Linear equations & word problems",
+    "Simultaneous equations",
+    "Quadratics & discriminant",
+    "Sum & product of roots (Vieta's)",
+    "Equations reducible to quadratics",
+    "Inequalities from algebra",
+  ]),
   {
     id: "ch-seq-1",
     title: "Sequences, Patterns & Series",
@@ -98,20 +96,16 @@ export const CURRICULUM: PlannedChapter[] = [
     subtopics: ["Arithmetic sequences", "Geometric sequences", "Pattern proofs", "Triangular numbers"],
     status: "planned",
   },
-  {
-    id: "ch-ratio-1",
-    title: "Ratio, Proportion & Rates",
-    topic: "ratio-proportion",
-    order: 50,
-    examFocus: "both",
-    difficulty: "easy",
-    estMinutes: 55,
-    prerequisites: ["ch-found-1"],
-    blurb:
-      "Sharing in ratios, direct & inverse proportion, and speed–distance–time problems.",
-    subtopics: ["Sharing in a ratio", "Direct & inverse proportion", "Speed/distance/time", "Best-value rates"],
-    status: "planned",
-  },
+  toPlanned(ratioChapter, [
+    "What is a ratio?",
+    "Manipulating & comparing ratios",
+    "Sharing in a ratio",
+    "Compounding ratios",
+    "The k-trick (equal-ratios theorem)",
+    "Proportion & mean proportional",
+    "Componendo & Dividendo",
+    "Homogeneous substitution",
+  ]),
   toPlanned(countingChapter, [
     "Multiplication principle",
     "Arrangements & repeats",

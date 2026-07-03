@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-13.82 -12.67 101.12 87.47">
+<path d="M 40.03125 15.179688 C 34.742188 9.898438 27.445312 6.628906 19.378906 6.628906 C 3.25 6.628906 -9.824219 19.703125 -9.824219 35.832031 C -9.824219 43.894531 -6.558594 51.199219 -1.273438 56.484375 L 40.03125 15.179688 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 81.332031 56.484375 C 81.332031 33.671875 62.839844 15.179688 40.03125 15.179688 C 17.21875 15.179688 -1.273438 33.671875 -1.273438 56.484375 L 81.332031 56.484375 " fill="white"/>
+<path d="M 40.031 15.18 C 34.742 9.899 27.445 6.629 19.379 6.629 C 3.25 6.629 -9.824 19.703 -9.824 35.832 C -9.824 43.895 -6.559 51.199 -1.274 56.485 Z M 40.031 15.18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 81.332 56.485 C 81.332 33.672 62.84 15.18 40.031 15.18 C 17.219 15.18 -1.274 33.672 -1.274 56.485 Z M 81.332 56.485" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 40.031 56.485 L 40.031 15.18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 40.031 52.352 L 44.16 52.352 L 44.16 56.485" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 82.363 56.485 L 82.363 35.832" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="-5.2" y="67.6" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">P</text>
+<text x="16" y="67.8" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">2</text>
+<text x="35" y="67.8" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">O</text>
+<text x="76.3" y="67.8" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">Q</text>
+<text x="42.5" y="13.3" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">R</text>
+</svg>

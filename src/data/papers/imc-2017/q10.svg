@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-17.57 -10.64 135.36 95.71">
+<path d="M 45.703125 19.949219 L 97.214844 75.195312 L 113.789062 59.738281 L 62.277344 4.492188 L 45.703125 19.949219 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 45.703125 19.949219 L 33.964844 10.441406 L -13.570312 69.148438 L -1.832031 78.65625 L 45.703125 19.949219 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 19.5625 52.238281 L 21.824219 81.070312 L 74.238281 76.957031 L 71.976562 48.125 L 19.5625 52.238281 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 45.703 19.949 L 97.215 75.195 L 113.789 59.738 L 62.277 4.492 Z M 45.703 19.949" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 45.703 19.949 L 33.965 10.441 L -13.57 69.148 L -1.832 78.656 Z M 45.703 19.949" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 19.563 52.238 L 21.824 81.07 L 74.238 76.957 L 71.977 48.125 Z M 19.563 52.238" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 50.625 15.355 C 49.398 14.039 47.645 13.219 45.703 13.219 C 43.594 13.219 41.707 14.191 40.473 15.711" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 73.145 63.039 C 76.625 62.766 79.77 61.309 82.176 59.066" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 12.031 61.535 C 14.09 63.203 16.707 64.203 19.562 64.203 C 19.875 64.203 20.187 64.191 20.496 64.168" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="41.9" y="9.7" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif" font-style="italic">x°</text>
+<text x="4" y="78" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">43°</text>
+<text x="75.5" y="75.8" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">29°</text>
+</svg>

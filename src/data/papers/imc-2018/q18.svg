@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.95 -11.13 105.15 112.9">
+<path d="M -7.953125 97.777344 L 86.792969 97.777344 L 86.792969 3.03125 L -7.953125 3.03125 Z M -7.953125 97.777344 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M -7.953 97.719 L 86.793 97.719 L 86.793 3.035 L -7.953 3.035 Z M -7.953 97.719" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 38.363 88.48 L 66.988 49.082 L 38.363 9.68 L -7.953 24.73 L -7.953 73.43 Z M 38.363 88.48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 38.363 88.48 L 86.793 93.566 L 66.988 49.082 Z M 38.363 88.48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 86.793 64.223 C 82.543 64.223 78.496 65.125 74.852 66.75" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="75.2" y="57.1" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif" font-style="italic">x°</text>
+</svg>

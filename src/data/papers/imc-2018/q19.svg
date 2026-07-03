@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72">
+<g stroke="currentColor" fill="none" stroke-width="1.4">
+<rect x="10" y="14" width="60" height="44" fill="#9ca3af" fill-opacity="0.15"/>
+<rect x="130" y="18" width="80" height="36" fill="#9ca3af" fill-opacity="0.15"/>
+<rect x="270" y="22" width="100" height="28" fill="#9ca3af" fill-opacity="0.15"/>
+</g>
+<g font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif" font-style="italic">
+<text x="35" y="68" text-anchor="middle">x</text>
+<text x="74" y="40">y</text>
+<text x="165" y="64" text-anchor="middle">x + 4</text>
+<text x="214" y="40">y − 3</text>
+<text x="315" y="60" text-anchor="middle">x + 8</text>
+<text x="374" y="40">y − 4</text>
+</g>
+</svg>

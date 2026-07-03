@@ -185,6 +185,23 @@ export interface ChapterSummary {
   revisionNotes: string[];
 }
 
+/**
+ * A self-contained sub-chapter: a bite-sized portion of a chapter that a
+ * student can complete in one sitting (~5-15 min). Ends with relevant practice
+ * problems so concepts are reinforced immediately.
+ */
+export interface SubChapter {
+  /** Unique slug within the chapter, e.g. "fractions" */
+  id: string;
+  title: string;
+  /** Lesson blocks for this sub-chapter. */
+  lesson: LessonBlock[];
+  /** Worked examples specific to this sub-chapter. */
+  workedExamples?: ExampleBlock[];
+  /** Practice problem IDs relevant to this sub-topic. */
+  practiceProblemIds?: string[];
+}
+
 export interface Chapter {
   id: string;
   title: string;
@@ -198,6 +215,12 @@ export interface Chapter {
   prerequisites: string[];
   blurb: string;
   intro: ChapterIntro;
+  /**
+   * The chapter broken into sub-chapters. When present, the renderer shows
+   * one sub-chapter at a time with prev/next navigation. When absent, falls
+   * back to the flat `lesson` array.
+   */
+  subChapters?: SubChapter[];
   /** The teaching body: theory interleaved with interactive checks. */
   lesson: LessonBlock[];
   /** Standalone worked examples beyond those embedded in the lesson. */
@@ -256,8 +279,10 @@ export interface PaperQuestion {
   number: number;
   /** Statement text; LaTeX allowed with $…$ (inline) and $$…$$ (display). */
   statement: string;
-  /** Options A–E (IMC is always 5-way multiple choice). */
-  options: MCQOption[];
+  /** Options A–E (IMC multiple choice). Omitted for written olympiad papers. */
+  options?: MCQOption[];
+  /** Sub-part labels for multi-part questions, e.g. ["a", "b"]. */
+  parts?: string[];
   /** Optional figure that accompanies the question. */
   diagram?: Diagram;
 }

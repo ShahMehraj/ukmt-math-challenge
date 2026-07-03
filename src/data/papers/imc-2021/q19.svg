@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.97 -9.67 96.63 107.22">
+<path d="M 34.679688 56.679688 L 51.066406 56.679688 L 51.066406 40.292969 L 34.679688 40.292969 Z M 34.679688 56.679688 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 45.605469 93.550781 L 56.53125 93.550781 L 56.53125 82.628906 L 45.605469 82.628906 Z M 45.605469 93.550781 " fill="white"/>
+<path d="M 15.563 56.68 L 86.574 56.68 L 86.574 40.293 L 15.563 40.293 Z M 15.563 56.68" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 34.68 79.895 L 51.067 79.895 L 51.067 8.887 L 34.68 8.887 Z M 34.68 79.895" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 82.367 88.09 L 19.77 88.09" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 86.574 88.09 L 82.367 86.961 L 82.367 89.219 Z M 86.574 88.09" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 15.563 88.09 L 19.77 89.219 L 19.77 86.961 Z M 15.563 88.09" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 15.563 91.801 L 15.563 84.379" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 86.574 91.801 L 86.574 84.379" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 87.664 63.508 L 87.664 52.586" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="5.5" y="50" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif" font-style="italic">q</text>
+<text x="48" y="90.3" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif" font-style="italic">p</text>
+</svg>

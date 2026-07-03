@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.4 -12.08 120.6 59.88">
+<path d="M 13.289062 32.769531 L 88.960938 32.769531 L 101.570312 10.925781 L 25.898438 10.925781 L 13.289062 32.769531 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 13.289 32.77 L 88.961 32.77 L 101.57 10.926 L 25.898 10.926 Z M 13.289 32.77" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 25.898 10.926 L 38.512 32.77 L 51.121 10.926 L 63.734 32.77 L 76.348 10.926 L 88.961 32.77" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="10.5" y="21.8" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">2</text>
+<text x="2.6" y="40.8" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">P</text>
+<text x="105.2" y="10.8" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">R</text>
+</svg>

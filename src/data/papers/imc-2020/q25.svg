@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.19 -13.23 100.79 109.33">
+<path d="M 66.699219 22.964844 C 62.058594 20.277344 56.667969 18.742188 50.914062 18.742188 C 45.164062 18.742188 39.773438 20.277344 35.128906 22.964844 L 37.246094 42.417969 L 19.347656 50.308594 C 19.347656 61.992188 25.695312 72.191406 35.128906 77.652344 L 50.914062 66.089844 L 66.699219 77.644531 L 66.699219 77.652344 C 76.136719 72.191406 82.480469 61.992188 82.480469 50.308594 L 64.582031 42.417969 L 66.699219 22.964844 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 82.48 50.309 C 82.48 32.875 68.347 18.742 50.914 18.742 C 33.48 18.742 19.347 32.875 19.347 50.309 C 19.347 67.742 33.48 81.875 50.914 81.875 C 68.347 81.875 82.48 67.742 82.48 50.309 Z M 82.48 50.309" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 66.699 22.965 C 62.058 20.277 56.668 18.742 50.914 18.742 C 45.164 18.742 39.773 20.277 35.129 22.965 L 37.246 42.418 L 19.347 50.309 C 19.347 61.992 25.695 72.191 35.129 77.652 L 50.914 66.09 L 66.699 77.645 L 66.699 77.652 C 76.136 72.191 82.48 61.992 82.48 50.309 L 64.582 42.418 Z M 66.699 22.965" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 66.699 50.309 C 66.699 41.59 59.633 34.523 50.914 34.523 C 42.199 34.523 35.133 41.59 35.133 50.309 C 35.133 59.023 42.199 66.09 50.914 66.09 C 59.633 66.09 66.699 59.023 66.699 50.309 Z M 66.699 50.309" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"/>
+<text x="28.1" y="20.7" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">P</text>
+<text x="64.5" y="18.2" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">Q</text>
+<text x="85.6" y="54.9" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">R</text>
+<text x="65.7" y="89.1" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">S</text>
+<text x="27.7" y="89.1" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">T</text>
+<text x="6.1" y="54.8" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">U</text>
+</svg>

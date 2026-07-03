@@ -25,6 +25,13 @@ SOURCES = {
     "imc-2024": ROOT / "docs/IMC/IMC_2024-Paper.pdf",
     "imc-2023": ROOT / "docs/IMC/IMC_2023_Paper-1.pdf",
     "imc-2022": ROOT / "docs/IMC/IMC-2022-Paper-1.pdf",
+    "imc-2021": ROOT / "docs/IMC/IMC-2021-Paper.pdf",
+    "imc-2020": ROOT / "docs/IMC/IMC_2020_q.pdf",
+    "imc-2019": ROOT / "docs/IMC/imc-2019-q.pdf",
+    "imc-2018": ROOT / "docs/IMC/imc-2018-q.pdf",
+    "imc-2017": ROOT / "docs/IMC/imc-2017-q.pdf",
+    "imc-2016": ROOT / "docs/IMC/imc-2016-q.pdf",
+    "imc-2015": ROOT / "docs/IMC/imc-2015-q.pdf",
 }
 
 # Figure boxes: paper -> { qkey: (page, x0, y_top, x1, y_bottom) } in points,

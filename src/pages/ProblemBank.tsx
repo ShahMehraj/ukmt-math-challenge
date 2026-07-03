@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Filter, Search, X, Bookmark } from "lucide-react";
-import { PROBLEMS } from "@/data/problems";
+import { ALL_PROBLEMS as PROBLEMS } from "@/data/problems";
 import { TOPICS } from "@/data/topics";
 import type { Difficulty, ProblemSource, TopicId } from "@/lib/types";
 import { ProblemCard } from "@/components/ProblemCard";

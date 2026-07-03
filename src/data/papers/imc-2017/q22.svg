@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.39 -12.14 90.89 104.04">
+<path d="M 15.207031 71.335938 L 73.339844 71.335938 C 73.339844 39.226562 47.3125 13.199219 15.207031 13.199219 C 15.207031 13.199219 15.207031 13.199219 15.207031 71.335938 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 15.207 71.336 L 73.34 71.336 C 73.34 39.227 47.312 13.199 15.207 13.199 C 15.207 13.199 15.207 13.199 15.207 71.336 Z M 15.207 71.336" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 72.582 71.371 L 44.496 21.289 L 44.496 71.371" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 24.184 71.082 L 24.184 62.359 L 15.453 62.359" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 53.305 71.082 L 53.305 62.359 L 44.578 62.359" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="2.9" y="83.8" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">O</text>
+<text x="75.5" y="83.8" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">P</text>
+<text x="2.9" y="10.7" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">Q</text>
+<text x="36.5" y="16.5" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">M</text>
+<text x="37.6" y="84.9" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">N</text>
+</svg>

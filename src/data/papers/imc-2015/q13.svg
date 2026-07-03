@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 50">
+<rect x="10" y="8" width="140" height="30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+<polygon points="10,38 150,8 150,38" fill="#9ca3af" fill-opacity="0.5"/>
+<g font-size="10" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">
+<text x="1" y="26">3 cm</text>
+<text x="60" y="48">14 cm</text>
+</g>
+</svg>

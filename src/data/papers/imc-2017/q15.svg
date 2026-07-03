@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.47 -11.41 111.17 80.41">
+<path d="M -7.46875 49.894531 L 85.390625 49.894531 L 13.671875 10.929688 L -7.46875 49.894531 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M -7.41 49.887 L 85.449 49.887 L 13.73 10.922 Z M -7.41 49.887" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 39.02 49.887 L 13.73 10.922" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 16.512 45.859 L 15.102 53.906" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 62.941 45.859 L 61.531 53.906" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 22.621 31.996 L 30.133 28.809" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="34.2" y="62" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">P</text>
+<text x="88.7" y="57.1" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">R</text>
+<text x="8.8" y="9.6" font-size="11" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">S</text>
+</svg>

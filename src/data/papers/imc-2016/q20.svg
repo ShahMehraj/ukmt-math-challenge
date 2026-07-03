@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3.91 -11.64 136.81 103.6">
+<path d="M 21.097656 50.214844 C 21.097656 50.214844 33.613281 60.046875 49.054688 60.046875 C 64.492188 60.046875 77.015625 50.214844 77.015625 50.214844 L 21.097656 50.214844 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 21.097656 50.675781 C 21.097656 50.675781 33.613281 40.839844 49.054688 40.839844 C 64.492188 40.839844 77.015625 50.675781 77.015625 50.675781 L 21.097656 50.675781 " fill="#9ca3af" fill-opacity="0.5"/>
+<path d="M 21.578125 33.832031 L 27.246094 35.355469 L 27.246094 32.316406 L 21.578125 33.832031 " fill="white"/>
+<path d="M 77.082031 33.832031 L 71.414062 32.316406 L 71.414062 35.355469 L 77.082031 33.832031 " fill="white"/>
+<path d="M 43.269531 38.402344 L 53.980469 38.402344 L 53.980469 27.679688 L 43.269531 27.679688 Z M 43.269531 38.402344 " fill="white"/>
+<path d="M 2.449 87.961 L 96.207 87.961 L 96.207 12.91 L 2.449 12.91 Z M 2.449 87.961" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 2.449 12.91 C 2.449 38.816 23.438 59.816 49.328 59.816 C 75.219 59.816 96.207 38.816 96.207 12.91" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 96.207 87.961 C 96.207 62.055 75.219 41.055 49.328 41.055 C 23.438 41.055 2.449 62.055 2.449 87.961" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 27.246 33.832 L 71.414 33.832" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 21.578 33.832 L 27.246 35.355 L 27.246 32.316 Z M 21.578 33.832" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 77.082 33.832 L 71.414 32.316 L 71.414 35.355 Z M 77.082 33.832" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 77.461 30.996 L 77.461 36.672" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 21.195 30.996 L 21.195 36.672" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 43.27 27.68 L 53.98 27.68 L 53.98 38.402 L 43.27 38.402 Z M 43.27 27.68" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="35" y="9.6" font-size="10" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">10 cm</text>
+<text x="100.9" y="55.5" font-size="10" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">8 cm</text>
+<text x="46.3" y="37.7" font-size="10" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">?</text>
+</svg>

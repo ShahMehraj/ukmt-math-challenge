@@ -2,6 +2,25 @@ import type { PastPaper, PaperExam } from "@/lib/types";
 import { IMC_2024_QUESTIONS } from "./papers/imc-2024";
 import { IMC_2023_QUESTIONS } from "./papers/imc-2023";
 import { IMC_2022_QUESTIONS } from "./papers/imc-2022";
+import { IMC_2021_QUESTIONS } from "./papers/imc-2021";
+import { IMC_2020_QUESTIONS } from "./papers/imc-2020";
+import { IMC_2019_QUESTIONS } from "./papers/imc-2019";
+import { IMC_2018_QUESTIONS } from "./papers/imc-2018";
+import { IMC_2017_QUESTIONS } from "./papers/imc-2017";
+import { IMC_2016_QUESTIONS } from "./papers/imc-2016";
+import { IMC_2015_QUESTIONS } from "./papers/imc-2015";
+import { HMC_2026_QUESTIONS } from "./papers/hmc-2026";
+import { HMC_2025_QUESTIONS } from "./papers/hmc-2025";
+import { HMC_2024_QUESTIONS } from "./papers/hmc-2024";
+import { HMC_2023_QUESTIONS } from "./papers/hmc-2023";
+import { HMC_2022_QUESTIONS } from "./papers/hmc-2022";
+import { HMC_2021_QUESTIONS } from "./papers/hmc-2021";
+import { HMC_2020_QUESTIONS } from "./papers/hmc-2020";
+import { HMC_2019_QUESTIONS } from "./papers/hmc-2019";
+import { HMC_2018_QUESTIONS } from "./papers/hmc-2018";
+import { HMC_2017_QUESTIONS } from "./papers/hmc-2017";
+import { HMC_2016_QUESTIONS } from "./papers/hmc-2016";
+import { HMC_2015_QUESTIONS } from "./papers/hmc-2015";
 
 /**
  * Past papers (PYQ) for both challenges, grouped into two exam families:
@@ -101,10 +120,20 @@ export const PAPERS: PastPaper[] = [
     minutes: 60,
     questionsUrl:
       "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
-    answers: blank(25),
-    verified: false,
-    notes:
-      "Open the official paper and solutions from UKMT, then time yourself. Answer key to be added once verified.",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    // Fully transcribed for in-app attempts; key verified against the official
+    // UKMT IMC 2021 solutions.
+    questions: IMC_2021_QUESTIONS,
+    answers: [
+      "B", "A", "C", "A", "D",
+      "E", "C", "B", "D", "D",
+      "E", "E", "A", "B", "D",
+      "E", "D", "C", "A", "B",
+      "D", "E", "B", "B", "E",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2021 answer key",
   },
   {
     id: "imc-2020",
@@ -114,10 +143,20 @@ export const PAPERS: PastPaper[] = [
     minutes: 60,
     questionsUrl:
       "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
-    answers: blank(25),
-    verified: false,
-    notes:
-      "Open the official paper and solutions from UKMT, then time yourself. Answer key to be added once verified.",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    // Fully transcribed for in-app attempts; key verified against the official
+    // UKMT IMC 2020 solutions.
+    questions: IMC_2020_QUESTIONS,
+    answers: [
+      "A", "E", "B", "D", "D",
+      "C", "B", "E", "E", "B",
+      "E", "B", "C", "A", "A",
+      "E", "E", "C", "B", "D",
+      "B", "C", "A", "A", "A",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2020 answer key",
   },
   {
     id: "imc-2019",
@@ -127,16 +166,162 @@ export const PAPERS: PastPaper[] = [
     minutes: 60,
     questionsUrl:
       "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
-    answers: blank(25),
-    verified: false,
-    notes:
-      "Open the official paper and solutions from UKMT, then time yourself. Answer key to be added once verified.",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    // Fully transcribed for in-app attempts; key verified against the official
+    // UKMT IMC 2019 solutions.
+    questions: IMC_2019_QUESTIONS,
+    answers: [
+      "B", "E", "D", "B", "D",
+      "B", "B", "E", "C", "B",
+      "C", "C", "A", "C", "A",
+      "A", "D", "B", "E", "B",
+      "D", "E", "A", "C", "D",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2019 answer key",
+  },
+  {
+    id: "imc-2018",
+    exam: "IMC",
+    year: 2018,
+    questionCount: 25,
+    minutes: 60,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    // Fully transcribed for in-app attempts; key verified against the official
+    // UKMT IMC 2018 solutions.
+    questions: IMC_2018_QUESTIONS,
+    answers: [
+      "B", "B", "C", "D", "B",
+      "A", "B", "A", "E", "E",
+      "B", "E", "C", "C", "E",
+      "C", "D", "A", "D", "E",
+      "D", "E", "A", "B", "D",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2018 answer key",
+  },
+  {
+    id: "imc-2017",
+    exam: "IMC",
+    year: 2017,
+    questionCount: 25,
+    minutes: 60,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    questions: IMC_2017_QUESTIONS,
+    answers: [
+      "D", "B", "A", "D", "B",
+      "D", "C", "D", "B", "A",
+      "E", "D", "A", "B", "C",
+      "D", "B", "E", "E", "D",
+      "A", "C", "D", "C", "A",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2017 answer key",
+  },
+  {
+    id: "imc-2016",
+    exam: "IMC",
+    year: 2016,
+    questionCount: 25,
+    minutes: 60,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    questions: IMC_2016_QUESTIONS,
+    answers: [
+      "B", "D", "B", "E", "A",
+      "C", "C", "E", "C", "E",
+      "D", "D", "B", "D", "A",
+      "B", "B", "C", "B", "D",
+      "A", "E", "B", "C", "D",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2016 answer key",
+  },
+  {
+    id: "imc-2015",
+    exam: "IMC",
+    year: 2015,
+    questionCount: 25,
+    minutes: 60,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=intermediate+mathematical+challenge",
+    questions: IMC_2015_QUESTIONS,
+    answers: [
+      "A", "E", "E", "C", "B",
+      "D", "E", "B", "B", "C",
+      "D", "D", "A", "C", "C",
+      "D", "D", "A", "A", "C",
+      "D", "B", "B", "E", "D",
+    ],
+    verified: true,
+    answerSource: "Official UKMT IMC 2015 answer key",
   },
 
   // ─── HMC (Hamilton) ───────────────────────────────────────────────────────
   // Hamilton is a written-solution olympiad (6 questions, 2 hours) — there's no
   // answer grid to auto-score, so these list as self-mark papers that open the
   // official paper and full solutions for you to mark against.
+  {
+    id: "hmc-2026",
+    exam: "HMC",
+    year: 2026,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    // Fully transcribed for in-app timed practice. Hamilton is a written
+    // olympiad — full solutions required, no auto-scoring possible.
+    questions: HMC_2026_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2025",
+    exam: "HMC",
+    year: 2025,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2025_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2024",
+    exam: "HMC",
+    year: 2024,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2024_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
   {
     id: "hmc-2023",
     exam: "HMC",
@@ -145,10 +330,141 @@ export const PAPERS: PastPaper[] = [
     minutes: 120,
     questionsUrl:
       "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2023_QUESTIONS,
     answers: blank(6),
     verified: false,
     notes:
-      "Hamilton is a 2-hour, 6-question written olympiad. Open the official paper, write full solutions, then mark against UKMT's published solutions. Auto-scoring isn't possible for written work.",
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2022",
+    exam: "HMC",
+    year: 2022,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2022_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2021",
+    exam: "HMC",
+    year: 2021,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2021_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2020",
+    exam: "HMC",
+    year: 2020,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2020_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2019",
+    exam: "HMC",
+    year: 2019,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2019_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2018",
+    exam: "HMC",
+    year: 2018,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2018_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2017",
+    exam: "HMC",
+    year: 2017,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2017_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2016",
+    exam: "HMC",
+    year: 2016,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2016_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
+  },
+  {
+    id: "hmc-2015",
+    exam: "HMC",
+    year: 2015,
+    questionCount: 6,
+    minutes: 120,
+    questionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    solutionsUrl:
+      "https://ukmt.org.uk/competition-papers?title=hamilton",
+    questions: HMC_2015_QUESTIONS,
+    answers: blank(6),
+    verified: false,
+    notes:
+      "Hamilton is a 2-hour, 6-question written olympiad. Read the questions in-app, write full solutions on paper, then mark against UKMT's published solutions.",
   },
 ];
 

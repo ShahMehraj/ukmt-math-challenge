@@ -42,8 +42,10 @@ interface ProgressState {
   paperSessions: Record<string, PaperSession>;
   /** Begin a fresh attempt, discarding any prior session for this paper. */
   startPaperSession: (paperId: string, questionCount: number) => void;
-  /** Toggle the answer for one question (clears it if the same option repeats). */
+  /** Toggle the answer for one MCQ question (clears if same option repeats). */
   choosePaperAnswer: (paperId: string, index: number, opt: string) => void;
+  /** Set a free-text answer (olympiad papers — no toggle, just overwrite). */
+  setFreeAnswer: (paperId: string, index: number, text: string) => void;
   submitPaperSession: (paperId: string) => void;
 
   // — Derived helpers (computed in selectors below) —
@@ -196,6 +198,20 @@ export const useProgress = create<ProgressState>()(
           if (!prev || prev.submitted) return s;
           const given = [...prev.given];
           given[index] = given[index] === opt ? "" : opt;
+          return {
+            paperSessions: {
+              ...s.paperSessions,
+              [paperId]: { ...prev, given },
+            },
+          };
+        }),
+
+      setFreeAnswer: (paperId, index, text) =>
+        set((s) => {
+          const prev = s.paperSessions[paperId];
+          if (!prev || prev.submitted) return s;
+          const given = [...prev.given];
+          given[index] = text;
           return {
             paperSessions: {
               ...s.paperSessions,

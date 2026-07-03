@@ -1,4 +1,5 @@
-import type { Problem } from "@/lib/types";
+import type { Problem, Chapter, CheckBlock } from "@/lib/types";
+import { FULL_CHAPTERS } from "./chapters";
 
 /**
  * Central problem bank. Chapters reference problems by id, and the Problem Bank
@@ -1743,6 +1744,58 @@ export const PROBLEMS: Problem[] = [
   },
 ];
 
+/**
+ * Auto-mirror: extract all interactive check questions from authored chapters
+ * into Problem entries with proper tags. This means every chapter check is
+ * also accessible in the Problem Bank page (filterable by topic, subtopic,
+ * difficulty, etc.) without manual duplication.
+ */
+function extractChapterProblems(): Problem[] {
+  const problems: Problem[] = [];
+
+  for (const chapter of FULL_CHAPTERS) {
+    let currentHeading = chapter.title;
+
+    for (const block of chapter.lesson) {
+      // Track the current section heading for subtopic tagging
+      if (block.kind === "prose" && block.heading) {
+        // Strip the "N · " prefix to get a clean subtopic name
+        currentHeading = block.heading.replace(/^\d+\s*·\s*/, "");
+      }
+
+      if (block.kind !== "check") continue;
+      const check = block as CheckBlock;
+
+      // Skip if this id is already in the hand-curated bank
+      if (PROBLEMS.some((p) => p.id === check.id)) continue;
+
+      problems.push({
+        id: check.id,
+        statement: check.prompt,
+        format: check.format,
+        options: check.options,
+        answer: check.answer,
+        acceptedAnswers: check.acceptedAnswers,
+        topic: chapter.topic,
+        subtopic: currentHeading,
+        concepts: [currentHeading.toLowerCase()],
+        difficulty: chapter.difficulty,
+        source: "original",
+        skills: [],
+        estMinutes: chapter.difficulty === "easy" ? 1 : chapter.difficulty === "medium" ? 2 : 3,
+        tags: ["chapter-check", `ch:${chapter.id}`],
+        hints: check.hint ? [check.hint] : [],
+        solution: check.explanation,
+      });
+    }
+  }
+
+  return problems;
+}
+
+/** The complete problem bank: hand-curated + auto-mirrored from chapters. */
+export const ALL_PROBLEMS: Problem[] = [...PROBLEMS, ...extractChapterProblems()];
+
 export const PROBLEM_BY_ID = Object.fromEntries(
-  PROBLEMS.map((p) => [p.id, p])
+  ALL_PROBLEMS.map((p) => [p.id, p])
 ) as Record<string, Problem>;

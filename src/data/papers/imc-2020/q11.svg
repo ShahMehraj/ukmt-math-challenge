@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3.83 -13.63 98.9 57.9">
+
+<path d="M 20.703 40.27 L 90.203 40.27 L 90.203 22.895 L 20.703 22.895 Z M 20.703 40.27" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 38.078 40.27 L 38.078 22.895" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 55.453 40.27 L 55.453 22.895" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 72.828 40.27 L 72.828 22.895" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 29.391 22.895 L 29.391 5.52 L 81.516 5.52 L 81.516 22.895" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 46.766 22.895 L 46.766 5.52" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 64.141 22.895 L 64.141 5.52" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 91.07 31.582 L 91.07 26.371" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="25.9" y="36.3" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">1</text>
+<text x="43.3" y="36.2" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">3</text>
+<text x="60.6" y="36.2" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">5</text>
+<text x="78" y="36.3" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">7</text>
+<text x="34.6" y="18.9" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">2</text>
+<text x="52" y="18.9" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">4</text>
+<text x="69.3" y="18.9" font-size="13" fill="currentColor" font-family="Georgia, 'Times New Roman', serif">6</text>
+</svg>
