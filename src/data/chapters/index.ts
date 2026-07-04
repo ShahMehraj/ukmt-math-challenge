@@ -1,5 +1,6 @@
 import type { Chapter, TopicId, ExamFocus, Difficulty } from "@/lib/types";
 import { foundationsChapter } from "./foundations";
+import { setsRealsChapter } from "./sets-reals";
 import { numberTheoryFoundations } from "./number-theory";
 import { countingChapter } from "./counting";
 import { ratioChapter } from "./ratio";
@@ -9,11 +10,12 @@ import { numberSenseChapter } from "./number-sense";
 /** Fully-authored chapters available to study now. */
 export const FULL_CHAPTERS: Chapter[] = [
   foundationsChapter,
-  numberTheoryFoundations,
-  countingChapter,
-  ratioChapter,
+  setsRealsChapter,
   algebraChapter,
   numberSenseChapter,
+  numberTheoryFoundations,
+  ratioChapter,
+  countingChapter,
 ];
 
 /**
@@ -53,6 +55,27 @@ export const CURRICULUM: PlannedChapter[] = [
     "Coordinates & lines",
     "Core geometry",
   ]),
+  toPlanned(setsRealsChapter, [
+    "Sets — definition & notation",
+    "Subsets, power sets & intervals",
+    "Operations on sets",
+    "Counting with sets (inclusion-exclusion)",
+    "The number hierarchy",
+    "Rational numbers & decimals",
+    "Irrational numbers & proofs",
+    "Surds & rationalisation",
+    "Laws of rational exponents",
+  ]),
+  toPlanned(algebraChapter, [
+    "Expanding & factorising",
+    "Algebraic identities",
+    "Linear equations & word problems",
+    "Simultaneous equations",
+    "Quadratics & discriminant",
+    "Sum & product of roots (Vieta's)",
+    "Equations reducible to quadratics",
+    "Inequalities from algebra",
+  ]),
   toPlanned(numberSenseChapter, [
     "Place value & digits",
     "Powers & last-digit cycles",
@@ -71,16 +94,6 @@ export const CURRICULUM: PlannedChapter[] = [
     "Coprimality & parity",
     "Remainders & cycles",
     "Divisibility proofs",
-  ]),
-  toPlanned(algebraChapter, [
-    "Expanding & factorising",
-    "Algebraic identities",
-    "Linear equations & word problems",
-    "Simultaneous equations",
-    "Quadratics & discriminant",
-    "Sum & product of roots (Vieta's)",
-    "Equations reducible to quadratics",
-    "Inequalities from algebra",
   ]),
   {
     id: "ch-seq-1",

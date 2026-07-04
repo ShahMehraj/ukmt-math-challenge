@@ -232,6 +232,49 @@ export interface Chapter {
   summary: ChapterSummary;
 }
 
+// ─── Books ────────────────────────────────────────────────────────────────--
+//
+// The "Books" section presents a study companion to a source textbook. We do
+// NOT reproduce the copyrighted text: each chapter is broken into concept
+// sections written as original commentary (theory interleaved with interactive
+// checks and worked examples in the app's own voice), and every problem is an
+// original question in the style of the book's exercises, pushed into the
+// central problem bank with book/chapter tags so it is fully filterable.
+
+/** A single concept/topic within a book chapter. */
+export interface BookSection {
+  /** Slug unique within the chapter, e.g. "operations-on-sets". */
+  id: string;
+  title: string;
+  /** Teaching body: prose, callouts, diagrams, worked examples, checks. */
+  blocks: LessonBlock[];
+}
+
+/** A chapter of a source book, retold as original concept commentary. */
+export interface BookChapter {
+  /** Slug unique within the book, e.g. "set-theory-real-numbers". */
+  id: string;
+  /** Chapter number as printed in the book. */
+  number: number;
+  title: string;
+  /** One-paragraph overview of what the chapter covers. */
+  blurb: string;
+  /** Concept-by-concept sections, in reading order. */
+  sections: BookSection[];
+  /** IDs of problems (in the bank) that practise this chapter. */
+  practiceProblemIds: string[];
+}
+
+export interface Book {
+  id: string;
+  title: string;
+  author?: string;
+  /** Short description shown on the book card. */
+  description: string;
+  /** Fully-authored chapters available to read now. */
+  chapters: BookChapter[];
+}
+
 // ─── Curriculum metadata ─────────────────────────────────────────────────────
 
 export interface TopicMeta {

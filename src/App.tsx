@@ -9,6 +9,8 @@ import { MockList } from "@/pages/MockList";
 import { MockRunner } from "@/pages/MockRunner";
 import { PastPapers } from "@/pages/PastPapers";
 import { PaperRunner } from "@/pages/PaperRunner";
+import { Books } from "@/pages/Books";
+import { BookReader } from "@/pages/BookReader";
 import { Dashboard } from "@/pages/Dashboard";
 import { NotFound } from "@/pages/NotFound";
 
@@ -27,6 +29,9 @@ export default function App() {
           <Route path="/mock/:id" element={<MockRunner />} />
           <Route path="/papers" element={<PastPapers />} />
           <Route path="/papers/:id" element={<PaperRunner />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/books/:bookId" element={<BookReader />} />
+          <Route path="/books/:bookId/:chapterId" element={<BookReader />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

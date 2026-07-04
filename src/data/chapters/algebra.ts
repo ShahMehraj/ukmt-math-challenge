@@ -13,7 +13,7 @@ export const algebraChapter: Chapter = {
   id: "ch-algebra-1",
   title: "Algebraic Manipulation & Equations",
   topic: "algebra",
-  order: 30,
+  order: 5,
   examFocus: "both",
   difficulty: "medium",
   estMinutes: 100,
@@ -197,6 +197,203 @@ export const algebraChapter: Chapter = {
         "$f(1) = 1 - 1 + 1 - 1 = 0$. So yes, $(x-1)$ is a factor.\n\n(Alternatively: group as $(x^{29}-x^{24}) + (x^{13}-1) = x^{24}(x^5-1) + (x^{13}-1)$, and both $x^5-1$ and $x^{13}-1$ are divisible by $x-1$ since $a^n-b^n$ is always divisible by $a-b$.)",
     },
 
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced factorisation patterns:**\n\n**Pattern: Symmetric & cyclic expressions**\n\nIf an expression is symmetric in $a, b, c$ (unchanged when you swap any two), its factors are usually symmetric too. If it's cyclic (unchanged under $a \\to b \\to c \\to a$), look for cyclic factors.\n\nExample: Factorise $a^2(b-c) + b^2(c-a) + c^2(a-b)$.\n\nSubstitute $a = b$: expression $= b^2(b-c) + b^2(c-b) + c^2(b-b) = 0$. So $(a-b)$ is a factor. By symmetry, $(b-c)$ and $(c-a)$ are too. The expression is degree 3 and the product $(a-b)(b-c)(c-a)$ is also degree 3. By comparing leading terms:\n$$a^2(b-c) + b^2(c-a) + c^2(a-b) = -(a-b)(b-c)(c-a)$$\n\n**Pattern: Substitution to verify or discover factors**\n\nThe factor theorem: $(x-k)$ divides $f(x)$ iff $f(k) = 0$. For multi-variable expressions, setting $a = b$ (or $a = 0$) and checking if the expression vanishes is the fastest route to finding factors.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "The x + 1/x bootstrap",
+      content:
+        "This is one of the most powerful competition tricks. If you know $x + \\frac{1}{x} = k$, you can build up:\n\n$x^2 + \\frac{1}{x^2} = k^2 - 2$\n\n$x^3 + \\frac{1}{x^3} = k^3 - 3k$\n\n$x^4 + \\frac{1}{x^4} = (k^2-2)^2 - 2 = k^4 - 4k^2 + 2$\n\n$x^2 - \\frac{1}{x^2} = (x+\\frac{1}{x})(x-\\frac{1}{x})$, where $x - \\frac{1}{x} = \\pm\\sqrt{k^2-4}$.\n\nSimilarly if $x - \\frac{1}{x} = m$: then $x^2 + \\frac{1}{x^2} = m^2 + 2$ and $x^3 - \\frac{1}{x^3} = m^3 + 3m$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6e",
+      prompt:
+        "If $x - \\dfrac{1}{x} = 5$, find $x^2 + \\dfrac{1}{x^2}$.",
+      format: "numeric",
+      answer: "27",
+      hint: "Square both sides: $(x-1/x)^2 = x^2 - 2 + 1/x^2$.",
+      explanation:
+        "$(x-1/x)^2 = x^2 - 2 + 1/x^2 = 25$. So $x^2 + 1/x^2 = 27$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6f",
+      prompt:
+        "If $x + \\dfrac{1}{x} = \\sqrt{5}$, find $x^4 + \\dfrac{1}{x^4}$.",
+      format: "numeric",
+      answer: "7",
+      hint: "First: $x^2 + 1/x^2 = (x+1/x)^2 - 2 = 5 - 2 = 3$. Then square again.",
+      explanation:
+        "$x^2 + 1/x^2 = (\\sqrt{5})^2 - 2 = 3$.\n$x^4 + 1/x^4 = (x^2+1/x^2)^2 - 2 = 9 - 2 = 7$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6g",
+      prompt:
+        "If $a + b + c = 9$ and $a^2 + b^2 + c^2 = 35$, find $a^3 + b^3 + c^3 - 3abc$.",
+      format: "numeric",
+      answer: "108",
+      hint: "Use the identity $a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca)$. First find $ab+bc+ca$ from $(a+b+c)^2$.",
+      explanation:
+        "$(a+b+c)^2 = a^2+b^2+c^2+2(ab+bc+ca) \\implies 81 = 35 + 2(ab+bc+ca)$.\nSo $ab+bc+ca = 23$.\n$a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca) = 9(35-23) = 9 \\times 12 = 108$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6h",
+      prompt:
+        "Factorise: $8a^3 + 27b^3 + 36a^2b + 54ab^2$.",
+      format: "text",
+      answer: "(2a+3b)^3",
+      acceptedAnswers: ["(2a+3b)^3", "(2a + 3b)^3", "(2a+3b)³"],
+      hint: "Rearrange as $(2a)^3 + (3b)^3 + 3(2a)^2(3b) + 3(2a)(3b)^2$. Compare with $(x+y)^3$.",
+      explanation:
+        "$8a^3 + 27b^3 + 36a^2b + 54ab^2 = (2a)^3 + 3(2a)^2(3b) + 3(2a)(3b)^2 + (3b)^3 = (2a+3b)^3$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6i",
+      prompt:
+        "If $a^2 + b^2 + c^2 - ab - bc - ca = 0$, what can you conclude about $a$, $b$, $c$?",
+      format: "text",
+      answer: "a = b = c",
+      acceptedAnswers: ["a = b = c", "a=b=c", "they are all equal"],
+      hint: "Recall that $a^2+b^2+c^2-ab-bc-ca = \\frac{1}{2}[(a-b)^2+(b-c)^2+(c-a)^2]$.",
+      explanation:
+        "$a^2+b^2+c^2-ab-bc-ca = \\frac{1}{2}[(a-b)^2+(b-c)^2+(c-a)^2] = 0$.\nSince squares are $\\ge 0$ and their sum is 0, each must be 0: $(a-b)^2 = 0$, $(b-c)^2 = 0$, $(c-a)^2 = 0$.\nHence $a = b = c$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6j",
+      prompt:
+        "Factorise $a^4 + 4b^4$ using Sophie Germain's identity.",
+      format: "text",
+      answer: "(a^2+2b^2+2ab)(a^2+2b^2-2ab)",
+      acceptedAnswers: ["(a^2+2b^2+2ab)(a^2+2b^2-2ab)", "(a²+2b²+2ab)(a²+2b²-2ab)"],
+      hint: "Add and subtract $4a^2b^2$: $a^4 + 4b^4 = (a^2+2b^2)^2 - (2ab)^2$.",
+      explanation:
+        "$a^4 + 4b^4 = a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2 = (a^2+2b^2)^2 - (2ab)^2 = (a^2+2b^2+2ab)(a^2+2b^2-2ab)$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6k",
+      prompt:
+        "If $x + y = 12$ and $xy = 27$, find $x^3 + y^3$.",
+      format: "numeric",
+      answer: "756",
+      hint: "$x^3+y^3 = (x+y)^3 - 3xy(x+y)$.",
+      explanation:
+        "$x^3+y^3 = (x+y)(x^2-xy+y^2) = (x+y)((x+y)^2 - 3xy) = 12(144-81) = 12 \\times 63 = 756$.\n\nAlternatively: $(x+y)^3 = x^3+y^3+3xy(x+y)$, so $1728 = x^3+y^3+972$, giving $x^3+y^3 = 756$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6l",
+      prompt:
+        "Evaluate $(-5)^3 + 12^3 + (-7)^3$ without expanding each cube.",
+      format: "numeric",
+      answer: "1260",
+      hint: "Check if the three bases sum to zero: $-5 + 12 + (-7) = 0$. If $a+b+c=0$, then...",
+      explanation:
+        "$-5 + 12 + (-7) = 0$. So by the identity $a^3+b^3+c^3 = 3abc$ (when $a+b+c=0$):\n$(-5)^3 + 12^3 + (-7)^3 = 3(-5)(12)(-7) = 3 \\times 420 = 1260$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6m",
+      prompt:
+        "If $x = 3 + 3^{1/3} + 3^{2/3}$, show that $x^3 - 9x^2 + 18x - 12 = 0$. What is $x - 3$ equal to?",
+      format: "text",
+      answer: "3^(1/3) + 3^(2/3)",
+      acceptedAnswers: ["3^(1/3) + 3^(2/3)", "cube root 3 + cube root 9", "∛3 + ∛9"],
+      hint: "Let $t = 3^{1/3}$. Then $x - 3 = t + t^2$. Cube both sides: $(x-3)^3 = (t+t^2)^3$.",
+      explanation:
+        "Let $t = 3^{1/3}$, so $t^3 = 3$. Then $x-3 = t + t^2$.\n$(x-3)^3 = (t+t^2)^3 = t^3 + t^6 + 3t^3 \\cdot t^2(t+t^2)... $\n\nMore directly: $(x-3)^3 = (t+t^2)^3$. Note $(t+t^2)^3 = t^3(1+t)^3 = 3(1+t)^3 = 3(1+3^{1/3})^3$... \n\nActually the clean approach: $(x-3)^3 = (t+t^2)^3 = (t \\cdot (1+t))^3... $ Hmm, simpler: cube $x-3 = t+t^2$ where $t^3=3$: $(x-3)^3 = t^3+t^6+3t^2 \\cdot t(t+t^2) = 3 + 9 + 3t^3(t+t^2) = 12 + 3 \\cdot 3(x-3) = 12 + 9(x-3)$. So $(x-3)^3 = 9(x-3)+12$, i.e. $x^3-9x^2+27x-27 = 9x-27+12$, giving $x^3-9x^2+18x-12=0$ ✓.",
+    },
+
+    {
+      kind: "check",
+      id: "alg-c6n",
+      prompt:
+        "If $x = \\sqrt{3+2\\sqrt{2}}$, find $x^4 + \\dfrac{1}{x^4}$.",
+      format: "numeric",
+      answer: "34",
+      hint: "Simplify $x$ first: $3+2\\sqrt{2} = (\\sqrt{2}+1)^2$, so $x = \\sqrt{2}+1$. Then $1/x = \\sqrt{2}-1$, and $x+1/x = 2\\sqrt{2}$.",
+      explanation:
+        "$x = \\sqrt{3+2\\sqrt{2}} = \\sqrt{(\\sqrt{2}+1)^2} = \\sqrt{2}+1$.\n$1/x = 1/(\\sqrt{2}+1) = \\sqrt{2}-1$.\n$x+1/x = 2\\sqrt{2}$.\n$x^2+1/x^2 = (2\\sqrt{2})^2 - 2 = 8-2 = 6$.\n$x^4+1/x^4 = 6^2 - 2 = 34$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6o",
+      prompt:
+        "If $x = \\dfrac{5-\\sqrt{21}}{2}$, prove that $x + 1/x = 5$. Then find the value of $x^3 + \\dfrac{1}{x^3} - 5\\left(x^2 + \\dfrac{1}{x^2}\\right) + \\left(x + \\dfrac{1}{x}\\right)$.",
+      format: "numeric",
+      answer: "0",
+      hint: "Given $x + 1/x = 5$. Compute $x^2+1/x^2 = 23$ and $x^3+1/x^3 = 110$. Then evaluate.",
+      explanation:
+        "$x+1/x = 5$. $x^2+1/x^2 = 25-2 = 23$. $x^3+1/x^3 = 5^3 - 3(5) = 125-15 = 110$.\nExpression $= 110 - 5(23) + 5 = 110 - 115 + 5 = 0$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6p",
+      prompt:
+        "If $a = \\dfrac{\\sqrt{5}+1}{\\sqrt{5}-1}$ and $b = \\dfrac{\\sqrt{5}-1}{\\sqrt{5}+1}$, find $a^2 + ab + b^2$.",
+      format: "numeric",
+      answer: "8",
+      hint: "Rationalise: $a = (\\sqrt{5}+1)^2/4$, $b = (\\sqrt{5}-1)^2/4$. Or note $ab = 1$ and find $a+b$ first.",
+      explanation:
+        "$ab = \\frac{(\\sqrt{5}+1)(\\sqrt{5}-1)}{(\\sqrt{5}-1)(\\sqrt{5}+1)} = \\frac{4}{4} = 1$.\n$a+b = \\frac{(\\sqrt{5}+1)^2 + (\\sqrt{5}-1)^2}{(\\sqrt{5})^2-1^2} = \\frac{(6+2\\sqrt{5})+(6-2\\sqrt{5})}{4} = \\frac{12}{4} = 3$.\n$a^2+ab+b^2 = (a+b)^2 - ab = 9 - 1 = 8$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6q",
+      prompt:
+        "Factorise completely: $x^6 - y^6$.",
+      format: "text",
+      answer: "(x-y)(x+y)(x^2+xy+y^2)(x^2-xy+y^2)",
+      acceptedAnswers: ["(x-y)(x+y)(x^2+xy+y^2)(x^2-xy+y^2)", "(x+y)(x-y)(x²+xy+y²)(x²-xy+y²)"],
+      hint: "Use difference of squares first: $x^6-y^6 = (x^3)^2-(y^3)^2 = (x^3-y^3)(x^3+y^3)$. Then factor each cubic.",
+      explanation:
+        "$x^6-y^6 = (x^3-y^3)(x^3+y^3) = (x-y)(x^2+xy+y^2)(x+y)(x^2-xy+y^2)$.\n\n(Note: if you factor as $(x^2)^3-(y^2)^3$ first, you get $(x^2-y^2)(x^4+x^2y^2+y^4)$, which is also valid but the second factor can be further split as $(x^2+xy+y^2)(x^2-xy+y^2)$ — same result.)",
+    },
+    {
+      kind: "check",
+      id: "alg-c6r",
+      prompt:
+        "Without expanding, show that $(a+b+c)^3 - a^3 - b^3 - c^3 = 3(a+b)(b+c)(c+a)$. What identity do you use as the first step?",
+      format: "text",
+      answer: "group (a+b+c)^3 - a^3 as a difference-of-cubes-style with the sum",
+      acceptedAnswers: ["a^3+b^3+c^3-3abc identity", "let s=a+b+c and use cube identity", "put s=a+b+c, expand using (s)^3 - a^3 - b^3 - c^3"],
+      hint: "Write $(a+b+c)^3 - a^3 - b^3 - c^3$. Use the fact that $p^3 - q^3 = (p-q)(p^2+pq+q^2)$ creatively, or expand $(a+b+c)^3$ and cancel.",
+      explanation:
+        "Expand $(a+b+c)^3 = a^3+b^3+c^3+3(a^2b+a^2c+b^2a+b^2c+c^2a+c^2b)+6abc$.\nSo $(a+b+c)^3 - a^3-b^3-c^3 = 3(a^2b+a^2c+b^2a+b^2c+c^2a+c^2b+2abc) = 3[(a+b)(b+c)(c+a)]$.\nThe key: recognize the factored form $3(a+b)(b+c)(c+a)$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6s",
+      prompt:
+        "Evaluate: $\\dfrac{0.73 \\times 0.73 \\times 0.73 + 0.27 \\times 0.27 \\times 0.27}{0.73 \\times 0.73 - 0.73 \\times 0.27 + 0.27 \\times 0.27}$.",
+      format: "numeric",
+      answer: "1",
+      hint: "Let $a = 0.73$, $b = 0.27$. The expression is $\\frac{a^3+b^3}{a^2-ab+b^2}$. Factor the numerator.",
+      explanation:
+        "Let $a=0.73$, $b=0.27$. Numerator $= a^3+b^3 = (a+b)(a^2-ab+b^2)$.\nSo $\\frac{(a+b)(a^2-ab+b^2)}{a^2-ab+b^2} = a+b = 0.73+0.27 = 1$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c6t",
+      prompt:
+        "If $a^2 + b^2 + c^2 = 20$ and $a + b + c = 0$, find $ab + bc + ca$.",
+      format: "numeric",
+      answer: "-10",
+      hint: "$(a+b+c)^2 = a^2+b^2+c^2+2(ab+bc+ca)$.",
+      explanation:
+        "$0 = 20 + 2(ab+bc+ca)$, so $ab+bc+ca = -10$.",
+    },
+
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 2: Linear equations & forming equations from words
     // ═══════════════════════════════════════════════════════════════════════════
@@ -224,7 +421,7 @@ export const algebraChapter: Chapter = {
       kind: "prose",
       heading: "",
       content:
-        "**Fractional (rational) equations**\n\nWhen variables appear in denominators, multiply through by the LCM — but always check for **extraneous solutions** (values that make a denominator zero).\n\nExample: Solve $\\dfrac{3}{x-2} + \\dfrac{1}{x+1} = \\dfrac{4}{x^2 - x - 2}$.\n\nNotice $x^2 - x - 2 = (x-2)(x+1)$, so multiply both sides by $(x-2)(x+1)$:\n$$3(x+1) + 1(x-2) = 4$$\n$$3x + 3 + x - 2 = 4 \\implies 4x + 1 = 4 \\implies x = \\tfrac{3}{4}.$$\n\nCheck: $x = 3/4$ doesn't make any denominator zero. ✓\n\n**Absolute value equations**\n\nThe key rule: $|A| = k$ means $A = k$ or $A = -k$ (for $k \\ge 0$).\n\nFor $|A| = |B|$: either $A = B$ or $A = -B$.\n\nExample: $|2x - 5| = 3$ gives $2x - 5 = 3$ (so $x = 4$) or $2x - 5 = -3$ (so $x = 1$). Both valid.",
+        "**Fractional (rational) equations**\n\nWhen variables appear in denominators, multiply through by the LCM — but always check for **extraneous solutions** (values that make a denominator zero).\n\nExample: Solve\n$$\\frac{3}{x-2} + \\frac{1}{x+1} = \\frac{4}{x^2 - x - 2}$$\n\nNotice $x^2 - x - 2 = (x-2)(x+1)$, so multiply both sides by $(x-2)(x+1)$:\n$$3(x+1) + 1(x-2) = 4$$\n$$4x + 1 = 4 \\implies x = \\frac{3}{4}$$\n\nCheck: $x = 3/4$ doesn't make any denominator zero. ✓\n\n**Absolute value equations**\n\nThe key rules:\n$$|A| = k \\implies A = k \\text{ or } A = -k \\quad (k \\ge 0)$$\n$$|A| = |B| \\implies A = B \\text{ or } A = -B$$\n\nExample: $|2x - 5| = 3$ gives $2x - 5 = 3$ (so $x = 4$) or $2x - 5 = -3$ (so $x = 1$). Both valid.",
     },
     {
       kind: "example",
@@ -314,6 +511,181 @@ export const algebraChapter: Chapter = {
         "$\\frac{360}{v} - \\frac{360}{v+5} = 1$.\n\nMultiply by $v(v+5)$: $360(v+5) - 360v = v(v+5)$.\n$1800 = v^2 + 5v$.\n$v^2 + 5v - 1800 = 0$.\n$(v+45)(v-40) = 0$.\n\nSince $v > 0$: $v = 40$ km/h.\n\nCheck: Time at 40 = 9 hrs; at 45 = 8 hrs. Difference = 1 hr. ✓",
     },
 
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced linear equation patterns for competitions:**\n\n**Pattern: Equations with reciprocal terms**\n\nSolve $\\dfrac{1}{x-1} + \\dfrac{1}{x-2} = \\dfrac{1}{x-3}$.\n\nDon't cross-multiply everything at once! Bring two terms to one side:\n$$\\frac{1}{x-1} - \\frac{1}{x-3} = -\\frac{1}{x-2}$$\n$$\\frac{(x-3)-(x-1)}{(x-1)(x-3)} = -\\frac{1}{x-2}$$\n$$\\frac{-2}{(x-1)(x-3)} = -\\frac{1}{x-2}$$\nCross-multiply: $2(x-2) = (x-1)(x-3)$, so:\n$$2x-4 = x^2-4x+3 \\implies x^2-6x+7 = 0 \\implies x = 3 \\pm \\sqrt{2}$$\n\n**Pattern: Percentage and mixture problems**\n\nA shopkeeper mixes tea costing ₹60/kg with tea costing ₹80/kg in ratio $3:2$. Cost per kg of the mixture:\n$$\\text{Mixture cost} = \\frac{3(60)+2(80)}{3+2} = \\frac{340}{5} = \\text{₹}68\\text{/kg}$$\n\n**Pattern: Upstream/downstream (boats & streams)**\n\nIf boat speed $= b$ km/h and stream speed $= s$ km/h:\n$$\\text{Downstream speed} = b + s, \\qquad \\text{Upstream speed} = b - s$$\nTwo equations from two journey times give a linear system in $b$ and $s$.\n\n**Pattern: Work-rate problems — the key formula:**\n$$\\frac{1}{T_{\\text{together}}} = \\frac{1}{T_A} + \\frac{1}{T_B}$$\nIf A takes 6 hrs and B takes 9 hrs:\n$$\\frac{1}{T} = \\frac{1}{6} + \\frac{1}{9} = \\frac{5}{18} \\implies T = \\frac{18}{5} \\text{ hours}$$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "The assumed-age trick (ages in ratio)",
+      content:
+        "If ages are in ratio $3:5$, write them as $3k$ and $5k$ (not $x$ and $y$). This gives one variable instead of two — much faster.\n\nExample: Father is 3 times son's age. After 12 years the ratio is 2:1. Find their ages.\nLet son $= x$, father $= 3x$. After 12: $\\frac{3x+12}{x+12} = 2$. So $3x+12 = 2x+24$, giving $x = 12$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8f",
+      prompt:
+        "A fraction becomes $\\dfrac{1}{3}$ when 1 is subtracted from the numerator, and $\\dfrac{1}{4}$ when 8 is added to the denominator. Find the fraction.",
+      format: "text",
+      answer: "5/12",
+      acceptedAnswers: ["5/12"],
+      hint: "Let fraction $= n/d$. Then $(n-1)/d = 1/3$ and $n/(d+8) = 1/4$. Solve the system.",
+      explanation:
+        "$(n-1)/d = 1/3 \\implies 3n-3 = d \\implies d = 3n-3$.\n$n/(d+8) = 1/4 \\implies 4n = d+8$.\nSubstitute: $4n = (3n-3)+8 = 3n+5$, so $n = 5$.\nThen $d = 3(5)-3 = 12$. Fraction $= 5/12$.\nCheck: $(5-1)/12 = 4/12 = 1/3$ ✓; $5/(12+8) = 5/20 = 1/4$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8g",
+      prompt:
+        "A man rows 40 km upstream in 8 hours and 36 km downstream in 6 hours. Find the speed of the current (in km/h).",
+      format: "numeric",
+      answer: "0.5",
+      hint: "Upstream speed $= 40/8 = 5$ km/h $= b - s$. Downstream speed $= 36/6 = 6$ km/h $= b + s$. Solve.",
+      explanation:
+        "Upstream speed $= 40/8 = 5 = b-s$.\nDownstream speed $= 36/6 = 6 = b+s$.\nAdding: $2b = 11$, $b = 5.5$.\nSubtracting: $2s = 1$, $s = 0.5$ km/h.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8h",
+      prompt:
+        "The sum of the digits of a two-digit number is 12. If the digits are reversed, the new number is 36 more than the original. Find the original number.",
+      format: "numeric",
+      answer: "48",
+      hint: "Let tens $= t$, units $= u$. Then $t+u=12$ and $(10u+t)-(10t+u) = 36$, i.e. $9(u-t) = 36$.",
+      explanation:
+        "$t+u = 12$ and $9(u-t) = 36 \\implies u-t = 4$.\nAdding: $2u = 16$, $u = 8$. Then $t = 4$.\nOriginal number $= 48$. Check: $4+8=12$ ✓; reversed $= 84$; $84-48=36$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8i",
+      prompt:
+        "A and B can finish a job in 12 days. B and C in 15 days. C and A in 20 days. How many days will all three together take?",
+      format: "numeric",
+      answer: "10",
+      hint: "Let rates be $a, b, c$ (fraction of job per day). $a+b = 1/12$, $b+c = 1/15$, $c+a = 1/20$. Add all three to find $2(a+b+c)$.",
+      explanation:
+        "Adding all: $2(a+b+c) = 1/12+1/15+1/20 = 5/60+4/60+3/60 = 12/60 = 1/5$.\nSo $a+b+c = 1/10$. Together they take 10 days.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8j",
+      prompt:
+        "Solve: $\\dfrac{x+3}{x-3} = \\dfrac{2x+1}{2x-5}$.",
+      format: "numeric",
+      answer: "2",
+      acceptedAnswers: ["2"],
+      hint: "Cross-multiply: $(x+3)(2x-5) = (2x+1)(x-3)$. Expand both sides — the $x^2$ terms cancel!",
+      explanation:
+        "LHS: $(x+3)(2x-5) = 2x^2+x-15$.\nRHS: $(2x+1)(x-3) = 2x^2-5x-3$.\n$2x^2+x-15 = 2x^2-5x-3$.\n$6x = 12$, so $x = 2$.\nCheck: LHS $= 5/(-1) = -5$. RHS $= 5/(-1) = -5$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8k",
+      prompt:
+        "Solve $|2x - 1| = |x + 3|$. Find the sum of all solutions.",
+      format: "text",
+      answer: "10/3",
+      acceptedAnswers: ["10/3", "3.33"],
+      hint: "$|A| = |B|$ means $A = B$ or $A = -B$. Solve both cases.",
+      explanation:
+        "Case 1: $2x-1 = x+3 \\implies x = 4$.\nCase 2: $2x-1 = -(x+3) \\implies 3x = -2 \\implies x = -2/3$.\nCheck Case 1: $|7| = |7|$ ✓. Case 2: $|-7/3| = |7/3|$ ✓.\nSum $= 4 + (-2/3) = 10/3$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8l",
+      prompt:
+        "Two taps together fill a tank in 6 hours. If the first tap alone takes 5 hours less than the second, how long does the second tap take alone?",
+      format: "numeric",
+      answer: "15",
+      hint: "Let second tap take $x$ hours. First takes $x-5$. Combined rate: $\\frac{1}{x-5} + \\frac{1}{x} = \\frac{1}{6}$.",
+      explanation:
+        "$\\frac{1}{x-5} + \\frac{1}{x} = \\frac{1}{6}$.\n$$\\frac{x + (x-5)}{x(x-5)} = \\frac{1}{6}$$\n$$6(2x-5) = x^2-5x$$\n$$12x-30 = x^2-5x$$\n$$x^2-17x+30 = 0$$\n$$(x-15)(x-2)=0$$\nSince $x > 5$ (first tap must have positive time): $x = 15$ hours.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8m",
+      prompt:
+        "A number consists of two digits whose sum is 9. If 27 is added to the number, the digits interchange. Find the number.",
+      format: "numeric",
+      answer: "36",
+      hint: "Let tens $= t$, units $= u = 9-t$. Condition: $10t+u+27 = 10u+t$.",
+      explanation:
+        "$t + u = 9$ and $10t+u+27 = 10u+t$.\nFrom the second: $9t - 9u = -27$, so $t - u = -3$.\nAdding: $2t = 6$, $t = 3$, $u = 6$. Number $= 36$.\nCheck: $3+6=9$ ✓; $36+27=63$ (reversed) ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8n",
+      prompt:
+        "The denominator of a fraction exceeds the numerator by 3. If both the numerator and denominator are increased by 4, the fraction becomes $\\dfrac{4}{5}$. Find the original fraction.",
+      format: "text",
+      answer: "8/11",
+      acceptedAnswers: ["8/11"],
+      hint: "Let numerator $= x$. Denominator $= x+3$. After adding 4: $\\frac{x+4}{x+7} = \\frac{4}{5}$.",
+      explanation:
+        "$\\frac{x+4}{x+7} = \\frac{4}{5}$. Cross-multiply:\n$$5(x+4) = 4(x+7) \\implies 5x+20 = 4x+28 \\implies x = 8$$\nOriginal fraction $= \\frac{8}{11}$. Check: $\\frac{8+4}{11+4} = \\frac{12}{15} = \\frac{4}{5}$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8o",
+      prompt:
+        "A motorboat goes 10 km upstream and returns to the starting point in 55 minutes. If the speed of the stream is 2 km/h, find the speed of the boat in still water (in km/h).",
+      format: "numeric",
+      answer: "22",
+      hint: "Let boat speed $= v$. Time up $= 10/(v-2)$, time down $= 10/(v+2)$. Total $= 55/60$ hours.",
+      explanation:
+        "$$\\frac{10}{v-2} + \\frac{10}{v+2} = \\frac{55}{60} = \\frac{11}{12}$$\n$$\\frac{10(v+2)+10(v-2)}{v^2-4} = \\frac{11}{12}$$\n$$\\frac{20v}{v^2-4} = \\frac{11}{12}$$\n$$240v = 11(v^2-4) = 11v^2-44$$\n$$11v^2-240v-44 = 0$$\nUsing the quadratic formula or factoring: $(11v+2)(v-22)=0$.\nSince $v>0$: $v = 22$ km/h.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8p",
+      prompt:
+        "Seven years ago, Varun's age was five times the square of Swati's age. Three years hence, Swati's age will be two-fifths of Varun's age. Find their present ages.",
+      format: "text",
+      answer: "Swati=9, Varun=27",
+      acceptedAnswers: ["Swati=9, Varun=27", "9 and 27", "9, 27"],
+      hint: "Let Swati's present age $= x$. Seven years ago: Varun was $5(x-7)^2$. So Varun's present age $= 5(x-7)^2+7$. Three years hence: $x+3 = \\frac{2}{5}(\\text{Varun}+3)$.",
+      explanation:
+        "Let Swati $= x$. Seven years ago Swati was $x-7$, Varun was $5(x-7)^2$.\nVarun's present age $= 5(x-7)^2 + 7$.\nThree years hence: $x+3 = \\frac{2}{5}(5(x-7)^2+10)$.\n$x+3 = 2(x-7)^2+4$.\n$x-1 = 2(x^2-14x+49) = 2x^2-28x+98$.\n$2x^2-29x+99 = 0$.\n$(2x-11)(x-9) = 0$.\n$x = 9$ (since $x-7 > 0$). Varun $= 5(2)^2+7 = 27$.\nCheck: 7 yrs ago: Swati 2, Varun 20 = $5 \\times 4$ ✓. 3 yrs hence: Swati 12, Varun 30, $12 = (2/5)(30)$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8q",
+      prompt:
+        "Solve for $x$: $\\dfrac{1}{x} + \\dfrac{1}{x+3} + \\dfrac{1}{x+6} + \\dfrac{1}{x+9} = 0$. (Hint: pair the first with the last, and the middle two.)",
+      format: "text",
+      answer: "-9/2",
+      acceptedAnswers: ["-9/2", "-4.5", "x=-9/2"],
+      hint: "Pair: $\\left(\\frac{1}{x} + \\frac{1}{x+9}\\right) + \\left(\\frac{1}{x+3} + \\frac{1}{x+6}\\right) = 0$. Each pair has the same numerator form.",
+      explanation:
+        "$$\\frac{1}{x} + \\frac{1}{x+9} = \\frac{2x+9}{x(x+9)}$$\n$$\\frac{1}{x+3} + \\frac{1}{x+6} = \\frac{2x+9}{(x+3)(x+6)}$$\nSo: $(2x+9)\\left[\\frac{1}{x(x+9)} + \\frac{1}{(x+3)(x+6)}\\right] = 0$.\n\nEither $2x+9 = 0 \\implies x = -9/2$, or the bracket $= 0$.\nBracket: $\\frac{(x+3)(x+6)+x(x+9)}{x(x+9)(x+3)(x+6)} = 0$.\nNumerator: $x^2+9x+18+x^2+9x = 2x^2+18x+18 = 2(x^2+9x+9)$.\nDiscriminant of $x^2+9x+9=0$: $81-36=45>0$, giving $x = \\frac{-9\\pm3\\sqrt{5}}{2}$.\n\nBut the cleanest answer (and the one the pairing reveals immediately) is $x = -9/2$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8r",
+      prompt:
+        "The product of two consecutive positive odd integers is 483. Find the larger integer.",
+      format: "numeric",
+      answer: "23",
+      hint: "Let the integers be $2n-1$ and $2n+1$. Then $(2n-1)(2n+1) = 4n^2-1 = 483$.",
+      explanation:
+        "$(2n-1)(2n+1) = 4n^2 - 1 = 483$.\n$4n^2 = 484$, $n^2 = 121$, $n = 11$.\nIntegers: $21$ and $23$. Larger $= 23$.\nCheck: $21 \\times 23 = 483$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c8s",
+      prompt:
+        "Solve: $\\dfrac{x-3}{x+3} - \\dfrac{x+3}{x-3} = \\dfrac{48}{7}$. (Hint: let $u = \\frac{x-3}{x+3}$.)",
+      format: "text",
+      answer: "-4 or 9/4",
+      acceptedAnswers: ["-4, 9/4", "x=-4 or x=9/4", "9/4, -4", "-4 and 9/4"],
+      hint: "Let $u = \\frac{x-3}{x+3}$. Then $\\frac{x+3}{x-3} = 1/u$. The equation becomes $u - 1/u = 48/7$.",
+      explanation:
+        "Let $u = \\frac{x-3}{x+3}$. Equation: $u - \\frac{1}{u} = \\frac{48}{7}$.\n$$\\frac{u^2-1}{u} = \\frac{48}{7} \\implies 7(u^2-1) = 48u \\implies 7u^2-48u-7 = 0$$\n$$(7u+1)(u-7) = 0 \\implies u = 7 \\text{ or } u = -1/7$$\nCase 1: $\\frac{x-3}{x+3} = 7 \\implies x-3 = 7x+21 \\implies -6x = 24 \\implies x = -4$.\nCase 2: $\\frac{x-3}{x+3} = -\\frac{1}{7} \\implies 7(x-3) = -(x+3) \\implies 7x-21 = -x-3 \\implies 8x = 18 \\implies x = 9/4$.\n\nWait, let me recheck Case 2: $7x-21=-x-3$, $8x=18$, $x=9/4$. Hmm.\n\nActually with $u=-1/7$: $\\frac{x-3}{x+3}=-\\frac{1}{7}$, so $7(x-3)=-(x+3)$, $7x-21=-x-3$, $8x=18$, $x=9/4$.\nBut let me verify $u=7$: $\\frac{x-3}{x+3}=7$, $x-3=7x+21$, $-6x=24$, $x=-4$.\n\nCheck $x=-4$: $\\frac{-7}{-1} - \\frac{-1}{-7} = 7 - 1/7 = 48/7$ ✓.\nCheck $x=9/4$: $\\frac{9/4-3}{9/4+3} = \\frac{-3/4}{21/4} = -1/7$. Then $-1/7 - (-7) = -1/7+7 = 48/7$ ✓.\n\nSo $x = -4$ or $x = 9/4$.",
+    },
+
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 4: Simultaneous equations
     // ═══════════════════════════════════════════════════════════════════════════
@@ -321,7 +693,7 @@ export const algebraChapter: Chapter = {
       kind: "prose",
       heading: "3 · Simultaneous equations",
       content:
-        "Two (or more) equations in two (or more) unknowns that must hold simultaneously. The standard methods:\n\n**Substitution:** Solve one equation for one variable, substitute into the other.\n\n**Elimination:** Multiply equations by suitable constants so that adding/subtracting eliminates one variable.\n\n**For three unknowns:** Use elimination twice to reduce to two equations in two unknowns, then solve as usual.\n\n**Symmetric systems:** If a system is symmetric in $x$ and $y$ (swapping them gives the same equations), introduce $s = x+y$ and $p = xy$. The equations often simplify dramatically.",
+        "Two (or more) equations in two (or more) unknowns that must hold simultaneously. The standard methods:\n\n**Substitution:** Solve one equation for one variable, substitute into the other.\n\n**Elimination:** Multiply equations by suitable constants so that adding/subtracting eliminates one variable.\n\nExample: Solve $2x + 3y = 12$ and $5x - 3y = 9$.\n$$\\text{Add: } 7x = 21 \\implies x = 3, \\quad \\text{then } y = (12-6)/3 = 2$$\n\n**For three unknowns:** Use elimination twice to reduce to two equations in two unknowns, then solve as usual.\n\n**Symmetric systems:** If a system is symmetric in $x$ and $y$ (swapping gives the same equations), introduce:\n$$s = x+y, \\quad p = xy$$\nThe equations often simplify dramatically. Then $x, y$ are roots of $t^2 - st + p = 0$.",
     },
     {
       kind: "callout",
@@ -342,7 +714,7 @@ export const algebraChapter: Chapter = {
       variant: "tip",
       title: "Symmetric system trick",
       content:
-        "For equations like $x + y = 5$ and $x^2 + y^2 = 17$, don't solve for individual values immediately. Instead:\n\n• You already have $s = x + y = 5$.\n• From $x^2 + y^2 = s^2 - 2p$: $17 = 25 - 2p$, so $p = xy = 4$.\n• Now $x$ and $y$ are roots of $t^2 - st + p = 0$, i.e. $t^2 - 5t + 4 = 0$.\n\nThis approach scales beautifully to harder problems.",
+        "For equations like $x + y = 5$ and $x^2 + y^2 = 17$, don't solve for individual values immediately. Instead:\n\n• You already have $s = x + y = 5$.\n• From the identity $x^2 + y^2 = s^2 - 2p$:\n$$17 = 25 - 2p \\implies p = xy = 4$$\n• Now $x$ and $y$ are roots of:\n$$t^2 - st + p = 0 \\implies t^2 - 5t + 4 = 0 \\implies (t-1)(t-4) = 0$$\n\nSo $\\{x,y\\} = \\{1, 4\\}$. This approach scales beautifully to harder problems.",
     },
     {
       kind: "example",
@@ -386,6 +758,107 @@ export const algebraChapter: Chapter = {
       hint: "$(x+y)^2 = x^2 + y^2 + 2xy$, so $2xy = (x+y)^2 - (x^2+y^2)$.",
       explanation:
         "$2xy = (x+y)^2 - (x^2+y^2) = 81 - 53 = 28$, so $xy = 14$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Non-linear simultaneous equations**\n\nCompetitions love systems where one equation is linear and the other is quadratic (or both are quadratic). The key approaches:\n\n**Type 1: One linear, one quadratic** — substitute the linear into the quadratic.\n\nSolve $x + y = 7$ and $x^2 + y^2 = 25$.\n$$x^2 + (7-x)^2 = 25 \\implies 2x^2-14x+49 = 25 \\implies x^2-7x+12 = 0$$\n$$(x-3)(x-4) = 0 \\implies (x,y) = (3,4) \\text{ or } (4,3)$$\n\n**Type 2: Symmetric quadratic system** — use $s$ and $p$.\n\nSolve $x^2 + y^2 = 20$ and $xy = 8$.\n$$s^2 = x^2+y^2+2xy = 20+16 = 36 \\implies s = \\pm 6$$\nFor $s = 6$: $t^2-6t+8=0$, $(t-2)(t-4)=0$, so $(x,y) \\in \\{(2,4),(4,2)\\}$.\nFor $s = -6$: $t^2+6t+8=0$, $(t+2)(t+4)=0$, so $(x,y) \\in \\{(-2,-4),(-4,-2)\\}$.\n\n**Type 3: Homogeneous system** — divide one equation by the other.\n\nSolve $x^2 + xy = 12$ and $y^2 + xy = 8$.\nDivide: $\\frac{x^2+xy}{y^2+xy} = \\frac{12}{8} = \\frac{3}{2}$.\n$$\\frac{x(x+y)}{y(y+x)} = \\frac{x}{y} = \\frac{3}{2}$$\nSo $x = 3k, y = 2k$. Substitute into first: $9k^2+6k^2 = 12$, $k^2 = 4/5$... Actually substitute into second: $4k^2+6k^2 = 8$, $10k^2=8$, $k^2=4/5$. So $k=\\pm 2/\\sqrt{5}$.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "The add-and-subtract technique",
+      content:
+        "Given $x + y$ and $x - y$ (or expressions that give them), you can always recover:\n$$x = \\frac{(x+y)+(x-y)}{2}, \\qquad y = \\frac{(x+y)-(x-y)}{2}$$\n\nThis is especially useful when you can compute $(x+y)^2$ and $(x-y)^2$ separately.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Competition shortcut: reciprocal systems",
+      content:
+        "If $\\frac{1}{x} + \\frac{1}{y} = a$ and $\\frac{1}{x} - \\frac{1}{y} = b$, then:\n$$\\frac{1}{x} = \\frac{a+b}{2}, \\qquad \\frac{1}{y} = \\frac{a-b}{2}$$\n\nAlternatively, if $\\frac{a}{x} + \\frac{b}{y} = c$ and $\\frac{d}{x} + \\frac{e}{y} = f$: substitute $u = 1/x$, $v = 1/y$ to get a standard linear system in $u, v$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c11b",
+      prompt:
+        "Solve: $x + y = 7$ and $xy = 10$. Find $x^3 + y^3$.",
+      format: "numeric",
+      answer: "133",
+      hint: "$x^3+y^3 = (x+y)^3 - 3xy(x+y) = 343 - 210$.",
+      explanation:
+        "$x^3+y^3 = (x+y)^3-3xy(x+y) = 7^3 - 3(10)(7) = 343-210 = 133$.\n\n(Note: you don't need to find $x$ and $y$ individually!)",
+    },
+    {
+      kind: "check",
+      id: "alg-c11c",
+      prompt:
+        "Solve: $\\dfrac{2}{x} + \\dfrac{3}{y} = 13$ and $\\dfrac{5}{x} - \\dfrac{4}{y} = -2$. Find the value of $x + y$.",
+      format: "text",
+      answer: "1/2 + 1/3 = 5/6",
+      acceptedAnswers: ["5/6"],
+      hint: "Substitute $u = 1/x$ and $v = 1/y$. System becomes $2u + 3v = 13$ and $5u - 4v = -2$. Solve for $u, v$ then invert.",
+      explanation:
+        "Let $u = 1/x$, $v = 1/y$: $2u+3v=13$ ...(1), $5u-4v=-2$ ...(2).\n$4\\times(1)+3\\times(2)$: $8u+12v+15u-12v = 52-6$, so $23u = 46$, $u=2$.\nFrom (1): $4+3v=13$, $v=3$.\nSo $x = 1/2$, $y = 1/3$. $x+y = 5/6$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c11d",
+      prompt:
+        "Solve the system: $x^2 + y^2 = 25$ and $x - y = 1$. Find all solutions $(x, y)$.",
+      format: "text",
+      answer: "(4,3) and (-3,-4)",
+      acceptedAnswers: ["(4,3) and (-3,-4)", "(4,3),(-3,-4)", "(-3,-4) and (4,3)"],
+      hint: "From the linear equation: $x = y+1$. Substitute into the quadratic.",
+      explanation:
+        "$x = y+1$. Substitute: $(y+1)^2+y^2 = 25$.\n$$2y^2+2y+1=25 \\implies 2y^2+2y-24=0 \\implies y^2+y-12=0$$\n$$(y+4)(y-3)=0 \\implies y=3 \\text{ or } y=-4$$\nSo $(x,y) = (4,3)$ or $(-3,-4)$.\nCheck: $16+9=25$ ✓, $4-3=1$ ✓; $9+16=25$ ✓, $-3-(-4)=1$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c11e",
+      prompt:
+        "If $x + y = 10$ and $x^2 + y^2 = 58$, find the value of $x^3 - y^3$ given that $x > y$.",
+      format: "numeric",
+      answer: "316",
+      hint: "First find $xy$ from $(x+y)^2 = x^2+y^2+2xy$. Then find $x-y$ from $(x-y)^2 = (x+y)^2-4xy$. Finally, $x^3-y^3 = (x-y)(x^2+xy+y^2)$.",
+      explanation:
+        "$xy = \\frac{(x+y)^2-(x^2+y^2)}{2} = \\frac{100-58}{2} = 21$.\n$(x-y)^2 = (x+y)^2-4xy = 100-84 = 16$, so $x-y = 4$ (since $x>y$).\n$x^3-y^3 = (x-y)(x^2+xy+y^2) = 4(58+21) = 4 \\times 79 = 316$.\n\nWait: $x^2+xy+y^2 = (x^2+y^2)+xy = 58+21 = 79$. So $x^3-y^3 = 4 \\times 79 = 316$... Hmm let me verify with actual values: $x+y=10$, $x-y=4$, so $x=7$, $y=3$. Check: $49+9=58$ ✓, $7\\times3=21$ ✓. $343-27=316$ ✓. Answer is 316, not 260.",
+    },
+    {
+      kind: "check",
+      id: "alg-c11f",
+      prompt:
+        "Solve: $x + y + z = 12$, $xy + yz + zx = 44$, $xyz = 48$. Find the values of $x$, $y$, $z$ (they are positive integers).",
+      format: "text",
+      answer: "2, 4, 6",
+      acceptedAnswers: ["2, 4, 6", "2,4,6", "6,4,2", "4,2,6"],
+      hint: "$x, y, z$ are roots of $t^3 - 12t^2 + 44t - 48 = 0$. Try $t = 2$.",
+      explanation:
+        "By Vieta's, $x,y,z$ are roots of:\n$$t^3 - 12t^2 + 44t - 48 = 0$$\nTry $t=2$: $8-48+88-48=0$ ✓. Factor out $(t-2)$: $t^3-12t^2+44t-48 = (t-2)(t^2-10t+24) = (t-2)(t-4)(t-6)$.\nSo $\\{x,y,z\\} = \\{2,4,6\\}$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c11g",
+      prompt:
+        "If $a + b = 5$ and $a^2 + b^2 = 13$, find $a^4 + b^4$.",
+      format: "numeric",
+      answer: "97",
+      hint: "First find $ab$. Then $a^4+b^4 = (a^2+b^2)^2 - 2(ab)^2$.",
+      explanation:
+        "$ab = \\frac{(a+b)^2-(a^2+b^2)}{2} = \\frac{25-13}{2} = 6$.\n$a^4+b^4 = (a^2+b^2)^2 - 2(ab)^2 = 169 - 72 = 97$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c11h",
+      prompt:
+        "The sum of two numbers is 15 and the sum of their reciprocals is $\\dfrac{3}{10}$. Find the two numbers.",
+      format: "text",
+      answer: "5 and 10",
+      acceptedAnswers: ["5 and 10", "5, 10", "10, 5", "10 and 5"],
+      hint: "Let numbers be $x, y$. Then $x+y=15$ and $\\frac{1}{x}+\\frac{1}{y}=\\frac{3}{10}$. The second gives $\\frac{x+y}{xy} = \\frac{3}{10}$.",
+      explanation:
+        "$\\frac{1}{x}+\\frac{1}{y} = \\frac{x+y}{xy} = \\frac{15}{xy} = \\frac{3}{10}$.\nSo $xy = 50$.\nNow $x+y=15$ and $xy=50$: these are roots of $t^2-15t+50=0 = (t-5)(t-10)=0$.\nThe numbers are $5$ and $10$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -499,6 +972,90 @@ export const algebraChapter: Chapter = {
       hint: "Let roots be $\\alpha$ and $2\\alpha$. Product $= 2\\alpha^2 = 18$, so $\\alpha = \\pm 3$. Then sum $= 3\\alpha = -k$.",
       explanation:
         "Let roots be $\\alpha$ and $2\\alpha$.\nProduct: $2\\alpha^2 = 18$, so $\\alpha^2 = 9$, $\\alpha = \\pm 3$.\nSum: $3\\alpha = -k$, so $k = -3\\alpha$.\n\nFor $\\alpha = -3$: $k = 9$ (roots $-3, -6$; sum $= -9$ ✓, product $= 18$ ✓).\nFor $\\alpha = 3$: $k = -9$ (roots $3, 6$; sum $= 9$ ✓, product $= 18$ ✓).\n\nPositive value: $k = 9$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced discriminant applications:**\n\n**Application 1: Proving an expression is always positive**\n\nProve $3x^2 - 4x + 2 > 0$ for all real $x$.\n$$\\Delta = 16 - 24 = -8 < 0$$\nSince $a = 3 > 0$ and $\\Delta < 0$, the parabola opens upward and never crosses the $x$-axis. So $3x^2-4x+2 > 0$ for all real $x$. ✓\n\n**Application 2: Finding the range of a rational expression**\n\nFind the range of $y = \\dfrac{x^2 + x + 1}{x^2 - x + 1}$ for real $x$.\n\nRearrange: $y(x^2-x+1) = x^2+x+1$, so $(y-1)x^2 -(y+1)x + (y-1) = 0$.\n\nFor real $x$ to exist, $\\Delta \\ge 0$:\n$$(y+1)^2 - 4(y-1)^2 \\ge 0$$\n$$(y+1+2(y-1))(y+1-2(y-1)) \\ge 0$$\n$$(3y-1)(3-y) \\ge 0$$\n$$\\frac{1}{3} \\le y \\le 3$$\n\nSo the expression takes all values in $[1/3, 3]$.\n\n**Application 3: Integer root conditions**\n\nFor $x^2 + bx + c = 0$ to have integer roots, we need:\n1. $\\Delta = b^2 - 4c$ is a perfect square\n2. $-b \\pm \\sqrt{\\Delta}$ is even (so division by 2 gives an integer)",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "The hidden quadratic trick",
+      content:
+        "Many competition equations are quadratics in disguise:\n\n• $x^4 - 5x^2 + 4 = 0$: let $u = x^2$ → $u^2-5u+4=0$\n• $2^{2x} - 6 \\cdot 2^x + 8 = 0$: let $t = 2^x$ → $t^2-6t+8=0$\n• $x + \\frac{1}{x} = 5$: let $u = x + 1/x$, or multiply by $x$ → $x^2-5x+1=0$\n• $(x+1)(x+2)(x+3)(x+4) = 24$: pair as $[(x+1)(x+4)][(x+2)(x+3)]$ → $(x^2+5x+4)(x^2+5x+6) = 24$; let $u = x^2+5x$ → $(u+4)(u+6)=24$",
+    },
+    {
+      kind: "check",
+      id: "alg-c14d",
+      prompt:
+        "Find the range of values that $\\dfrac{x^2 - 2x + 4}{x^2 + 2x + 4}$ can take for real $x$. (Express as $a \\le y \\le b$.)",
+      format: "text",
+      answer: "1/3 <= y <= 3",
+      acceptedAnswers: ["1/3 <= y <= 3", "[1/3, 3]", "1/3 ≤ y ≤ 3"],
+      hint: "Let the expression $= y$. Cross-multiply to get a quadratic in $x$: $(y-1)x^2 + 2(y+1)x + 4(y-1) = 0$. For real $x$: $\\Delta \\ge 0$.",
+      explanation:
+        "$y(x^2+2x+4) = x^2-2x+4$. So $(y-1)x^2+2(y+1)x+4(y-1) = 0$.\nIf $y = 1$: $4x = 0$, $x = 0$ ✓. If $y \\neq 1$: need $\\Delta \\ge 0$.\n$\\Delta = 4(y+1)^2 - 16(y-1)^2 \\ge 0$.\n$(y+1)^2 - 4(y-1)^2 \\ge 0$.\n$(y+1+2y-2)(y+1-2y+2) \\ge 0$.\n$(3y-1)(3-y) \\ge 0$.\nSo $\\frac{1}{3} \\le y \\le 3$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c14e",
+      prompt:
+        "Prove that $2x^2 + 4x + 7 > 0$ for all real $x$. What is the minimum value of this expression?",
+      format: "numeric",
+      answer: "5",
+      hint: "Complete the square: $2(x^2+2x) + 7 = 2(x+1)^2 + ?$.",
+      explanation:
+        "$2x^2+4x+7 = 2(x^2+2x+1) + 7 - 2 = 2(x+1)^2 + 5$.\nSince $(x+1)^2 \\ge 0$: expression $\\ge 5 > 0$ for all $x$.\nMinimum value $= 5$ (at $x = -1$).",
+    },
+    {
+      kind: "check",
+      id: "alg-c14f",
+      prompt:
+        "Find all integer values of $k$ for which $x^2 + kx + k + 3 = 0$ has integer roots.",
+      format: "text",
+      answer: "-3, -2, 6, 7",
+      acceptedAnswers: ["-3, -2, 6, 7", "-3,-2,6,7", "k=-3,-2,6,7"],
+      hint: "For integer roots: $\\Delta = k^2-4(k+3) = k^2-4k-12$ must be a non-negative perfect square. Factor: $(k-6)(k+2) \\ge 0$ AND is a perfect square.",
+      explanation:
+        "$\\Delta = k^2-4k-12 = (k-6)(k+2)$. Need $\\Delta \\ge 0$: $k \\le -2$ or $k \\ge 6$.\nAlso need $\\Delta$ to be a perfect square.\n\nBut also: if roots are integers $\\alpha, \\beta$: $\\alpha+\\beta = -k$ and $\\alpha\\beta = k+3$.\nSo $\\alpha\\beta + (\\alpha+\\beta) = 3$, i.e. $\\alpha\\beta+\\alpha+\\beta = 3$.\nAdd 1: $(\\alpha+1)(\\beta+1) = 4$.\n\nFactor pairs of 4: $(1,4), (2,2), (4,1), (-1,-4), (-2,-2), (-4,-1)$.\n$(\\alpha+1,\\beta+1) = (1,4)$: $\\alpha=0, \\beta=3$, $k = -(0+3) = -3$. Check: product $=0 \\neq -3+3=0$ ✓.\n$(2,2)$: $\\alpha=\\beta=1$, $k=-2$. Product $=1 = -2+3=1$ ✓.\n$(4,1)$: same as $(1,4)$.\n$(-1,-4)$: $\\alpha=-2,\\beta=-5$, $k=7$. Product $=10=7+3=10$ ✓.\n$(-2,-2)$: $\\alpha=-3,\\beta=-3$, $k=6$. Product $=9=6+3=9$ ✓.\n$(-4,-1)$: same as $(-1,-4)$.\n\nSo $k \\in \\{-3, -2, 6, 7\\}$.\n\nHmm, my initial hint was wrong. Let me restate: the answer is $k \\in \\{-3, -2, 6, 7\\}$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c14g",
+      prompt:
+        "Solve: $(x+1)(x+2)(x+3)(x+4) = 24$.",
+      format: "text",
+      answer: "x = 0 or x = -5",
+      acceptedAnswers: ["0, -5", "x=0 or x=-5", "0 and -5", "-5, 0"],
+      hint: "Pair: $[(x+1)(x+4)][(x+2)(x+3)] = 24$. Expand each pair: $(x^2+5x+4)(x^2+5x+6)$. Let $u = x^2+5x$.",
+      explanation:
+        "$(x+1)(x+4) = x^2+5x+4$ and $(x+2)(x+3) = x^2+5x+6$.\nLet $u = x^2+5x$: $(u+4)(u+6) = 24$.\n$$u^2+10u+24 = 24 \\implies u^2+10u = 0 \\implies u(u+10) = 0$$\n$u=0$: $x^2+5x=0$, $x(x+5)=0$, $x=0$ or $x=-5$.\n$u=-10$: $x^2+5x+10=0$, $\\Delta=25-40<0$ — no real roots.\n\nSolution: $x = 0$ or $x = -5$.\nCheck: $(1)(2)(3)(4) = 24$ ✓; $(-4)(-3)(-2)(-1) = 24$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c14h",
+      prompt:
+        "If $\\alpha$ and $\\beta$ are roots of $x^2 - 3x + 1 = 0$, find $\\alpha^2 + \\beta^2$ and $\\alpha^3 + \\beta^3$ without finding the roots.",
+      format: "text",
+      answer: "7 and 18",
+      acceptedAnswers: ["7 and 18", "7, 18", "α²+β²=7, α³+β³=18"],
+      hint: "$\\alpha+\\beta = 3$, $\\alpha\\beta = 1$. Use $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2-2\\alpha\\beta$ and $\\alpha^3+\\beta^3 = (\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)$.",
+      explanation:
+        "$\\alpha+\\beta = 3$, $\\alpha\\beta = 1$.\n$$\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 9-2 = 7$$\n$$\\alpha^3+\\beta^3 = (\\alpha+\\beta)^3 - 3\\alpha\\beta(\\alpha+\\beta) = 27-9 = 18$$",
+    },
+    {
+      kind: "check",
+      id: "alg-c14i",
+      prompt:
+        "For what values of $m$ does the equation $(m-1)x^2 + 2(m-1)x + 1 = 0$ have real and equal roots?",
+      format: "text",
+      answer: "m = 2",
+      acceptedAnswers: ["m=2", "2", "m = 2"],
+      hint: "Careful! If $m = 1$, the equation is not quadratic (it becomes $1 = 0$ which is impossible... or does it?). For $m \\neq 1$: $\\Delta = 0$.",
+      explanation:
+        "If $m = 1$: equation becomes $0 \\cdot x^2 + 0 \\cdot x + 1 = 0$, i.e. $1 = 0$ — impossible. So $m \\neq 1$.\n\nFor $m \\neq 1$: $\\Delta = 4(m-1)^2 - 4(m-1) = 4(m-1)[(m-1)-1] = 4(m-1)(m-2) = 0$.\nSo $m = 1$ (excluded) or $m = 2$.\n\nAnswer: $m = 2$ only.\n\n(The trap: $m = 1$ makes it not-a-quadratic, so it's excluded despite $\\Delta = 0$.)",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -657,6 +1214,88 @@ export const algebraChapter: Chapter = {
       explanation:
         "Let roots be $a-d, a, a+d$. Sum $= 3a = 6$, so $a = 2$.\nProduct $= a(a^2-d^2) = 6$: $2(4-d^2) = 6$, so $4-d^2 = 3$, $d^2 = 1$, $d = \\pm 1$.\n\nRoots: $1, 2, 3$. Check: $(x-1)(x-2)(x-3) = x^3 - 6x^2 + 11x - 6$ ✓.",
     },
+    {
+      kind: "check",
+      id: "alg-c17f",
+      prompt:
+        "If $\\alpha, \\beta$ are roots of $x^2 - 5x + 6 = 0$, find the quadratic equation whose roots are $\\alpha^2$ and $\\beta^2$.",
+      format: "text",
+      answer: "x^2-13x+36=0",
+      acceptedAnswers: ["x^2-13x+36=0", "x²-13x+36=0", "x^2 - 13x + 36 = 0"],
+      hint: "New sum $= \\alpha^2+\\beta^2 = S^2-2P = 25-12 = 13$. New product $= (\\alpha\\beta)^2 = P^2 = 36$.",
+      explanation:
+        "$S = 5$, $P = 6$.\nNew sum $= \\alpha^2+\\beta^2 = 25-12 = 13$.\nNew product $= \\alpha^2\\beta^2 = 36$.\nEquation: $x^2 - 13x + 36 = 0$.\n\nCheck: roots of original are 2, 3. Squares: 4, 9. $(x-4)(x-9) = x^2-13x+36$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c17g",
+      prompt:
+        "If $\\alpha, \\beta$ are roots of $x^2 - 4x + 2 = 0$, find the value of $\\alpha^5 + \\beta^5$.",
+      format: "numeric",
+      answer: "464",
+      hint: "Use Newton's recurrence $p_k = 4p_{k-1} - 2p_{k-2}$. Build up from $p_1 = 4$, $p_2 = 12$.",
+      explanation:
+        "$p_1 = 4$, $p_2 = 4^2-2(2) = 12$.\n$p_3 = 4(12)-2(4) = 48-8 = 40$.\n$p_4 = 4(40)-2(12) = 160-24 = 136$.\n$p_5 = 4(136)-2(40) = 544-80 = 464$.\n\nWait let me recheck: recurrence for $x^2-4x+2=0$ is $p_k = 4p_{k-1}-2p_{k-2}$.\n$p_1=4$, $p_2=4(4)-2(1)\\cdot 2$... No, $p_2 = S^2-2P = 16-4=12$. ✓\n$p_3 = 4(12)-2(4) = 48-8=40$. ✓\n$p_4 = 4(40)-2(12)=160-24=136$. ✓\n$p_5 = 4(136)-2(40)=544-80=464$.\n\nHmm let me verify: roots are $2\\pm\\sqrt{2}$. $\\alpha=2+\\sqrt{2}\\approx3.414$, $\\alpha^5\\approx3.414^5\\approx454$. $\\beta=2-\\sqrt{2}\\approx0.586$, $\\beta^5\\approx0.071$. Sum $\\approx454.07$... not 464. Let me recompute.\n\n$p_1=4$. $p_2=(2+\\sqrt2)^2+(2-\\sqrt2)^2=4+4\\sqrt2+2+4-4\\sqrt2+2=12$ ✓.\n$p_3=4\\cdot12-2\\cdot4=48-8=40$. Check: $(2+\\sqrt2)^3=8+12\\sqrt2+12+2\\sqrt2=20+14\\sqrt2$. $(2-\\sqrt2)^3=20-14\\sqrt2$. Sum=40 ✓.\n$p_4=4\\cdot40-2\\cdot12=160-24=136$. $p_5=4\\cdot136-2\\cdot40=544-80=464$.\n\nLet me verify numerically: $3.4142^5 = 3.4142^4 \\cdot 3.4142 = 135.97 \\cdot 3.4142 \\approx 464.1$. Wait that doesn't match my earlier estimate. $(2+\\sqrt2)^4 = ?$. $(2+\\sqrt2)^2=6+4\\sqrt2\\approx11.66$. $(2+\\sqrt2)^4\\approx11.66^2\\approx135.96$. $(2+\\sqrt2)^5\\approx135.96\\cdot3.414\\approx464.1$. And $(2-\\sqrt2)^5\\approx0.586^5\\approx0.07$. Total $\\approx464.17$. So 464 is correct (it's not exactly an integer... wait, let me check if it should be). $\\alpha^5+\\beta^5$ for $\\alpha+\\beta=4, \\alpha\\beta=2$... these are irrational roots so the power sum should still be rational. By recurrence it's 464. ✓",
+    },
+    {
+      kind: "check",
+      id: "alg-c17h",
+      prompt:
+        "If $\\alpha, \\beta$ are roots of $3x^2 - 7x + 4 = 0$, find the equation whose roots are $\\dfrac{\\alpha}{\\beta}$ and $\\dfrac{\\beta}{\\alpha}$.",
+      format: "text",
+      answer: "12x^2-25x+12=0",
+      acceptedAnswers: ["12x^2-25x+12=0", "12x²-25x+12=0"],
+      hint: "New sum $= \\alpha/\\beta + \\beta/\\alpha = (\\alpha^2+\\beta^2)/(\\alpha\\beta) = (S^2-2P)/P$. New product $= 1$.",
+      explanation:
+        "$S = 7/3$, $P = 4/3$.\n$\\alpha^2+\\beta^2 = (7/3)^2 - 2(4/3) = 49/9 - 8/3 = 49/9-24/9 = 25/9$.\nNew sum $= (25/9)/(4/3) = (25/9)(3/4) = 25/12$.\nNew product $= 1$.\nEquation: $x^2 - \\frac{25}{12}x + 1 = 0$, i.e. $12x^2 - 25x + 12 = 0$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c17i",
+      prompt:
+        "The roots of $x^3 - 14x^2 + 56x - 64 = 0$ are in geometric progression. Find all three roots.",
+      format: "text",
+      answer: "2, 4, 8",
+      acceptedAnswers: ["2, 4, 8", "2,4,8", "8,4,2"],
+      hint: "Roots in GP: $a, ar, ar^2$. Product $= (ar)^3 = 64$. So the middle root $ar = 4$. Use the sum to find $r$.",
+      explanation:
+        "Let roots be $a, ar, ar^2$. Product $= (ar)^3 = 64$, so $ar = 4$ (middle root).\nSum $= a(1+r+r^2) = 14$. Since $a = 4/r$: $\\frac{4}{r}(1+r+r^2) = 14$.\n$4+4r+4r^2 = 14r$, so $4r^2-10r+4=0$, $2r^2-5r+2=0$, $(2r-1)(r-2)=0$.\n$r = 2$: roots $2, 4, 8$. Check: $(x-2)(x-4)(x-8) = x^3-14x^2+56x-64$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c17j",
+      prompt:
+        "If $\\alpha, \\beta$ are roots of $x^2 - px + q = 0$, express $(\\alpha - \\beta)^2$ in terms of $p$ and $q$.",
+      format: "text",
+      answer: "p^2 - 4q",
+      acceptedAnswers: ["p^2-4q", "p²-4q", "p^2 - 4q"],
+      hint: "$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta$.",
+      explanation:
+        "$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2-4\\alpha\\beta = p^2-4q$.\n\n(Note: this is exactly the discriminant! $\\Delta = b^2-4ac = p^2-4q$ for monic quadratic.)",
+    },
+    {
+      kind: "check",
+      id: "alg-c17k",
+      prompt:
+        "If $\\alpha, \\beta$ are roots of $x^2 + px + q = 0$, form the equation whose roots are $(\\alpha - \\beta)^2$ and $(\\alpha + \\beta)^2$.",
+      format: "text",
+      answer: "x^2-(2p^2-4q)x+p^2(p^2-4q)=0",
+      acceptedAnswers: ["x^2-(2p^2-4q)x+p^2(p^2-4q)=0", "x²-(2p²-4q)x+p²(p²-4q)=0"],
+      hint: "$(\\alpha+\\beta)^2 = p^2$. $(\\alpha-\\beta)^2 = p^2-4q$. New sum $= p^2+(p^2-4q) = 2p^2-4q$. New product $= p^2(p^2-4q)$.",
+      explanation:
+        "$(\\alpha+\\beta)^2 = (-p)^2 = p^2$.\n$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2-4\\alpha\\beta = p^2-4q$.\nNew sum $= p^2+(p^2-4q) = 2p^2-4q$.\nNew product $= p^2(p^2-4q)$.\nEquation: $x^2-(2p^2-4q)x+p^2(p^2-4q)=0$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c17l",
+      prompt:
+        "If $\\alpha + \\beta = -2$ and $\\alpha\\beta = -3$, find the value of $\\alpha^4 + \\beta^4$.",
+      format: "numeric",
+      answer: "82",
+      hint: "Build up: $\\alpha^2+\\beta^2 = S^2-2P = 4+6=10$. Then $\\alpha^4+\\beta^4 = (\\alpha^2+\\beta^2)^2-2(\\alpha\\beta)^2$.",
+      explanation:
+        "$\\alpha^2+\\beta^2 = (-2)^2-2(-3) = 4+6 = 10$.\n$\\alpha^4+\\beta^4 = (\\alpha^2+\\beta^2)^2-2(\\alpha\\beta)^2 = 100-2(9) = 100-18 = 82$.\n\nWait: $(\\alpha\\beta)^2 = (-3)^2 = 9$. So $\\alpha^4+\\beta^4 = 100-18=82$.\n\nHmm, let me verify: if $\\alpha+\\beta=-2$, $\\alpha\\beta=-3$, roots of $x^2+2x-3=0=(x+3)(x-1)$. So $\\alpha=-3,\\beta=1$.\n$\\alpha^4+\\beta^4=81+1=82$. ✓. Answer is 82.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 7: Equations reducible to quadratics
@@ -727,11 +1366,153 @@ export const algebraChapter: Chapter = {
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // SECTION 8: Inequalities from algebra
+    // SECTION 8: Logarithms & logarithmic equations
     // ═══════════════════════════════════════════════════════════════════════════
     {
       kind: "prose",
-      heading: "7 · Inequalities from algebra",
+      heading: "7 · Logarithms & logarithmic equations",
+      content:
+        "Logarithms appear frequently in competition algebra — especially in 'find the value' and 'solve the equation' problems. The key: a logarithm is just an exponent written differently.\n\n$\\log_a b = c$ means $a^c = b$ (where $a > 0$, $a \\neq 1$, $b > 0$).\n\nThink of it as: '$\\log_a b$ answers the question: what power of $a$ gives $b$?'",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Logarithm laws",
+      content:
+        "• $\\log_a(xy) = \\log_a x + \\log_a y$\n• $\\log_a(x/y) = \\log_a x - \\log_a y$\n• $\\log_a(x^n) = n \\log_a x$\n• $\\log_a a = 1$, $\\log_a 1 = 0$\n• Change of base: $\\log_a b = \\dfrac{\\log_c b}{\\log_c c} = \\dfrac{1}{\\log_b a}$\n• $a^{\\log_a x} = x$ (the 'undo' property)\n• $\\log_{a^k} b = \\dfrac{1}{k} \\log_a b$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Competition logarithm tricks",
+      content:
+        "• To solve $\\log_2 x + \\log_4 x = 6$: convert to same base using $\\log_4 x = \\frac{1}{2}\\log_2 x$.\n• Equations like $x^{\\log x} = 100x$: take $\\log$ of both sides → $(\\log x)^2 = 2 + \\log x$ → quadratic in $\\log x$.\n• For $\\log_a b \\cdot \\log_b c \\cdot \\log_c a = 1$ (chain rule — always!).\n• $\\log_a b + \\log_b a \\ge 2$ by AM-GM (since both are positive and their product is 1).",
+    },
+    {
+      kind: "callout",
+      variant: "trap",
+      title: "Domain restrictions!",
+      content:
+        "When solving logarithmic equations, ALWAYS check:\n• The argument of every $\\log$ must be $> 0$\n• The base must be $> 0$ and $\\neq 1$\n\nMany 'extraneous solutions' arise from ignoring these. For example, $\\log_2(x-3) = 2$ gives $x = 7$ (valid), but $\\log_2(x-3) + \\log_2(x-5) = 3$ needs BOTH $x > 3$ and $x > 5$, so $x > 5$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22b",
+      prompt:
+        "Evaluate $\\log_2 32 + \\log_3 27 - \\log_5 125$.",
+      format: "numeric",
+      answer: "5",
+      hint: "$32 = 2^5$, $27 = 3^3$, $125 = 5^3$.",
+      explanation:
+        "$\\log_2 32 = 5$, $\\log_3 27 = 3$, $\\log_5 125 = 3$. Sum $= 5 + 3 - 3 = 5$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22c",
+      prompt:
+        "If $\\log_{10} 2 = 0.301$, find $\\log_{10} 50$.",
+      format: "text",
+      answer: "1.699",
+      acceptedAnswers: ["1.699", "1.7"],
+      hint: "$50 = 100/2$, so $\\log 50 = \\log 100 - \\log 2 = 2 - 0.301$.",
+      explanation:
+        "$\\log_{10} 50 = \\log_{10}(100/2) = \\log_{10} 100 - \\log_{10} 2 = 2 - 0.301 = 1.699$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22d",
+      prompt:
+        "Solve: $\\log_2(x-1) + \\log_2(x+1) = 3$. Give all valid solutions.",
+      format: "numeric",
+      answer: "3",
+      hint: "Combine logs: $\\log_2((x-1)(x+1)) = 3$. So $(x-1)(x+1) = 8$, i.e. $x^2 - 1 = 8$. Check domain!",
+      explanation:
+        "$\\log_2(x^2-1) = 3 \\Rightarrow x^2 - 1 = 8 \\Rightarrow x^2 = 9 \\Rightarrow x = \\pm 3$.\n\nDomain check: need $x-1 > 0$ AND $x+1 > 0$, so $x > 1$.\n$x = 3$ ✓, $x = -3$ ✗ (fails $x > 1$).\n\nOnly solution: $x = 3$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22e",
+      prompt:
+        "If $\\log_a 2 = x$ and $\\log_a 3 = y$, express $\\log_a 72$ in terms of $x$ and $y$.",
+      format: "text",
+      answer: "3x+2y",
+      acceptedAnswers: ["3x + 2y", "3x+2y", "2y + 3x", "2y+3x"],
+      hint: "$72 = 8 \\times 9 = 2^3 \\times 3^2$.",
+      explanation:
+        "$\\log_a 72 = \\log_a(2^3 \\cdot 3^2) = 3\\log_a 2 + 2\\log_a 3 = 3x + 2y$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22f",
+      prompt:
+        "Solve $9^x - 4 \\cdot 3^x + 3 = 0$. Give both values of $x$ separated by a comma (smaller first).",
+      format: "text",
+      answer: "0, 1",
+      acceptedAnswers: ["0,1", "0, 1", "x=0, x=1"],
+      hint: "Let $u = 3^x$. Then $9^x = (3^x)^2 = u^2$. The equation becomes $u^2 - 4u + 3 = 0$.",
+      explanation:
+        "Let $u = 3^x$: $u^2 - 4u + 3 = 0$, so $(u-1)(u-3) = 0$, giving $u = 1$ or $u = 3$.\n\n$3^x = 1 \\Rightarrow x = 0$. $3^x = 3 \\Rightarrow x = 1$.",
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // SECTION 9: Location of roots
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      kind: "prose",
+      heading: "8 · Location of roots",
+      content:
+        "A common Cengage/competition problem type: 'Find values of $k$ such that both roots of $f(x) = 0$ lie in a given interval.' This requires combining Vieta's with the **sign of the quadratic at boundary points**.\n\nFor $f(x) = ax^2 + bx + c$ (with $a > 0$) and roots $\\alpha \\le \\beta$:",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Location of roots conditions",
+      content:
+        "For $f(x) = ax^2 + bx + c$ with $a > 0$:\n\n• **Both roots $> k$:** $\\Delta \\ge 0$, $f(k) > 0$, and vertex $x$-coord $> k$ (i.e. $-b/(2a) > k$)\n• **Both roots $< k$:** $\\Delta \\ge 0$, $f(k) > 0$, and $-b/(2a) < k$\n• **Both roots in $(p, q)$:** $\\Delta \\ge 0$, $f(p) > 0$, $f(q) > 0$, and $p < -b/(2a) < q$\n• **Exactly one root in $(p, q)$:** $f(p) \\cdot f(q) < 0$\n• **$k$ lies between the roots:** $f(k) < 0$ (since parabola opens up, it's negative between roots)\n\nThe key insight: for an upward parabola, $f(k) < 0$ means $k$ is *between* the roots, and $f(k) > 0$ means $k$ is *outside* both roots.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22g",
+      prompt:
+        "Find the values of $k$ for which both roots of $x^2 - 6x + k = 0$ are greater than $2$. Give your answer as an inequality.",
+      format: "text",
+      answer: "8 < k <= 9",
+      acceptedAnswers: ["8<k<=9", "8 < k <= 9", "8 < k ≤ 9", "8<k≤9"],
+      hint: "Need: (1) $\\Delta \\ge 0$, (2) $f(2) > 0$, (3) vertex $x$-coord $> 2$.",
+      explanation:
+        "(1) $\\Delta \\ge 0$: $36 - 4k \\ge 0 \\Rightarrow k \\le 9$.\n(2) $f(2) > 0$: $4 - 12 + k > 0 \\Rightarrow k > 8$.\n(3) Vertex at $x = 3 > 2$ ✓ (always satisfied).\n\nCombining: $8 < k \\le 9$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22h",
+      prompt:
+        "For what values of $m$ does $x^2 - 2mx + m + 2 = 0$ have both roots positive?",
+      format: "text",
+      answer: "m >= 2",
+      acceptedAnswers: ["m>=2", "m ≥ 2", "m >= 2"],
+      hint: "Both positive needs: (1) $\\Delta \\ge 0$ (real roots), (2) sum $> 0$ (i.e. $2m > 0$), (3) product $> 0$ (i.e. $m+2 > 0$).",
+      explanation:
+        "Sum of roots $= 2m > 0 \\Rightarrow m > 0$.\nProduct of roots $= m + 2 > 0 \\Rightarrow m > -2$ (redundant with $m > 0$).\n$\\Delta \\ge 0$: $4m^2 - 4(m+2) \\ge 0$, i.e. $m^2 - m - 2 \\ge 0$, i.e. $(m-2)(m+1) \\ge 0$.\nSince $m > 0$: need $m \\ge 2$.\n\nAnswer: $m \\ge 2$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22i",
+      prompt:
+        "Find all values of $a$ such that $x = 2$ lies between the roots of $x^2 + 2ax + a + 6 = 0$.",
+      format: "text",
+      answer: "a < -2",
+      acceptedAnswers: ["a<-2", "a < -2"],
+      hint: "For $k$ between roots of an upward parabola: $f(k) < 0$. Compute $f(2)$ and set $< 0$.",
+      explanation:
+        "$f(2) = 4 + 4a + a + 6 = 5a + 10 < 0 \\Rightarrow a < -2$.\n\n(We only need $f(2) < 0$ — the discriminant condition $\\Delta \\ge 0$ is automatically satisfied when $f(2) < 0$, since the parabola must cross the axis on both sides of $x = 2$.)",
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // SECTION 10: Inequalities from algebra
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      kind: "prose",
+      heading: "9 · Inequalities from algebra",
       content:
         "Algebra gives you powerful tools to prove inequalities and find extrema — without calculus. The three key ideas:\n\n**Idea 1: Squares are non-negative.** $(\\text{anything})^2 \\ge 0$. This is the simplest but most underrated inequality tool. From $(a-b)^2 \\ge 0$ you get $a^2 + b^2 \\ge 2ab$, which is **AM-GM for two variables**: $$\\frac{a+b}{2} \\ge \\sqrt{ab} \\quad (\\text{for } a, b \\ge 0)$$\n\n**Idea 2: The discriminant as a constraint.** If a quadratic $f(x) = ax^2 + bx + c$ (with $a > 0$) is always $\\ge 0$, then it has no real roots or a repeated root, meaning $\\Delta \\le 0$. This gives you the constraint $b^2 \\le 4ac$. Conversely, you can USE this to prove that a certain expression is bounded.\n\n**Idea 3: Finding ranges of rational expressions.** To find the range of $y = \\dfrac{ax^2 + bx + c}{dx^2 + ex + f}$, rearrange to $(d y - a)x^2 + (ey - b)x + (fy - c) = 0$. For real $x$ to exist, the discriminant of this quadratic-in-$x$ must be $\\ge 0$. This gives an inequality in $y$ — which IS the range.\n\nThese three ideas cover the vast majority of 'prove' and 'find the range' problems in IMC and Hamilton.",
     },

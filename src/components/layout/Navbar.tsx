@@ -9,6 +9,7 @@ const links = [
   { to: "/problems", label: "Problem Bank" },
   { to: "/papers", label: "Past Papers" },
   { to: "/mock", label: "Mock Exams" },
+  { to: "/books", label: "Books" },
   { to: "/dashboard", label: "Dashboard" },
 ];
 
