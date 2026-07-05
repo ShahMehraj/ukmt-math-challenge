@@ -1364,6 +1364,112 @@ export const algebraChapter: Chapter = {
       explanation:
         "$(x + 1/x)^2 = x^2 + 2 + 1/x^2 = 16$. So $x^2 + 1/x^2 = 16 - 2 = 14$.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More advanced reduction patterns:**\n\n**Type 5: Product-of-binomials pairing**\n\nSolve $(x-1)(x-2)(x-3)(x-4) = 120$.\n\nPair outer×inner: $[(x-1)(x-4)][(x-2)(x-3)] = 120$.\n$$(x^2-5x+4)(x^2-5x+6) = 120$$\nLet $u = x^2-5x$: $(u+4)(u+6) = 120$, so $u^2+10u+24=120$, $u^2+10u-96=0$, $(u+16)(u-6)=0$.\n$u=6$: $x^2-5x-6=0$, $(x-6)(x+1)=0$, $x=6$ or $x=-1$.\n$u=-16$: $x^2-5x+16=0$, $\\Delta=25-64<0$ — no real roots.\n\n**Type 6: Nested radicals / infinite expressions**\n\nEvaluate $x = \\sqrt{6+\\sqrt{6+\\sqrt{6+\\cdots}}}$.\n\nSince the expression repeats: $x = \\sqrt{6+x}$. Square: $x^2 = 6+x$, so $x^2-x-6=0$, $(x-3)(x+2)=0$. Since $x>0$: $x=3$.\n\n**Type 7: Equations with $|\\cdot|$ that reduce to quadratics**\n\n$|x^2-5x+4| = |x^2-4|$: either $x^2-5x+4 = x^2-4$ (giving $x = 8/5$) or $x^2-5x+4 = -(x^2-4)$ (giving $2x^2-5x=0$, so $x=0$ or $x=5/2$).",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "The infinite nested radical formula",
+      content:
+        "$$\\sqrt{a+\\sqrt{a+\\sqrt{a+\\cdots}}} = \\frac{1+\\sqrt{1+4a}}{2}$$\n(Positive root of $x^2-x-a=0$.)\n\nSimilarly: $\\sqrt{a \\cdot \\sqrt{a \\cdot \\sqrt{a \\cdots}}} = a^{1/(1-1/2)} = a$ ... actually $= a^{2/1} $... Let $x = \\sqrt{a \\cdot x}$, $x^2=ax$, $x=a$.\n\nAnd: $\\sqrt{a-\\sqrt{a-\\sqrt{a-\\cdots}}}$: $x = \\sqrt{a-x}$, $x^2+x-a=0$, $x = \\frac{-1+\\sqrt{1+4a}}{2}$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20b",
+      prompt:
+        "Solve $(x-1)(x-3)(x-5)(x-7) = 9$.",
+      format: "text",
+      answer: "4+√10, 4-√10",
+      acceptedAnswers: ["4+√10, 4-√10", "4±√10", "4+sqrt10, 4-sqrt10"],
+      hint: "Pair: $[(x-1)(x-7)][(x-3)(x-5)]$. Both give $x^2-8x+\\ldots$. Let $u = x^2-8x$.",
+      explanation:
+        "$(x-1)(x-7) = x^2-8x+7$ and $(x-3)(x-5) = x^2-8x+15$.\nLet $u = x^2-8x$: $(u+7)(u+15) = 9$.\n$u^2+22u+105=9$, $u^2+22u+96=0$, $(u+6)(u+16)=0$.\n$u=-6$: $x^2-8x+6=0$, $x = 4\\pm\\sqrt{10}$.\n$u=-16$: $x^2-8x+16=0$, $(x-4)^2=0$, $x=4$. Check: $(3)(-1)(1)(-3)=9$ ✓.\n\nAll solutions: $x=4, 4+\\sqrt{10}, 4-\\sqrt{10}$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20c",
+      prompt:
+        "Find the value of $\\sqrt{2+\\sqrt{2+\\sqrt{2+\\cdots}}}$ (infinite nested radical).",
+      format: "numeric",
+      answer: "2",
+      hint: "Let $x = \\sqrt{2+x}$. Square both sides.",
+      explanation:
+        "Let $x = \\sqrt{2+x}$. Squaring: $x^2 = 2+x$, so $x^2-x-2=0$, $(x-2)(x+1)=0$. Since $x>0$: $x=2$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20d",
+      prompt:
+        "Solve: $x^4 - 10x^2 + 9 = 0$. How many real solutions are there?",
+      format: "numeric",
+      answer: "4",
+      hint: "Let $u = x^2$: $u^2-10u+9=0$. Factorise.",
+      explanation:
+        "$u^2-10u+9=(u-1)(u-9)=0$, so $u=1$ or $u=9$.\n$x^2=1 \\implies x=\\pm1$. $x^2=9 \\implies x=\\pm3$.\nFour real solutions: $\\{-3,-1,1,3\\}$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20e",
+      prompt:
+        "Solve: $\\sqrt{3x+4} - \\sqrt{x+1} = 1$. Find all solutions.",
+      format: "text",
+      answer: "0 and -1",
+      acceptedAnswers: ["0, -1", "0 and -1", "-1, 0", "-1 and 0"],
+      hint: "Isolate one radical: $\\sqrt{3x+4} = 1 + \\sqrt{x+1}$. Square both sides.",
+      explanation:
+        "$\\sqrt{3x+4} = 1+\\sqrt{x+1}$. Square: $3x+4 = 1+2\\sqrt{x+1}+x+1 = x+2+2\\sqrt{x+1}$.\n$2x+2 = 2\\sqrt{x+1}$, so $x+1 = \\sqrt{x+1}$.\nLet $t = \\sqrt{x+1}$: $t^2 = t$... actually $x+1=\\sqrt{x+1}$ means $(x+1)^2 = x+1$... No.\n\nBack up: $2x+2 = 2\\sqrt{x+1}$, so $x+1 = \\sqrt{x+1}$. Square: $(x+1)^2 = x+1$, so $(x+1)(x+1-1) = 0$, $(x+1)(x)=0$.\n$x=0$ or $x=-1$.\nCheck $x=0$: $\\sqrt{4}-\\sqrt{1}=2-1=1$ ✓.\nCheck $x=-1$: $\\sqrt{1}-\\sqrt{0}=1-0=1$ ✓.\n\nBoth valid! Solutions: $x=0$ and $x=-1$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20f",
+      prompt:
+        "Solve: $x^2 + \\dfrac{1}{x^2} - 4\\left(x + \\dfrac{1}{x}\\right) + 6 = 0$.",
+      format: "text",
+      answer: "x = 1",
+      acceptedAnswers: ["x=1", "1"],
+      hint: "Let $u = x+1/x$. Then $x^2+1/x^2 = u^2-2$. The equation becomes $(u^2-2)-4u+6 = 0$.",
+      explanation:
+        "Let $u = x+1/x$. Then $x^2+1/x^2 = u^2-2$.\n$u^2-2-4u+6 = u^2-4u+4 = (u-2)^2 = 0$, so $u = 2$.\n$x+1/x = 2 \\implies x^2-2x+1 = 0 \\implies (x-1)^2=0 \\implies x = 1$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20g",
+      prompt:
+        "Solve: $x^2 + \\dfrac{1}{x^2} - 3\\left(x - \\dfrac{1}{x}\\right) - 2 = 0$.",
+      format: "text",
+      answer: "x = (3+√13)/2 or x = ±1",
+      acceptedAnswers: ["1, -1, (3+√13)/2, (3-√13)/2"],
+      hint: "Let $v = x - 1/x$. Note $x^2+1/x^2 = v^2+2$. Equation becomes $v^2+2-3v-2=v^2-3v=0$.",
+      explanation:
+        "Let $v = x-1/x$. Then $x^2+1/x^2 = (x-1/x)^2+2 = v^2+2$.\nEquation: $v^2+2-3v-2 = v^2-3v = v(v-3) = 0$.\n$v=0$: $x-1/x=0$, $x^2=1$, $x=\\pm1$.\n$v=3$: $x-1/x=3$, $x^2-3x-1=0$, $x = \\frac{3\\pm\\sqrt{13}}{2}$.\n\nAll four solutions are valid (verify by substitution).",
+    },
+    {
+      kind: "check",
+      id: "alg-c20h",
+      prompt:
+        "Find the value of $\\sqrt[3]{2+\\sqrt{5}} + \\sqrt[3]{2-\\sqrt{5}}$. (Hint: let $x = \\sqrt[3]{2+\\sqrt{5}} + \\sqrt[3]{2-\\sqrt{5}}$ and cube both sides.)",
+      format: "numeric",
+      answer: "1",
+      hint: "Let $a = \\sqrt[3]{2+\\sqrt{5}}$, $b = \\sqrt[3]{2-\\sqrt{5}}$. Then $ab = \\sqrt[3]{(2+\\sqrt{5})(2-\\sqrt{5})} = \\sqrt[3]{4-5} = \\sqrt[3]{-1} = -1$. Cube $x = a+b$: $x^3 = a^3+b^3+3ab(a+b)$.",
+      explanation:
+        "Let $a = \\sqrt[3]{2+\\sqrt{5}}$, $b = \\sqrt[3]{2-\\sqrt{5}}$.\n$ab = \\sqrt[3]{(4-5)} = \\sqrt[3]{-1} = -1$.\n$a^3+b^3 = (2+\\sqrt{5})+(2-\\sqrt{5}) = 4$.\nCubing $x = a+b$:\n$$x^3 = a^3+b^3+3ab(a+b) = 4+3(-1)(x) = 4-3x$$\n$$x^3+3x-4 = 0$$\n$$(x-1)(x^2+x+4) = 0$$\nSince $x^2+x+4>0$ always ($\\Delta = 1-16 < 0$): $x = 1$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c20i",
+      prompt:
+        "Solve: $2^x + 2^{2-x} = 5$. Find all values of $x$.",
+      format: "text",
+      answer: "0 and 2",
+      acceptedAnswers: ["0, 2", "x=0 or x=2", "0 and 2", "2, 0"],
+      hint: "Rewrite $2^{2-x} = 4/2^x$. Let $t = 2^x > 0$: $t + 4/t = 5$.",
+      explanation:
+        "Let $t = 2^x > 0$: $t + 4/t = 5$, so $t^2-5t+4=0$, $(t-1)(t-4)=0$.\n$t=1$: $2^x=1 \\implies x=0$.\n$t=4$: $2^x=4 \\implies x=2$.\nCheck: $2^0+2^2=1+4=5$ ✓; $2^2+2^0=4+1=5$ ✓.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 8: Logarithms & logarithmic equations
@@ -1495,16 +1601,98 @@ export const algebraChapter: Chapter = {
         "Sum of roots $= 2m > 0 \\Rightarrow m > 0$.\nProduct of roots $= m + 2 > 0 \\Rightarrow m > -2$ (redundant with $m > 0$).\n$\\Delta \\ge 0$: $4m^2 - 4(m+2) \\ge 0$, i.e. $m^2 - m - 2 \\ge 0$, i.e. $(m-2)(m+1) \\ge 0$.\nSince $m > 0$: need $m \\ge 2$.\n\nAnswer: $m \\ge 2$.",
     },
     {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced logarithm patterns (from S.Chand / competition papers):**\n\n**Pattern: The reciprocal-log identity**\n$$\\frac{1}{\\log_a bc + 1} + \\frac{1}{\\log_b ac + 1} + \\frac{1}{\\log_c ab + 1} = 1$$\nProof: $\\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a abc$. So each term $= \\frac{1}{\\log_a abc} = \\log_{abc} a$. Sum $= \\log_{abc} a + \\log_{abc} b + \\log_{abc} c = \\log_{abc}(abc) = 1$.\n\n**Pattern: The symmetric exchange identity**\n$$x^{\\log_a y} = y^{\\log_a x}$$\nProof: Take $\\log_a$ of both sides: $\\log_a y \\cdot \\log_a x = \\log_a x \\cdot \\log_a y$ ✓.\n\n**Pattern: Nested logs**\n\nSolve $\\log_{10}[\\log_2(\\log_3 9)] = x$.\n$\\log_3 9 = 2$. $\\log_2 2 = 1$. $\\log_{10} 1 = 0$. So $x = 0$.\n\n**Pattern: If $\\log x/(b-c) = \\log y/(c-a) = \\log z/(a-b)$, then $xyz = 1$.**\nLet each $= k$. Then $\\log x = k(b-c)$, etc. Sum: $\\log x + \\log y + \\log z = k[(b-c)+(c-a)+(a-b)] = 0$. So $\\log(xyz) = 0$, i.e. $xyz = 1$.",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Advanced base-change formulas",
+      content:
+        "**Switching base and argument:**\n$$\\log_a b = \\frac{1}{\\log_b a}$$\n\n**Power in base:**\n$$\\log_{a^n} b = \\frac{1}{n}\\log_a b$$\n\n**Power in argument:**\n$$\\log_a b^m = m \\log_a b$$\n\n**Combined:**\n$$\\log_{a^n} b^m = \\frac{m}{n}\\log_a b$$\n\n**Chain rule:**\n$$\\log_a b \\cdot \\log_b c \\cdot \\log_c d = \\log_a d$$\n\n**Sum identity (with $\\log_a m = x$):**\n$$\\log_{a^n} m = \\frac{x}{n}, \\quad \\text{so } \\log_a m + \\log_{a^2} m + \\log_{a^3} m + \\cdots + \\log_{a^n} m = x\\left(1 + \\frac{1}{2} + \\cdots + \\frac{1}{n}\\right)$$",
+    },
+    {
       kind: "check",
-      id: "alg-c22i",
+      id: "alg-c22j",
       prompt:
-        "Find all values of $a$ such that $x = 2$ lies between the roots of $x^2 + 2ax + a + 6 = 0$.",
+        "If $\\log_{10} 2 = 0.301$ and $\\log_{10} 5 = 0.699$, find $\\log_{10}\\sqrt[3]{40}$.",
       format: "text",
-      answer: "a < -2",
-      acceptedAnswers: ["a<-2", "a < -2"],
-      hint: "For $k$ between roots of an upward parabola: $f(k) < 0$. Compute $f(2)$ and set $< 0$.",
+      answer: "0.534",
+      acceptedAnswers: ["0.534", "0.5340"],
+      hint: "$40 = 2^3 \\times 5$. So $\\log 40 = 3(0.301) + 0.699 = 1.602$. Then $\\log\\sqrt[3]{40} = ?$.",
       explanation:
-        "$f(2) = 4 + 4a + a + 6 = 5a + 10 < 0 \\Rightarrow a < -2$.\n\n(We only need $f(2) < 0$ — the discriminant condition $\\Delta \\ge 0$ is automatically satisfied when $f(2) < 0$, since the parabola must cross the axis on both sides of $x = 2$.)",
+        "$\\log_{10} 40 = \\log(2^3 \\times 5) = 3\\log 2 + \\log 5 = 3(0.301)+0.699 = 0.903+0.699 = 1.602$.\n$\\log_{10}\\sqrt[3]{40} = \\frac{1}{3}\\log 40 = \\frac{1.602}{3} = 0.534$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22k",
+      prompt:
+        "Evaluate: $\\dfrac{1}{\\log_2 36} + \\dfrac{1}{\\log_3 36}$.",
+      format: "text",
+      answer: "1/2",
+      acceptedAnswers: ["1/2", "0.5"],
+      hint: "Use $\\frac{1}{\\log_a b} = \\log_b a$. So the sum $= \\log_{36} 2 + \\log_{36} 3 = \\log_{36}(2 \\times 3) = \\log_{36} 6$.",
+      explanation:
+        "$\\frac{1}{\\log_2 36} + \\frac{1}{\\log_3 36} = \\log_{36} 2 + \\log_{36} 3 = \\log_{36} 6$.\nSince $36 = 6^2$: $\\log_{36} 6 = 1/2$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22l",
+      prompt:
+        "Prove that $\\log_3 2 \\cdot \\log_4 3 \\cdot \\log_5 4 \\cdots \\log_{16} 15 = \\dfrac{1}{k}$. Find $k$.",
+      format: "numeric",
+      answer: "4",
+      hint: "This is a telescoping product using the chain rule: $\\log_a b \\cdot \\log_b c = \\log_a c$.",
+      explanation:
+        "By chain rule: $\\log_3 2 \\cdot \\log_4 3 \\cdot \\log_5 4 \\cdots \\log_{16} 15 = \\log_{16} 2$.\n$\\log_{16} 2 = \\log_{2^4} 2 = \\frac{1}{4}$. So $k = 4$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22m",
+      prompt:
+        "If $\\log_x 6 = m$ and $\\log_x 3 = n$, what is $\\log_x(x/2)$ in terms of $m$ and $n$?",
+      format: "text",
+      answer: "1-m+n",
+      acceptedAnswers: ["1-m+n", "1 - m + n", "n-m+1"],
+      hint: "$x/2 = x \\cdot (1/2)$. $\\log_x(x/2) = 1 + \\log_x(1/2) = 1 - \\log_x 2$. And $\\log_x 2 = \\log_x 6 - \\log_x 3 = m - n$.",
+      explanation:
+        "$\\log_x 2 = \\log_x(6/3) = \\log_x 6 - \\log_x 3 = m - n$.\n$\\log_x(x/2) = \\log_x x - \\log_x 2 = 1 - (m-n) = 1-m+n$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22n",
+      prompt:
+        "If $\\log_{10}[\\log_2(\\log_3 x)] = 0$, find $x$.",
+      format: "numeric",
+      answer: "9",
+      hint: "Work from outside in: $\\log_{10}(\\cdot) = 0$ means the argument $= 10^0 = 1$. Then $\\log_2(\\cdot) = 1$ means...",
+      explanation:
+        "$\\log_{10}[\\log_2(\\log_3 x)] = 0 \\implies \\log_2(\\log_3 x) = 10^0 = 1$.\n$\\log_2(\\log_3 x) = 1 \\implies \\log_3 x = 2^1 = 2$.\n$\\log_3 x = 2 \\implies x = 3^2 = 9$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22o",
+      prompt:
+        "Show that $\\dfrac{1}{\\log_a bc + 1} + \\dfrac{1}{\\log_b ca + 1} + \\dfrac{1}{\\log_c ab + 1} = 1$. What is the key step?",
+      format: "text",
+      answer: "log_a bc + 1 = log_a abc",
+      acceptedAnswers: ["log_a bc + 1 = log_a abc", "add log_a a to get log_a(abc)", "each term = log_abc of a"],
+      hint: "Note $\\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a(abc)$. So $\\frac{1}{\\log_a(abc)} = \\log_{abc} a$.",
+      explanation:
+        "$\\log_a bc + 1 = \\log_a(abc)$. So $\\frac{1}{\\log_a(abc)} = \\log_{abc} a$.\nSimilarly the other two terms become $\\log_{abc} b$ and $\\log_{abc} c$.\nSum $= \\log_{abc}(a \\cdot b \\cdot c) = \\log_{abc}(abc) = 1$. ✓",
+    },
+    {
+      kind: "check",
+      id: "alg-c22p",
+      prompt:
+        "If $\\log_3 2$, $\\log_3(2^x - 5)$, and $\\log_3(2^x - 7/2)$ are in A.P., find $x$.",
+      format: "numeric",
+      answer: "3",
+      hint: "In AP: $2 \\times \\text{middle} = \\text{first} + \\text{last}$. So $2\\log_3(2^x-5) = \\log_3 2 + \\log_3(2^x-7/2)$.",
+      explanation:
+        "AP condition: $2\\log_3(2^x-5) = \\log_3 2 + \\log_3(2^x-7/2)$.\n$\\log_3(2^x-5)^2 = \\log_3[2(2^x-7/2)]$.\n$(2^x-5)^2 = 2(2^x-7/2) = 2^{x+1}-7$.\nLet $t = 2^x$: $(t-5)^2 = 2t-7$.\n$t^2-10t+25 = 2t-7$.\n$t^2-12t+32 = 0$.\n$(t-4)(t-8) = 0$, so $t = 4$ or $t = 8$.\n$t = 4$: $2^x = 4$, $x = 2$. Check: $\\log_3(4-5) = \\log_3(-1)$ — undefined! ✗\n$t = 8$: $2^x = 8$, $x = 3$. Check: $\\log_3 2$, $\\log_3 3 = 1$, $\\log_3(9/2)$. Is $2(1) = \\log_3 2 + \\log_3(9/2)$? $2 = \\log_3(2 \\times 9/2) = \\log_3 9 = 2$ ✓.\n\n$x = 3$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
