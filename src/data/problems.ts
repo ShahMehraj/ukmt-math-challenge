@@ -1,6 +1,7 @@
 import type { Problem, Chapter, CheckBlock } from "@/lib/types";
 import { FULL_CHAPTERS } from "./chapters";
 import { ALL_BOOK_PROBLEMS } from "./books";
+import { sequencesProblems } from "./chapters/sequences";
 
 /**
  * Central problem bank. Chapters reference problems by id, and the Problem Bank
@@ -2152,6 +2153,7 @@ function extractChapterProblems(): Problem[] {
 export const ALL_PROBLEMS: Problem[] = [
   ...PROBLEMS,
   ...ALL_BOOK_PROBLEMS,
+  ...sequencesProblems,
   ...extractChapterProblems(),
 ];
 

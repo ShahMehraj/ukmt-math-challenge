@@ -6,6 +6,7 @@ import { countingChapter } from "./counting";
 import { ratioChapter } from "./ratio";
 import { algebraChapter } from "./algebra";
 import { numberSenseChapter } from "./number-sense";
+import { sequencesChapter } from "./sequences";
 
 /** Fully-authored chapters available to study now. */
 export const FULL_CHAPTERS: Chapter[] = [
@@ -15,6 +16,7 @@ export const FULL_CHAPTERS: Chapter[] = [
   numberSenseChapter,
   numberTheoryFoundations,
   ratioChapter,
+  sequencesChapter,
   countingChapter,
 ];
 
@@ -95,20 +97,18 @@ export const CURRICULUM: PlannedChapter[] = [
     "Remainders & cycles",
     "Divisibility proofs",
   ]),
-  {
-    id: "ch-seq-1",
-    title: "Sequences, Patterns & Series",
-    topic: "sequences",
-    order: 40,
-    examFocus: "both",
-    difficulty: "medium",
-    estMinutes: 60,
-    prerequisites: ["ch-algebra-1"],
-    blurb:
-      "Arithmetic and geometric sequences, spotting and proving patterns, and summing series.",
-    subtopics: ["Arithmetic sequences", "Geometric sequences", "Pattern proofs", "Triangular numbers"],
-    status: "planned",
-  },
+  toPlanned(sequencesChapter, [
+    "Sequences, series & progressions",
+    "Arithmetic Progression",
+    "Sum of AP & arithmetic means",
+    "Geometric Progression",
+    "Sum of GP & infinite series",
+    "AM–GM–HM inequality",
+    "Harmonic Progression",
+    "Arithmetico-geometric progression",
+    "Sigma notation & power sums",
+    "Telescoping (method of differences)",
+  ]),
   toPlanned(ratioChapter, [
     "What is a ratio?",
     "Manipulating & comparing ratios",
