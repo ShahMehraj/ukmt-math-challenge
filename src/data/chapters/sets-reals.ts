@@ -115,6 +115,85 @@ export const setsRealsChapter: Chapter = {
       explanation:
         "$|\\emptyset| = 0$ by definition — the empty set contains no elements.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More on set notation and representation:**\n\n**Equivalent representations:** Any set can be written in multiple valid ways:\n$$\\{x \\in \\mathbb{Z} : -2 \\le x \\le 3\\} = \\{-2, -1, 0, 1, 2, 3\\}$$\n$$\\{x : x \\text{ is a prime less than 10}\\} = \\{2, 3, 5, 7\\}$$\n\n**Set membership vs subsets:** Don't confuse:\n- $3 \\in \\{1, 2, 3\\}$ — the number 3 is an element\n- $\\{3\\} \\subset \\{1, 2, 3\\}$ — the set $\\{3\\}$ is a subset\n- $3 \\notin \\{\\{3\\}\\}$ — here the only element is the SET $\\{3\\}$, not the number 3!\n\n**Types of sets:**\n- **Null/empty set:** $\\emptyset = \\{\\}$. Note: $\\{0\\} \\neq \\emptyset$ (the first has one element!)\n- **Singleton:** exactly one element, e.g. $\\{5\\}$, $\\{\\emptyset\\}$\n- **Finite:** cardinality is a specific non-negative integer\n- **Infinite:** cardinality is not finite (e.g. $\\mathbb{N}$, $\\mathbb{Z}$, $\\mathbb{R}$)\n- **Equivalent sets:** have the same cardinality (can be put in 1-1 correspondence)\n\n**Important non-examples (not well-defined):**\n- $\\{x : x \\text{ is a beautiful flower}\\}$ — not well-defined (subjective)\n- $\\{x : x \\text{ is a tall person}\\}$ — ambiguous",
+    },
+    {
+      kind: "callout",
+      variant: "trap",
+      title: "Common set notation traps",
+      content:
+        "• $\\emptyset \\neq \\{\\emptyset\\}$: the first is the empty set (0 elements); the second is a set containing one element (the empty set itself).\n• $\\{1, 1, 2\\} = \\{1, 2\\}$: repetition doesn't count in sets — elements are distinct.\n• $\\{1, 2, 3\\}$ and $\\{3, 2, 1\\}$ are the SAME set — order is irrelevant.\n• $|\\{\\emptyset\\}| = 1$, not 0! It has one element (which happens to be the empty set).\n• $0 \\in \\mathbb{N}$ in some conventions, $0 \\notin \\mathbb{N}$ in others. Always check which is being used.",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Describing sets — the three methods",
+      content:
+        "**1. Roster/Tabular:** List all elements: $A = \\{2, 4, 6, 8, 10\\}$\n\n**2. Set-builder:** Describe the rule: $A = \\{x \\in \\mathbb{N} : x \\text{ is even}, x \\le 10\\}$\n\n**3. Semantic/verbal:** Describe in words: 'A is the set of positive even integers not exceeding 10.'\n\nFor infinite sets, you must use set-builder or verbal (can't list all!):\n$$\\mathbb{Q}^+ = \\{x \\in \\mathbb{Q} : x > 0\\}$$",
+    },
+    {
+      kind: "check",
+      id: "sr-c3b",
+      prompt:
+        "Write in set-builder form: $B = \\{1, 4, 9, 16, 25, 36\\}$.",
+      format: "text",
+      answer: "{x^2 : x ∈ N, 1 ≤ x ≤ 6}",
+      acceptedAnswers: ["{x^2 : x ∈ N, 1 ≤ x ≤ 6}", "{n^2 : n = 1,2,...,6}", "{x : x is a perfect square, x ≤ 36}"],
+      hint: "Notice these are $1^2, 2^2, 3^2, 4^2, 5^2, 6^2$.",
+      explanation:
+        "$B = \\{x^2 : x \\in \\mathbb{N},\\; 1 \\le x \\le 6\\}$ or equivalently $\\{n \\in \\mathbb{N} : n \\text{ is a perfect square and } n \\le 36\\}$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c3c",
+      prompt:
+        "Which of the following is the empty set?\n(a) $\\{x \\in \\mathbb{R} : x^2 = -1\\}$\n(b) $\\{x \\in \\mathbb{R} : x^2 = 0\\}$\n(c) $\\{0\\}$\n(d) $\\{\\}$",
+      format: "text",
+      answer: "a and d",
+      acceptedAnswers: ["a and d", "a, d", "(a) and (d)"],
+      hint: "(b) has one element: $x = 0$. (c) has one element: the number 0. (d) is $\\emptyset$. What about (a)?",
+      explanation:
+        "(a) No real number satisfies $x^2 = -1$, so this set has no elements — it equals $\\emptyset$.\n(b) $= \\{0\\}$ — one element.\n(c) $= \\{0\\}$ — one element (the number 0).\n(d) $= \\emptyset$ by notation.\nEmpty sets: (a) and (d).",
+    },
+    {
+      kind: "check",
+      id: "sr-c3d",
+      prompt:
+        "If $A = \\{1, \\{2, 3\\}, 4\\}$, determine which are true:\n(i) $2 \\in A$ \n(ii) $\\{2, 3\\} \\in A$\n(iii) $|A| = 3$\n(Answer with the true statements, e.g. 'ii, iii'.)",
+      format: "text",
+      answer: "ii, iii",
+      acceptedAnswers: ["ii, iii", "ii and iii", "(ii) and (iii)"],
+      hint: "The elements of $A$ are: $1$, the set $\\{2, 3\\}$, and $4$. So $A$ has 3 elements. Is 2 one of them?",
+      explanation:
+        "The elements of $A$ are three objects: the number 1, the set $\\{2,3\\}$, and the number 4.\n(i) $2 \\notin A$ — the number 2 is NOT directly an element; it's inside a nested set. ✗\n(ii) $\\{2,3\\} \\in A$ ✓ — it's one of the three elements.\n(iii) $|A| = 3$ ✓ — three elements total.",
+    },
+    {
+      kind: "check",
+      id: "sr-c3e",
+      prompt:
+        "State whether the following collections are well-defined sets:\n(i) All prime numbers less than 50\n(ii) All difficult questions in a math exam\n(iii) All vowels in the English alphabet\n(Answer with which ARE well-defined, e.g. 'i, iii'.)",
+      format: "text",
+      answer: "i, iii",
+      acceptedAnswers: ["i, iii", "i and iii", "(i) and (iii)"],
+      hint: "A set must be well-defined: there should be no ambiguity about membership. Is 'difficult' objective?",
+      explanation:
+        "(i) Well-defined ✓ — primality is an objective property.\n(ii) NOT well-defined ✗ — 'difficult' is subjective.\n(iii) Well-defined ✓ — vowels are a, e, i, o, u (unambiguous).",
+    },
+    {
+      kind: "check",
+      id: "sr-c3f",
+      prompt:
+        "If $A = \\{x \\in \\mathbb{Z} : |x| < 4\\}$ and $B = \\{x \\in \\mathbb{N} : x \\le 6\\}$, find $|A| + |B|$.",
+      format: "numeric",
+      answer: "14",
+      hint: "$|x| < 4$ means $-4 < x < 4$. So $A = \\{-3,-2,-1,0,1,2,3\\}$ has 7 elements. $B = \\{0,1,2,3,4,5,6\\}$ or $\\{1,...,6\\}$ depending on convention.",
+      explanation:
+        "$A = \\{x \\in \\mathbb{Z} : -4 < x < 4\\} = \\{-3,-2,-1,0,1,2,3\\}$, so $|A| = 7$.\n$B = \\{0,1,2,3,4,5,6\\}$ (with $0 \\in \\mathbb{N}$), so $|B| = 7$.\n$|A|+|B| = 14$.\n(If $\\mathbb{N}$ excludes 0: $B = \\{1,...,6\\}$, $|B|=6$, total $= 13$.)",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 2: Subsets, power sets and intervals
@@ -176,6 +255,93 @@ export const setsRealsChapter: Chapter = {
       hint: "Strict inequality at $-3$ means parenthesis; $\\leq$ at 7 means bracket.",
       explanation:
         "Since $x > -3$ (strict), we use ( at $-3$. Since $x \\leq 7$ (inclusive), we use ] at 7. Answer: $(-3, 7]$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Important subset properties:**\n\n1. $\\emptyset \\subseteq A$ for every set $A$ (the empty set is a subset of all sets)\n2. $A \\subseteq A$ for every set $A$ (every set is a subset of itself)\n3. If $A \\subseteq B$ and $B \\subseteq A$, then $A = B$ (this is how you PROVE two sets are equal)\n4. If $A \\subseteq B$ and $B \\subseteq C$, then $A \\subseteq C$ (transitivity)\n\n**Counting subsets of a specific size:**\n\nA set with $n$ elements has:\n- $\\binom{n}{0} = 1$ subset of size 0 (the empty set)\n- $\\binom{n}{1} = n$ subsets of size 1 (the singletons)\n- $\\binom{n}{k}$ subsets of size $k$ in general\n- Total: $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$\n\n**Intervals as sets:**\n\nIntervals can be operated on like any sets:\n$$[1,5] \\cap [3,8] = [3,5], \\qquad (0,4) \\cup [2,7] = (0,7]$$\n$$[1,5] - [3,8] = [1,3), \\qquad (-\\infty,2] \\cap [0,\\infty) = [0,2]$$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Subset counting tricks for competitions",
+      content:
+        "For a set $S$ with $n$ elements:\n\n• Subsets containing a specific element $a$: $2^{n-1}$ (the other $n-1$ elements can be in or out)\n• Subsets NOT containing $a$: also $2^{n-1}$\n• Subsets containing at least one of $a$ or $b$: $2^n - 2^{n-2}$ (total minus subsets with neither)\n• Non-empty subsets: $2^n - 1$\n• Subsets with an even number of elements: $2^{n-1}$ (always exactly half!)\n• Subsets with an odd number of elements: $2^{n-1}$ (the other half)",
+    },
+    {
+      kind: "callout",
+      variant: "warning",
+      title: "Subset vs element — the critical distinction",
+      content:
+        "These are DIFFERENT relationships:\n• $a \\in A$ means '$a$ is an element of $A$'\n• $B \\subseteq A$ means '$B$ is a subset of $A$' (every element of $B$ is in $A$)\n\nSo: $1 \\in \\{1,2,3\\}$ ✓, but $1 \\subseteq \\{1,2,3\\}$ is WRONG (1 is not a set).\n$\\{1\\} \\subseteq \\{1,2,3\\}$ ✓, but $\\{1\\} \\in \\{1,2,3\\}$ is WRONG (the set $\\{1\\}$ is not listed as an element).\n\nException: $\\{1\\} \\in \\{\\{1\\}, 2, 3\\}$ ✓ — here $\\{1\\}$ IS explicitly an element.",
+    },
+    {
+      kind: "check",
+      id: "sr-c7b",
+      prompt:
+        "A set $A$ has 6 elements. How many subsets of $A$ contain exactly 2 elements?",
+      format: "numeric",
+      answer: "15",
+      hint: "This is $\\binom{6}{2} = \\frac{6!}{2! \\cdot 4!}$.",
+      explanation:
+        "$\\binom{6}{2} = \\frac{6 \\times 5}{2 \\times 1} = 15$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c7c",
+      prompt:
+        "How many subsets of $\\{1, 2, 3, 4, 5, 6, 7, 8\\}$ contain the element $3$?",
+      format: "numeric",
+      answer: "128",
+      hint: "If 3 must be included, the remaining 7 elements can each be in or out. So $2^7 = ?$.",
+      explanation:
+        "Fix $3$ as included. The other 7 elements each have 2 choices (in/out): $2^7 = 128$ subsets.",
+    },
+    {
+      kind: "check",
+      id: "sr-c7d",
+      prompt:
+        "How many non-empty subsets does the set $\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}$ have that contain at least one even number?",
+      format: "numeric",
+      answer: "992",
+      hint: "Use complementary counting: total non-empty subsets minus subsets with NO even numbers (i.e. subsets of $\\{1,3,5,7,9\\}$).",
+      explanation:
+        "Total non-empty subsets $= 2^{10} - 1 = 1023$.\nSubsets with no even numbers $=$ subsets of $\\{1,3,5,7,9\\}$ (including empty) minus the empty set: $2^5 - 1 = 31$.\nAnswer $= 1023 - 31 = 992$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c7e",
+      prompt:
+        "Find: $[1, 5] \\cap (3, 9)$. Express as an interval.",
+      format: "text",
+      answer: "(3, 5]",
+      acceptedAnswers: ["(3, 5]", "(3,5]"],
+      hint: "$[1,5]$ includes everything from 1 to 5 (inclusive). $(3,9)$ includes everything from 3 to 9 (exclusive endpoints). The intersection is where BOTH hold.",
+      explanation:
+        "$[1,5] \\cap (3,9)$: need $1 \\le x \\le 5$ AND $3 < x < 9$. Combined: $3 < x \\le 5$, i.e. $(3, 5]$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c7f",
+      prompt:
+        "If $\\mathcal{P}(A)$ has 64 elements, how many elements does $A$ have?",
+      format: "numeric",
+      answer: "6",
+      hint: "$|\\mathcal{P}(A)| = 2^{|A|}$. Solve $2^n = 64$.",
+      explanation:
+        "$2^n = 64 = 2^6$, so $n = 6$. The set $A$ has 6 elements.",
+    },
+    {
+      kind: "check",
+      id: "sr-c7g",
+      prompt:
+        "If $A \\subset B$ and $|A| = 5$, what is the minimum possible value of $|B|$?",
+      format: "numeric",
+      answer: "6",
+      hint: "$A \\subset B$ means $A$ is a PROPER subset — so $B$ must have at least one element not in $A$.",
+      explanation:
+        "Since $A \\subset B$ (proper subset), $B$ contains all 5 elements of $A$ plus at least one more. Minimum $|B| = 6$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -253,6 +419,83 @@ export const setsRealsChapter: Chapter = {
       explanation:
         "De Morgan's first law states $(A \\cup B)' = A' \\cap B'$. The complement flips union to intersection.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Complete list of set operation laws:**\n\n**Idempotent:** $A \\cup A = A$, $\\;A \\cap A = A$\n\n**Commutative:** $A \\cup B = B \\cup A$, $\\;A \\cap B = B \\cap A$\n\n**Associative:** $(A \\cup B) \\cup C = A \\cup (B \\cup C)$, $\\;(A \\cap B) \\cap C = A \\cap (B \\cap C)$\n\n**Distributive:**\n$$A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C)$$\n$$A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$$\n\n**Identity:** $A \\cup \\emptyset = A$, $\\;A \\cap U = A$, $\\;A \\cup U = U$, $\\;A \\cap \\emptyset = \\emptyset$\n\n**Complement:** $A \\cup A' = U$, $\\;A \\cap A' = \\emptyset$, $\\;(A')' = A$, $\\;U' = \\emptyset$, $\\;\\emptyset' = U$\n\n**Absorption:** $A \\cup (A \\cap B) = A$, $\\;A \\cap (A \\cup B) = A$\n\n**Key relationships:**\n$$A - B = A \\cap B', \\qquad A \\triangle B = (A \\cup B) - (A \\cap B)$$\n$$|A \\triangle B| = |A| + |B| - 2|A \\cap B|$$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Verifying set identities — the element-chasing method",
+      content:
+        "To prove $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$:\n\n1. Take any $x \\in$ LHS: $x \\in A$ AND $x \\in B \\cup C$, i.e. $x \\in A$ AND ($x \\in B$ or $x \\in C$). So ($x \\in A$ and $x \\in B$) or ($x \\in A$ and $x \\in C$), i.e. $x \\in (A \\cap B) \\cup (A \\cap C)$ = RHS.\n\n2. Reverse direction is similar.\n\nThis technique works for ALL set identity proofs.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Cardinality formulas for set operations",
+      content:
+        "For finite sets:\n$$|A \\cup B| = |A| + |B| - |A \\cap B|$$\n$$|A - B| = |A| - |A \\cap B|$$\n$$|A'| = |U| - |A|$$\n$$|A \\triangle B| = |A| + |B| - 2|A \\cap B|$$",
+    },
+    {
+      kind: "check",
+      id: "sr-c11b",
+      prompt:
+        "If $A = \\{1,2,3,4,5\\}$ and $B = \\{3,4,5,6,7\\}$, find $|A \\triangle B|$.",
+      format: "numeric",
+      answer: "4",
+      hint: "$A \\triangle B = (A-B) \\cup (B-A)$. Find elements in exactly one of the sets.",
+      explanation:
+        "$A - B = \\{1,2\\}$, $B - A = \\{6,7\\}$. So $A \\triangle B = \\{1,2,6,7\\}$, $|A \\triangle B| = 4$.\nAlternatively: $|A|+|B|-2|A\\cap B| = 5+5-2(3) = 4$ \\checkmark.",
+    },
+    {
+      kind: "check",
+      id: "sr-c11c",
+      prompt:
+        "If $U = \\{1,2,...,20\\}$, $A = $ multiples of 3 in $U$, $B = $ multiples of 5 in $U$. Find $|A' \\cap B'|$.",
+      format: "numeric",
+      answer: "11",
+      hint: "By De Morgan: $A' \\cap B' = (A \\cup B)'$. So $|A' \\cap B'| = |U| - |A \\cup B|$.",
+      explanation:
+        "$A = \\{3,6,9,12,15,18\\}$, $|A|=6$. $B = \\{5,10,15,20\\}$, $|B|=4$.\n$A \\cap B = \\{15\\}$ (multiples of 15), $|A \\cap B|=1$.\n$|A \\cup B| = 6+4-1 = 9$. $|A' \\cap B'| = |(A\\cup B)'| = 20-9 = 11$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c11d",
+      prompt:
+        "Simplify: $A \\cap (A' \\cup B)$.",
+      format: "text",
+      answer: "A \\cap B",
+      acceptedAnswers: ["A ∩ B", "A∩B", "A intersect B", "A \\cap B"],
+      hint: "Distribute: $A \\cap (A' \\cup B) = (A \\cap A') \\cup (A \\cap B)$.",
+      explanation:
+        "$A \\cap (A' \\cup B) = (A \\cap A') \\cup (A \\cap B) = \\emptyset \\cup (A \\cap B) = A \\cap B$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c11e",
+      prompt:
+        "If $|U| = 50$, $|A| = 30$, $|B| = 25$, $|A \\cap B| = 10$, find the number of elements in neither $A$ nor $B$.",
+      format: "numeric",
+      answer: "5",
+      hint: "Elements in neither = $|A' \\cap B'| = |U| - |A \\cup B|$.",
+      explanation:
+        "$|A \\cup B| = 30+25-10 = 45$. Elements in neither $= 50-45 = 5$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c11f",
+      prompt:
+        "Which of the following always equals $A$?\n(a) $(A \\cap B) \\cup (A - B)$\n(b) $(A \\cup B) \\cap (A \\cup B')$\n(c) Both\n(d) Neither",
+      format: "text",
+      answer: "c",
+      acceptedAnswers: ["c", "C", "both", "Both"],
+      hint: "For (a): $A \\cap B$ plus $A - B$ covers all of $A$. For (b): use $A \\cup (B \\cap B') = A \\cup \\emptyset$.",
+      explanation:
+        "(a) $(A \\cap B) \\cup (A \\cap B') = A \\cap (B \\cup B') = A \\cap U = A$ \\checkmark.\n(b) $(A \\cup B) \\cap (A \\cup B') = A \\cup (B \\cap B') = A \\cup \\emptyset = A$ \\checkmark.\nBoth equal $A$.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 4: Counting with sets (inclusion-exclusion)
@@ -320,6 +563,74 @@ export const setsRealsChapter: Chapter = {
       hint: "Subtract the 'at least one' count from the total.",
       explanation:
         "People liking none $= 100 - 88 = 12$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced inclusion-exclusion patterns:**\n\n**Pattern: Finding 'exactly one'**\n\nElements in exactly one of $A$, $B$:\n$$|\\text{exactly one}| = |A| + |B| - 2|A \\cap B| = |A \\triangle B|$$\n\nElements in exactly one of $A$, $B$, $C$:\n$$= |A|+|B|+|C| - 2|A \\cap B| - 2|A \\cap C| - 2|B \\cap C| + 3|A \\cap B \\cap C|$$\n\n**Pattern: Finding 'exactly two'**\n\nElements in exactly two of $A$, $B$, $C$ (in two sets but not the third):\n$$= |A \\cap B| + |A \\cap C| + |B \\cap C| - 3|A \\cap B \\cap C|$$\n\n**Pattern: The Venn diagram decomposition**\n\nFor three sets, a Venn diagram has 8 regions. If you label:\n- $a$ = only $A$ (not $B$ or $C$)\n- $b$ = only $B$\n- $c$ = only $C$\n- $d$ = $A \\cap B$ only (not $C$)\n- $e$ = $A \\cap C$ only (not $B$)\n- $f$ = $B \\cap C$ only (not $A$)\n- $g$ = $A \\cap B \\cap C$\n- $h$ = none of them\n\nThen $|A| = a+d+e+g$, $|A \\cap B| = d+g$, $|A \\cap B \\cap C| = g$, etc.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Working backwards from totals",
+      content:
+        "In many problems you're given regional totals. The strategy:\n1. Start from the INNERMOST region (all-three intersection $g$)\n2. Work outward: $|A \\cap B| = d + g$, so $d = |A \\cap B| - g$\n3. Then find the 'only' regions: $a = |A| - d - e - g$\n4. Finally: elements in none $= |U| - (a+b+c+d+e+f+g)$",
+    },
+    {
+      kind: "check",
+      id: "sr-c15b",
+      prompt:
+        "In a group of 60 students: 35 play chess, 22 play badminton, and 15 play both. How many play exactly one of the two games?",
+      format: "numeric",
+      answer: "27",
+      hint: "Exactly one $= |A \\triangle B| = |A| + |B| - 2|A \\cap B| = 35+22-30$.",
+      explanation:
+        "Exactly one $= |A|+|B|-2|A \\cap B| = 35+22-30 = 27$.\nAlternatively: only chess $= 35-15 = 20$, only badminton $= 22-15 = 7$, total $= 27$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c15c",
+      prompt:
+        "In a class of 70 students: 45 like Maths, 52 like Science. What is the minimum possible number who like both?",
+      format: "numeric",
+      answer: "27",
+      hint: "Maximum possible for $|M \\cup S|$ is $|U| = 70$. Use $|M \\cap S| = |M|+|S|-|M \\cup S| \\ge 45+52-70$.",
+      explanation:
+        "$|M \\cap S| = |M|+|S|-|M \\cup S|$. Since $|M \\cup S| \\le 70$:\n$|M \\cap S| \\ge 45+52-70 = 27$.\nMinimum is 27 (when everyone likes at least one subject).",
+    },
+    {
+      kind: "check",
+      id: "sr-c15d",
+      prompt:
+        "In a survey: 80 read newspaper A, 60 read B, 50 read C, 30 read A and B, 20 read A and C, 25 read B and C, 10 read all three. How many read exactly two newspapers?",
+      format: "numeric",
+      answer: "45",
+      hint: "Exactly two $= |A \\cap B| + |A \\cap C| + |B \\cap C| - 3|A \\cap B \\cap C| = 30+20+25-30$.",
+      explanation:
+        "Exactly two $= (|A \\cap B|-|A \\cap B \\cap C|) + (|A \\cap C|-|A \\cap B \\cap C|) + (|B \\cap C|-|A \\cap B \\cap C|)$\n$= (30-10)+(20-10)+(25-10) = 20+10+15 = 45$.\nAlternatively: $|A \\cap B|+|A \\cap C|+|B \\cap C| - 3|A \\cap B \\cap C| = 75-30 = 45$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c15e",
+      prompt:
+        "In a school of 200 students: every student studies at least one of Biology, Chemistry, or Physics. 120 study Biology, 90 study Chemistry, 70 study Physics, 40 study Bio and Chem, 30 study Bio and Physics, 20 study Chem and Physics. Find the number who study all three.",
+      format: "numeric",
+      answer: "10",
+      hint: "Since every student studies at least one: $|B \\cup C \\cup P| = 200$. Use the 3-set formula and solve for $|B \\cap C \\cap P|$.",
+      explanation:
+        "$200 = 120+90+70-40-30-20+|B \\cap C \\cap P|$.\n$200 = 280-90+x = 190+x$.\n$x = 10$.",
+    },
+    {
+      kind: "check",
+      id: "sr-c15f",
+      prompt:
+        "How many integers from 1 to 100 are divisible by neither 2, 3, nor 5?",
+      format: "numeric",
+      answer: "26",
+      hint: "Use inclusion-exclusion: subtract multiples of 2, 3, 5; add back multiples of 6, 10, 15; subtract multiples of 30.",
+      explanation:
+        "$|A_2| = 50$, $|A_3| = 33$, $|A_5| = 20$.\n$|A_2 \\cap A_3| = |A_6| = 16$, $|A_2 \\cap A_5| = |A_{10}| = 10$, $|A_3 \\cap A_5| = |A_{15}| = 6$.\n$|A_2 \\cap A_3 \\cap A_5| = |A_{30}| = 3$.\n$|A_2 \\cup A_3 \\cup A_5| = 50+33+20-16-10-6+3 = 74$.\nDivisible by none: $100-74 = 26$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════

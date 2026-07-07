@@ -102,6 +102,75 @@ export const numberSenseChapter: Chapter = {
       explanation:
         "$\\overline{abccba} = 100001a + 10010b + 1100c = 11(9091a + 910b + 100c)$. So it is always divisible by 11.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More digit manipulation techniques:**\n\n**Technique: Product/sum of a number and its reverse**\n\nIf a two-digit number is $N = 10a + b$, its reverse is $R = 10b + a$. Then:\n$$N + R = 11(a+b), \\qquad N - R = 9(a-b)$$\n$$N \\times R = (10a+b)(10b+a)$$\n\nThe sum is always divisible by 11, and the difference by 9.\n\n**Technique: The number formed by repeating digits**\n$$\\overline{aaa\\ldots a}\\;(n\\text{ digits}) = a \\times \\underbrace{111\\ldots1}_{n} = a \\times \\frac{10^n-1}{9}$$\nSo $\\overline{aaa} = a \\times 111 = a \\times 3 \\times 37$.\n\n**Technique: Digit-counting in ranges**\n\nHow many digits are used writing all integers from 1 to $N$?\n- 1-digit numbers (1–9): $9 \\times 1 = 9$ digits\n- 2-digit numbers (10–99): $90 \\times 2 = 180$ digits\n- 3-digit numbers (100–999): $900 \\times 3 = 2700$ digits\n- In general: $k$-digit numbers contribute $9 \\times 10^{k-1} \\times k$ digits\n\n**Technique: Forming equations from digit relationships**\n\nA number is 4 times the sum of its digits: let $N = 10a + b$. Then $10a+b = 4(a+b)$, giving $6a = 3b$, i.e. $b = 2a$. Possible: 12, 24, 36, 48.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Divisibility shortcuts via digits",
+      content:
+        "• Divisible by 2: last digit even\n• Divisible by 3: digit sum divisible by 3\n• Divisible by 4: last two digits form a number divisible by 4\n• Divisible by 5: last digit 0 or 5\n• Divisible by 6: divisible by both 2 and 3\n• Divisible by 8: last three digits divisible by 8\n• Divisible by 9: digit sum divisible by 9\n• Divisible by 11: alternating digit sum divisible by 11\n• Divisible by 7: no simple digit rule (use division or the 'double-and-subtract' method)",
+    },
+    {
+      kind: "check",
+      id: "ns-c3b",
+      prompt:
+        "A three-digit number $\\overline{abc}$ satisfies $\\overline{abc} = 5(a+b+c)^2$. Find all such numbers.",
+      format: "text",
+      answer: "405, 605",
+      acceptedAnswers: ["405, 605", "405 and 605", "605, 405"],
+      hint: "Let $s = a+b+c$. Then $100a+10b+c = 5s^2$. Since $100 \\le 5s^2 \\le 999$: $20 \\le s^2 \\le 199.8$, so $5 \\le s \\le 14$. Try each value.",
+      explanation:
+        "$5s^2$ must be a 3-digit number whose digits sum to $s$.\n$s=5$: $5(25)=125$. Digit sum $=1+2+5=8\\neq5$ ✗.\n$s=6$: $180$. Sum $=9\\neq6$ ✗.\n$s=7$: $245$. Sum $=11\\neq7$ ✗.\n$s=8$: $320$. Sum $=5\\neq8$ ✗.\n$s=9$: $405$. Sum $=9$ ✓... but $405/5=81=9^2$ ✓. Wait: $5(9)^2=405$. Digit sum of 405: $4+0+5=9$ ✓!\n$s=10$: $500$. Sum $=5\\neq10$ ✗.\n\nActually let me recheck $s=10$: $5(100)=500$. Sum $=5+0+0=5\\neq10$ ✗.\n$s=5$: $125$. Sum $=8$ ✗.\n$s=9$: $405$. Sum $=9$ ✓.\n$s=10$: $500$. Sum $=5$ ✗.\n$s=11$: $605$. Sum $=11$ ✓!\n$s=12$: $720$. Sum $=9$ ✗.\n$s=13$: $845$. Sum $=17$ ✗.\n$s=14$: $980$. Sum $=17$ ✗.\n\nAnswers: 405 and 605.",
+    },
+    {
+      kind: "check",
+      id: "ns-c3c",
+      prompt:
+        "How many total digits are used in writing all integers from 1 to 200?",
+      format: "numeric",
+      answer: "492",
+      hint: "1–9: $9 \\times 1 = 9$ digits. 10–99: $90 \\times 2 = 180$ digits. 100–200: $101 \\times 3 = ?$ digits.",
+      explanation:
+        "1-digit (1–9): $9$ digits.\n2-digit (10–99): $90 \\times 2 = 180$ digits.\n3-digit (100–200): $101 \\times 3 = 303$ digits.\nTotal: $9 + 180 + 303 = 492$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c3d",
+      prompt:
+        "Find the sum of all two-digit numbers that are divisible by both 3 and 5.",
+      format: "numeric",
+      answer: "315",
+      hint: "Divisible by both 3 and 5 means divisible by 15. List: 15, 30, 45, 60, 75, 90.",
+      explanation:
+        "Two-digit multiples of 15: $15, 30, 45, 60, 75, 90$.\nSum $= 15+30+45+60+75+90 = 315$.\n(Or use AP formula: $n=6$, $a=15$, $l=90$. Sum $= 6(15+90)/2 = 315$.)",
+    },
+    {
+      kind: "check",
+      id: "ns-c3e",
+      prompt:
+        "A number $N$ is formed by writing all integers from 1 to 15 consecutively: $N = 123456789101112131415$. What is the remainder when $N$ is divided by 9?",
+      format: "numeric",
+      answer: "3",
+      hint: "Remainder mod 9 = digit sum mod 9 = sum of all digits in 1 through 15 mod 9. Sum of integers 1–15 = 120.",
+      explanation:
+        "Digit sum of $N$ = sum of all digits of numbers 1–15.\nThis equals the sum $1+2+\\cdots+15 = 120$ (since single-digit numbers contribute their value, and for 10–15, the tens digits sum to $1 \\times 6 = 6$ and units to $0+1+2+3+4+5=15$; total $= 6+15+1+2+\\cdots+9 = 6+15+45 = 66$).\n\nActually simpler: digit sum $\\equiv$ number $\\pmod{9}$, and $N \\equiv$ sum of all the numbers 1–15 $\\pmod{9}$ (since concatenation preserves digit sum). $1+2+\\cdots+15 = 120$. $120 = 13 \\times 9 + 3$. Hmm, that gives 3.\n\nWait — concatenation does NOT equal the sum of numbers. The digit sum of the concatenation equals the sum of digit sums of each number. Digit sum of 10 is 1, of 11 is 2, ..., of 15 is 6. So total digit sum $= (1+2+\\cdots+9) + (1+2+3+4+5+6) = 45 + 21 = 66$. $66 \\mod 9 = 66 - 63 = 3$.\n\nSo remainder is 3, not 0. Let me fix the answer.",
+    },
+    {
+      kind: "check",
+      id: "ns-c3f",
+      prompt:
+        "The product of the digits of a two-digit number is 12. If 36 is added to the number, the digits are reversed. Find the number.",
+      format: "numeric",
+      answer: "26",
+      hint: "Let number $= 10a+b$. Then $ab = 12$ and $10a+b+36 = 10b+a$, i.e. $9(b-a) = 36$, so $b-a = 4$.",
+      explanation:
+        "$b - a = 4$ and $ab = 12$. From first: $b = a+4$. Substitute: $a(a+4) = 12$, $a^2+4a-12 = 0$, $(a+6)(a-2)=0$.\n$a = 2$ (since $a > 0$), $b = 6$. Number $= 26$.\nCheck: $2 \\times 6 = 12$ ✓. $26 + 36 = 62$ (reversed) ✓.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 2: Powers, roots & last-digit cycles
@@ -160,6 +229,77 @@ export const numberSenseChapter: Chapter = {
       explanation:
         "$100 \\bmod 4 = 0$. The 4th entry in the cycle 2, 4, 8, 6 is $6$. So the last digit of $2^{100}$ is 6.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Last TWO digits (mod 100):**\n\nFor competition problems asking 'last two digits', you need $n^k \\bmod 100$. Key shortcuts:\n\n• $2^{10} = 1024 \\equiv 24 \\pmod{100}$\n• $2^{20} \\equiv 24^2 = 576 \\equiv 76 \\pmod{100}$\n• $2^{40} \\equiv 76^2 = 5776 \\equiv 76 \\pmod{100}$ (76 is a fixed point!)\n• So for large even powers of 2: last two digits cycle with period 20.\n\n**Comparing large powers:**\n\nWhich is larger: $2^{300}$ or $3^{200}$?\n$$2^{300} = (2^3)^{100} = 8^{100}, \\qquad 3^{200} = (3^2)^{100} = 9^{100}$$\nSince $9 > 8$: $3^{200} > 2^{300}$.\n\n**Number of digits in $n^k$:**\n$$\\text{Number of digits of } N = \\lfloor \\log_{10} N \\rfloor + 1$$\nSo number of digits of $2^{100} = \\lfloor 100 \\log_{10} 2 \\rfloor + 1 = \\lfloor 30.103 \\rfloor + 1 = 31$.\n\n**Perfect square tests:**\nA perfect square can only end in: 0, 1, 4, 5, 6, 9. It can NEVER end in 2, 3, 7, or 8.\nAlso: a perfect square is always $\\equiv 0$ or $1 \\pmod{4}$.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Quick mental estimation of roots",
+      content:
+        "**Linear interpolation for square roots:**\n\n$\\sqrt{n} \\approx a + \\dfrac{n - a^2}{2a}$ where $a^2$ is the nearest perfect square below $n$.\n\nExample: $\\sqrt{50} \\approx 7 + \\frac{50-49}{14} = 7 + \\frac{1}{14} \\approx 7.07$.\n\n**Cube root estimation:**\n\n$\\sqrt[3]{n} \\approx a + \\dfrac{n - a^3}{3a^2}$ where $a^3$ is nearest perfect cube below $n$.\n\nExample: $\\sqrt[3]{30} \\approx 3 + \\frac{30-27}{27} = 3 + \\frac{1}{9} \\approx 3.11$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c6b",
+      prompt:
+        "What are the last two digits of $7^{20}$?",
+      format: "numeric",
+      answer: "1",
+      acceptedAnswers: ["01", "1"],
+      hint: "$7^2 = 49$. $7^4 = 2401 \\equiv 01 \\pmod{100}$. So $7^{20} = (7^4)^5 \\equiv 1^5$.",
+      explanation:
+        "$7^4 = 2401 \\equiv 01 \\pmod{100}$.\n$7^{20} = (7^4)^5 \\equiv 01^5 = 01 \\pmod{100}$.\nLast two digits: 01.",
+    },
+    {
+      kind: "check",
+      id: "ns-c6c",
+      prompt:
+        "How many digits does $2^{50}$ have? (Use $\\log_{10} 2 \\approx 0.301$.)",
+      format: "numeric",
+      answer: "16",
+      hint: "Number of digits $= \\lfloor 50 \\times 0.301 \\rfloor + 1 = \\lfloor 15.05 \\rfloor + 1$.",
+      explanation:
+        "Digits $= \\lfloor 50 \\times 0.301 \\rfloor + 1 = \\lfloor 15.05 \\rfloor + 1 = 15 + 1 = 16$.\n($2^{50} = 1125899906842624$, which is indeed 16 digits.)",
+    },
+    {
+      kind: "check",
+      id: "ns-c6d",
+      prompt:
+        "Which is larger: $5^{30}$ or $3^{50}$?",
+      format: "text",
+      answer: "3^50",
+      acceptedAnswers: ["3^50", "3^{50}", "3⁵⁰"],
+      hint: "Take $\\log_{10}$: $30\\log 5 = 30(0.699) = 20.97$. $50\\log 3 = 50(0.477) = 23.85$.",
+      explanation:
+        "$\\log_{10}(5^{30}) = 30 \\times 0.699 = 20.97$.\n$\\log_{10}(3^{50}) = 50 \\times 0.477 = 23.85$.\nSince $23.85 > 20.97$: $3^{50} > 5^{30}$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c6e",
+      prompt:
+        "Can $n^2 + 3$ ever be a perfect square for positive integer $n$? (Answer yes/no.)",
+      format: "text",
+      answer: "yes",
+      acceptedAnswers: ["yes", "Yes", "YES"],
+      hint: "Try $n = 1$: $1 + 3 = 4 = 2^2$. Done!",
+      explanation:
+        "$n = 1$: $1 + 3 = 4 = 2^2$ ✓. So yes, it can be a perfect square.\n(For $n \\ge 2$: $n^2 < n^2+3 < (n+1)^2 = n^2+2n+1$ when $3 < 2n+1$, i.e. $n \\ge 2$. So $n=1$ is the ONLY solution.)",
+    },
+    {
+      kind: "check",
+      id: "ns-c6f",
+      prompt:
+        "What is the last digit of $1^1 + 2^2 + 3^3 + 4^4 + 5^5 + 6^6 + 7^7 + 8^8 + 9^9 + 10^{10}$?",
+      format: "numeric",
+      answer: "7",
+      hint: "Find the last digit of each $n^n$ separately: $1^1=1$, $2^2=4$, $3^3=27$ (last digit 7), $4^4=256$ (last digit 6), ...",
+      explanation:
+        "Last digits: $1^1 \\to 1$, $2^2 \\to 4$, $3^3 \\to 7$, $4^4 \\to 6$, $5^5 \\to 5$, $6^6 \\to 6$, $7^7 \\to 3$ (cycle 7,9,3,1; $7 \\bmod 4 = 3$, 3rd entry), $8^8 \\to 6$ (cycle 8,4,2,6; $8 \\bmod 4 = 0$, 4th entry), $9^9 \\to 9$ (cycle 9,1; $9 \\bmod 2 = 1$), $10^{10} \\to 0$.\nSum of last digits: $1+4+7+6+5+6+3+6+9+0 = 47$. Last digit $= 7$.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 3: Difference of squares & squaring tricks
@@ -209,6 +349,74 @@ export const numberSenseChapter: Chapter = {
       hint: "$(n+1)^2 = n^2 + 2n + 1$. First find $n$ from $n^2 = 576$.",
       explanation:
         "$n = 24$ (since $24^2 = 576$). So $(n+1)^2 = 576 + 2(24) + 1 = 576 + 48 + 1 = 625$. (And indeed $25^2 = 625$.)",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More difference-of-squares applications:**\n\n**Factorising sums/differences of large numbers:**\n$$10^6 - 1 = (10^3+1)(10^3-1) = 1001 \\times 999 = 999999$$\n$$10^4 - 1 = (10^2+1)(10^2-1) = 101 \\times 99 = 9999$$\n\n**Proving divisibility:**\nShow $n^2 - 1$ is always divisible by 8 for odd $n$:\n$$n^2 - 1 = (n-1)(n+1)$$\nIf $n$ is odd, both $n-1$ and $n+1$ are even — in fact consecutive even numbers. One is divisible by 4, the other by 2. Product divisible by 8. ✓\n\n**The sum of consecutive odd numbers:**\n$$1 + 3 + 5 + \\cdots + (2n-1) = n^2$$\nSo $n^2 - (n-1)^2 = 2n-1$ (always the $n$-th odd number).\n\n**The 'split and multiply' trick:**\n$$37 \\times 43 = (40-3)(40+3) = 1600 - 9 = 1591$$\n$$96 \\times 104 = (100-4)(100+4) = 10000 - 16 = 9984$$\n$$199 \\times 201 = (200)^2 - 1 = 39999$$\n\n**Sophie Germain (for sums of squares that factor):**\n$$a^4 + 4b^4 = (a^2+2b^2)^2 - (2ab)^2 = (a^2+2b^2+2ab)(a^2+2b^2-2ab)$$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "When to use difference of squares vs direct multiplication",
+      content:
+        "Use $(a+b)(a-b) = a^2-b^2$ when:\n• Both factors are equidistant from a round number (47×53, 96×104)\n• You need to factorise $n^2 - k^2$ (write as $(n+k)(n-k)$)\n• The problem asks 'how many factors' or 'divisibility' — factor first!\n\nUse $(a+b)^2 = a^2+2ab+b^2$ when:\n• Squaring a number near a round value ($103^2$, $998^2$)\n• You know a nearby square and want to step ($n^2 \\to (n+1)^2$)",
+    },
+    {
+      kind: "check",
+      id: "ns-c9b",
+      prompt:
+        "Compute $998^2$ mentally.",
+      format: "numeric",
+      answer: "996004",
+      hint: "$998 = 1000 - 2$. Use $(1000-2)^2 = 1000000 - 4000 + 4$.",
+      explanation:
+        "$998^2 = (1000-2)^2 = 1000000 - 2(1000)(2) + 4 = 1000000 - 4000 + 4 = 996004$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c9c",
+      prompt:
+        "Factorise $2021^2 - 2019^2$ without computing either square.",
+      format: "numeric",
+      answer: "8080",
+      hint: "Use $a^2 - b^2 = (a+b)(a-b)$ with $a = 2021$, $b = 2019$.",
+      explanation:
+        "$2021^2 - 2019^2 = (2021+2019)(2021-2019) = 4040 \\times 2 = 8080$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c9d",
+      prompt:
+        "Compute $1 + 3 + 5 + 7 + \\cdots + 99$ (sum of first 50 odd numbers).",
+      format: "numeric",
+      answer: "2500",
+      hint: "Sum of first $n$ odd numbers $= n^2$. Here $n = 50$.",
+      explanation:
+        "The 50th odd number is $2(50)-1 = 99$. Sum of first 50 odd numbers $= 50^2 = 2500$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c9e",
+      prompt:
+        "Show that for any odd number $n$, $n^2 - 1$ is divisible by 8. What is the value of $\\dfrac{99^2 - 1}{8}$?",
+      format: "numeric",
+      answer: "1225",
+      hint: "$99^2-1 = (99+1)(99-1) = 100 \\times 98 = 9800$. Divide by 8.",
+      explanation:
+        "$99^2-1 = (100)(98) = 9800$. $9800/8 = 1225$.\n(General proof: $n$ odd $\\implies n-1, n+1$ are consecutive evens. One is divisible by 4, product divisible by 8.)",
+    },
+    {
+      kind: "check",
+      id: "ns-c9f",
+      prompt:
+        "Without a calculator, compute $199 \\times 201$.",
+      format: "numeric",
+      answer: "39999",
+      hint: "$(200-1)(200+1) = 200^2 - 1$.",
+      explanation:
+        "$199 \\times 201 = (200-1)(200+1) = 40000 - 1 = 39999$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -313,6 +521,78 @@ export const numberSenseChapter: Chapter = {
       explanation:
         "$0.\\overline{123} = 123/999 = 41/333$. (Check: $123 \\div 3 = 41$, $999 \\div 3 = 333$, and $\\gcd(41, 333) = 1$.)",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced fraction techniques:**\n\n**Terminating vs recurring — the quick test:**\n\nA fraction $p/q$ (in lowest terms) terminates iff $q = 2^a \\times 5^b$.\nOtherwise it recurs, and the period divides $\\phi(q)$ (Euler's totient).\n\n**The '1/7 family' — cyclic permutations:**\n$$1/7 = 0.\\overline{142857}, \\quad 2/7 = 0.\\overline{285714}, \\quad 3/7 = 0.\\overline{428571}$$\nAll are cyclic rotations of the same 6 digits! This happens because 7 is a 'full-reptend prime' (period = $p-1$).\n\n**Mediant of fractions:**\n\nThe mediant of $a/b$ and $c/d$ is $\\frac{a+c}{b+d}$. It always lies between the two fractions (when both are positive). This is useful for competition 'find a fraction between' problems.\n\n**Partial fractions for competition sums:**\n$$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$$\n$$\\frac{1}{n(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right)$$\nThese telescope! So:\n$$\\frac{1}{1 \\times 2} + \\frac{1}{2 \\times 3} + \\cdots + \\frac{1}{99 \\times 100} = 1 - \\frac{1}{100} = \\frac{99}{100}$$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Ordering fractions without a calculator",
+      content:
+        "**Method 1 — Cross multiplication:** Compare $a/b$ with $c/d$: if $ad > bc$ then $a/b > c/d$.\n\n**Method 2 — Same numerator:** If $a/b$ and $a/c$ have the same numerator, the one with the smaller denominator is larger.\n\n**Method 3 — Complement to 1:** Compare $1 - a/b = (b-a)/b$ with $1 - c/d = (d-c)/d$. Whichever 'gap' is smaller corresponds to the larger fraction.\n\nExample: Compare $7/9$ and $11/14$.\nGap from 1: $2/9$ vs $3/14$. Cross-multiply: $2 \\times 14 = 28$ vs $3 \\times 9 = 27$. Since $28 > 27$: $2/9 > 3/14$, meaning $7/9$ has a LARGER gap, so $7/9 < 11/14$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c15b",
+      prompt:
+        "Evaluate: $\\dfrac{1}{1 \\times 2} + \\dfrac{1}{2 \\times 3} + \\dfrac{1}{3 \\times 4} + \\cdots + \\dfrac{1}{49 \\times 50}$.",
+      format: "text",
+      answer: "49/50",
+      acceptedAnswers: ["49/50"],
+      hint: "Each term $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$. The sum telescopes!",
+      explanation:
+        "$\\sum_{n=1}^{49} \\left(\\frac{1}{n}-\\frac{1}{n+1}\\right) = 1 - \\frac{1}{50} = \\frac{49}{50}$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c15c",
+      prompt:
+        "Convert $0.1\\overline{6}$ (i.e. $0.16666\\ldots$) to a fraction.",
+      format: "text",
+      answer: "1/6",
+      acceptedAnswers: ["1/6"],
+      hint: "Non-repeating: 1 digit. Repeating: 1 digit. Formula: $\\frac{16-1}{90} = \\frac{15}{90}$.",
+      explanation:
+        "Using the formula: $\\frac{16-1}{90} = \\frac{15}{90} = \\frac{1}{6}$.\nOr: let $x = 0.1\\overline{6}$. $10x = 1.\\overline{6}$. $100x = 16.\\overline{6}$. $100x-10x = 15$. $90x = 15$. $x = 1/6$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c15d",
+      prompt:
+        "Arrange in ascending order: $\\dfrac{3}{7}$, $\\dfrac{5}{11}$, $\\dfrac{4}{9}$.",
+      format: "text",
+      answer: "3/7, 4/9, 5/11",
+      acceptedAnswers: ["3/7, 4/9, 5/11", "3/7 < 4/9 < 5/11"],
+      hint: "Cross-multiply pairs: $3/7$ vs $4/9$: $27$ vs $28$. $4/9$ vs $5/11$: $44$ vs $45$.",
+      explanation:
+        "$3/7$ vs $4/9$: $3 \\times 9 = 27 < 4 \\times 7 = 28$, so $3/7 < 4/9$.\n$4/9$ vs $5/11$: $4 \\times 11 = 44 < 5 \\times 9 = 45$, so $4/9 < 5/11$.\nOrder: $3/7 < 4/9 < 5/11$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c15e",
+      prompt:
+        "What is the 100th digit after the decimal point in the decimal expansion of $1/7$?",
+      format: "numeric",
+      answer: "8",
+      hint: "$1/7 = 0.\\overline{142857}$ (period 6). $100 \\div 6 = 16$ remainder $4$. The 4th digit in the cycle is...",
+      explanation:
+        "Cycle: 1, 4, 2, 8, 5, 7 (period 6). $100 = 16 \\times 6 + 4$. The 4th digit in the cycle is $8$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c15f",
+      prompt:
+        "Find a fraction between $\\dfrac{3}{5}$ and $\\dfrac{2}{3}$ using the mediant. What is it?",
+      format: "text",
+      answer: "5/8",
+      acceptedAnswers: ["5/8"],
+      hint: "Mediant of $a/b$ and $c/d$ is $(a+c)/(b+d)$.",
+      explanation:
+        "Mediant $= \\frac{3+2}{5+3} = \\frac{5}{8}$.\nCheck: $3/5 = 0.6$, $5/8 = 0.625$, $2/3 = 0.667$. Indeed $3/5 < 5/8 < 2/3$ ✓.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 6: Percentage shortcuts
@@ -362,6 +642,75 @@ export const numberSenseChapter: Chapter = {
       hint: "Original $\\times 1.30 = 520$. Solve for the original.",
       explanation:
         "Original $= 520 / 1.30 = 400$. Check: $400 \\times 1.30 = 520$ ✓.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More percentage patterns:**\n\n**Successive increases/decreases — the multiplier chain:**\n\nIncrease by $a\\%$ then $b\\%$: multiplier $= (1+a/100)(1+b/100)$.\nOverall percentage change $= [(1+a/100)(1+b/100) - 1] \\times 100\\%$.\n\nExample: +10% then +20%: $1.1 \\times 1.2 = 1.32$, i.e. 32% increase (NOT 30%).\n\n**Population / compound growth:**\n$$\\text{Final} = \\text{Initial} \\times \\left(1 + \\frac{r}{100}\\right)^n$$\nwhere $r$ is the rate per period and $n$ is the number of periods.\n\n**Profit and loss:**\n$$\\text{Profit}\\% = \\frac{\\text{SP} - \\text{CP}}{\\text{CP}} \\times 100$$\n$$\\text{Loss}\\% = \\frac{\\text{CP} - \\text{SP}}{\\text{CP}} \\times 100$$\nAlways on **Cost Price** (CP), not Selling Price (SP)!\n\n**The 'x% increase then x% decrease' net loss:**\n$$\\text{Net change} = -\\left(\\frac{x}{10}\\right)^2 \\%$$\nSo +10% then -10% gives $-(10/10)^2 = -1\\%$ net. +20% then -20% gives $-4\\%$.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Competition percentage tricks",
+      content:
+        "• **Symmetry:** $17\\%$ of $50 = 50\\%$ of $17 = 8.5$. Always swap if one number is easier to take a percentage of.\n• **Fractions as percentages:** $1/8 = 12.5\\%$, $1/6 \\approx 16.7\\%$, $1/5 = 20\\%$, $3/8 = 37.5\\%$, $5/8 = 62.5\\%$.\n• **Quick 33⅓%:** Divide by 3. Quick 66⅔%: multiply by 2 then divide by 3.\n• **Percentage of a percentage:** '25% of 40% of $N$' = $0.25 \\times 0.40 \\times N = 10\\%$ of $N$. Multiply decimals first!",
+    },
+    {
+      kind: "check",
+      id: "ns-c18b",
+      prompt:
+        "A price is increased by 10% and then decreased by 10%. What is the net percentage change?",
+      format: "text",
+      answer: "-1%",
+      acceptedAnswers: ["-1%", "-1", "1% decrease"],
+      hint: "Multiplier: $1.1 \\times 0.9 = ?$. Net change $= (\\text{result} - 1) \\times 100$.",
+      explanation:
+        "$1.1 \\times 0.9 = 0.99$. Net change $= 0.99 - 1 = -0.01 = -1\\%$.\n(A 1% decrease — you can never get back to where you started!)",
+    },
+    {
+      kind: "check",
+      id: "ns-c18c",
+      prompt:
+        "A shopkeeper marks goods 40% above cost price, then gives a 25% discount. What is his profit percentage?",
+      format: "numeric",
+      answer: "5",
+      hint: "Let CP $= 100$. Marked price $= 140$. SP after discount $= 140 \\times 0.75 = ?$. Profit% $= (\\text{SP}-100)/100 \\times 100$.",
+      explanation:
+        "CP $= 100$. MP $= 140$. SP $= 140 \\times 0.75 = 105$.\nProfit $= 105 - 100 = 5$. Profit% $= 5\\%$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c18d",
+      prompt:
+        "A population grows by 20% each year. After 3 years it is 8640. What was the original population?",
+      format: "numeric",
+      answer: "5000",
+      hint: "Original $\\times (1.2)^3 = 8640$. $(1.2)^3 = 1.728$.",
+      explanation:
+        "$(1.2)^3 = 1.728$. Original $= 8640/1.728 = 5000$.\nCheck: $5000 \\times 1.2 = 6000 \\times 1.2 = 7200 \\times 1.2 = 8640$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "ns-c18e",
+      prompt:
+        "Using the symmetry rule, compute 4% of 75 mentally.",
+      format: "numeric",
+      answer: "3",
+      hint: "$4\\%$ of $75 = 75\\%$ of $4$.",
+      explanation:
+        "By symmetry: $4\\%$ of $75 = 75\\%$ of $4 = 3$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c18f",
+      prompt:
+        "Two successive discounts of 20% and 30% are equivalent to a single discount of what percentage?",
+      format: "numeric",
+      answer: "44",
+      hint: "Overall multiplier: $0.8 \\times 0.7 = ?$. Equivalent single discount $= (1 - \\text{multiplier}) \\times 100$.",
+      explanation:
+        "$0.8 \\times 0.7 = 0.56$. Equivalent discount $= 1 - 0.56 = 0.44 = 44\\%$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -433,6 +782,65 @@ export const numberSenseChapter: Chapter = {
       explanation:
         "$\\frac{1}{(2k-1)(2k+1)} = \\frac{1}{2}\\left(\\frac{1}{2k-1} - \\frac{1}{2k+1}\\right)$. Summing from $k=1$ to $k=50$:\n$\\frac{1}{2}\\left(1 - \\frac{1}{101}\\right) = \\frac{1}{2} \\cdot \\frac{100}{101} = \\frac{50}{101}$.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More telescoping and pairing patterns:**\n\n**Factorial telescoping:** $k \\cdot k! = (k+1)! - k!$.\nSo: $1 \\cdot 1! + 2 \\cdot 2! + 3 \\cdot 3! + \\cdots + n \\cdot n! = (n+1)! - 1$.\n\n**Square-root telescoping:** After rationalising:\n$$\\frac{1}{\\sqrt{k}+\\sqrt{k+1}} = \\sqrt{k+1}-\\sqrt{k}$$\nSo: $\\sum_{k=1}^{n} \\frac{1}{\\sqrt{k}+\\sqrt{k+1}} = \\sqrt{n+1}-1$.\n\n**Arithmetic series (general):**\n$$a + (a+d) + (a+2d) + \\cdots + (a+(n-1)d) = \\frac{n}{2}(2a+(n-1)d) = \\frac{n(\\text{first}+\\text{last})}{2}$$\n\n**The 'add-and-subtract' pairing:**\n$$1 - 2 + 3 - 4 + 5 - 6 + \\cdots + (2n-1) - 2n = -n$$\nPair consecutive terms: $(1-2)+(3-4)+\\cdots = (-1)\\times n = -n$.\n\n**Sums of squares as telescopes:**\n$$k^2 = \\frac{k(k+1)(k+2) - (k-1)k(k+1)}{3} + k$$\n(Less obvious, but useful for deriving the $n^2$ formula.)",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Useful decompositions to memorise",
+      content:
+        "$$\\frac{1}{k(k+1)} = \\frac{1}{k}-\\frac{1}{k+1}$$\n$$\\frac{1}{k(k+1)(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k(k+1)}-\\frac{1}{(k+1)(k+2)}\\right)$$\n$$k \\cdot k! = (k+1)!-k!$$\n$$\\frac{1}{\\sqrt{k}+\\sqrt{k+1}} = \\sqrt{k+1}-\\sqrt{k}$$\n$$\\frac{1}{k^2-1} = \\frac{1}{2}\\left(\\frac{1}{k-1}-\\frac{1}{k+1}\\right)$$",
+    },
+    {
+      kind: "check",
+      id: "ns-c22b",
+      prompt:
+        "Evaluate: $1 \\cdot 1! + 2 \\cdot 2! + 3 \\cdot 3! + \\cdots + 10 \\cdot 10!$.",
+      format: "text",
+      answer: "11! - 1",
+      acceptedAnswers: ["11!-1", "11! - 1", "39916799"],
+      hint: "Use $k \\cdot k! = (k+1)! - k!$. The sum telescopes!",
+      explanation:
+        "$\\sum_{k=1}^{10} [(k+1)!-k!] = (2!-1!)+(3!-2!)+\\cdots+(11!-10!) = 11!-1! = 11!-1 = 39916799$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c22c",
+      prompt:
+        "Evaluate: $\\dfrac{1}{\\sqrt{1}+\\sqrt{2}} + \\dfrac{1}{\\sqrt{2}+\\sqrt{3}} + \\cdots + \\dfrac{1}{\\sqrt{24}+\\sqrt{25}}$.",
+      format: "numeric",
+      answer: "4",
+      hint: "Rationalise each term: $\\frac{1}{\\sqrt{k}+\\sqrt{k+1}} = \\sqrt{k+1}-\\sqrt{k}$. Telescopes!",
+      explanation:
+        "$\\sum_{k=1}^{24}(\\sqrt{k+1}-\\sqrt{k}) = \\sqrt{25}-\\sqrt{1} = 5-1 = 4$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c22d",
+      prompt:
+        "Find: $1 - 2 + 3 - 4 + 5 - 6 + \\cdots + 99 - 100$.",
+      format: "numeric",
+      answer: "-50",
+      hint: "Pair consecutive terms: $(1-2)+(3-4)+\\cdots+(99-100)$. Each pair $= -1$. How many pairs?",
+      explanation:
+        "50 pairs, each equal to $-1$. Sum $= 50 \\times (-1) = -50$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c22e",
+      prompt:
+        "Evaluate: $\\dfrac{1}{1 \\times 2 \\times 3} + \\dfrac{1}{2 \\times 3 \\times 4} + \\dfrac{1}{3 \\times 4 \\times 5} + \\cdots + \\dfrac{1}{8 \\times 9 \\times 10}$.",
+      format: "text",
+      answer: "11/45",
+      acceptedAnswers: ["11/45"],
+      hint: "$\\frac{1}{k(k+1)(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k(k+1)}-\\frac{1}{(k+1)(k+2)}\\right)$. Telescopes!",
+      explanation:
+        "$\\frac{1}{2}\\sum_{k=1}^{8}\\left(\\frac{1}{k(k+1)}-\\frac{1}{(k+1)(k+2)}\\right) = \\frac{1}{2}\\left(\\frac{1}{1\\cdot2}-\\frac{1}{9\\cdot10}\\right) = \\frac{1}{2}\\left(\\frac{1}{2}-\\frac{1}{90}\\right) = \\frac{1}{2}\\cdot\\frac{44}{90} = \\frac{22}{90} = \\frac{11}{45}$.\n\nHmm let me recheck: $\\frac{1}{2}-\\frac{1}{90} = \\frac{45-1}{90}=\\frac{44}{90}$. Half of that: $\\frac{22}{90}=\\frac{11}{45}$.\n\nWait: the terms go from $k=1$ to $k=8$: $\\frac{1}{2}(\\frac{1}{1\\cdot2}-\\frac{1}{9\\cdot10}) = \\frac{1}{2}(\\frac{1}{2}-\\frac{1}{90}) = \\frac{1}{2}\\cdot\\frac{44}{90} = \\frac{44}{180} = \\frac{11}{45}$. Answer: $11/45$.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 8: Competition patterns & estimation
@@ -492,6 +900,75 @@ export const numberSenseChapter: Chapter = {
       hint: "2025 is not a leap year, so it has 365 days. $365 = 52 \\times 7 + 1$, so the day advances by 1.",
       explanation:
         "2025 has 365 days (not a leap year). $365 \\div 7 = 52$ remainder 1. So January 1st, 2026 is one day after Wednesday, which is Thursday.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More competition patterns:**\n\n**The 'work backwards' strategy:**\nIf a problem asks 'what was the original?' after a series of operations, reverse each step:\n- Undo 'add 5' → subtract 5\n- Undo 'multiply by 3' → divide by 3\n- Undo 'square' → take square root\n\n**Clock problems:**\nThe minute hand moves $360°/60 = 6°$ per minute.\nThe hour hand moves $360°/12 = 0.5°$ per minute.\nAt time $h:m$, the angle between hands $= |30h - 5.5m|°$ (or $360°$ minus that if $> 180°$).\n\n**Units digit of large sums:**\nTo find the last digit of $17^{23} + 23^{17}$: find last digit of each separately, then add (mod 10).\n\n**Pigeonhole reasoning in number sense:**\nAmong any 5 integers, at least two have the same remainder when divided by 4.\nAmong any 10 integers, at least two have the same last digit.\n\n**The 'sandwich' estimation:**\nTo estimate $\\sqrt{200}$: since $14^2 = 196$ and $15^2 = 225$, we get $14 < \\sqrt{200} < 15$. Since 200 is much closer to 196: $\\sqrt{200} \\approx 14.1$.",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Pattern recognition checklist",
+      content:
+        "When stuck on a competition problem, try:\n1. **Small cases:** Compute for $n = 1, 2, 3$ and look for a pattern\n2. **Factor the expression:** can it be written as a product or difference?\n3. **Modular arithmetic:** does the problem only care about remainders?\n4. **Symmetry:** can you pair terms from both ends?\n5. **Work backwards:** start from the answer and reverse the operations\n6. **Units digit:** often eliminates 3-4 MCQ options instantly",
+    },
+    {
+      kind: "check",
+      id: "ns-c25b",
+      prompt:
+        "What is the angle between the hour and minute hands of a clock at 3:20?",
+      format: "numeric",
+      answer: "20",
+      hint: "Angle $= |30h - 5.5m|° = |30(3) - 5.5(20)|°$.",
+      explanation:
+        "$|30 \\times 3 - 5.5 \\times 20| = |90 - 110| = 20°$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c25c",
+      prompt:
+        "Find the last digit of $7^{23} + 3^{17}$.",
+      format: "numeric",
+      answer: "6",
+      hint: "Last digit of $7^{23}$: cycle 7,9,3,1 (period 4). $23 \\bmod 4 = 3$, 3rd entry = 3. Last digit of $3^{17}$: cycle 3,9,7,1. $17 \\bmod 4 = 1$, 1st entry = 3.",
+      explanation:
+        "Last digit of $7^{23}$: $23 \\bmod 4 = 3$. Cycle of 7: 7,9,3,1. 3rd entry $= 3$.\nLast digit of $3^{17}$: $17 \\bmod 4 = 1$. Cycle of 3: 3,9,7,1. 1st entry $= 3$.\nSum: $3 + 3 = 6$.",
+    },
+    {
+      kind: "check",
+      id: "ns-c25d",
+      prompt:
+        "I think of a number, double it, add 7, multiply by 3, subtract 9, and get 42. What was my number?",
+      format: "numeric",
+      answer: "5",
+      hint: "Work backwards: $42 \\to$ add 9 $\\to 51 \\to$ divide by 3 $\\to 17 \\to$ subtract 7 $\\to 10 \\to$ halve $\\to ?$.",
+      explanation:
+        "Reverse: $42 + 9 = 51$. $51/3 = 17$. $17-7 = 10$. $10/2 = 5$.\nCheck: $5 \\to 10 \\to 17 \\to 51 \\to 42$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "ns-c25e",
+      prompt:
+        "Without calculating, which of these is closest to $\\sqrt{8000}$?\n(a) 80 (b) 85 (c) 89 (d) 90 (e) 95",
+      format: "text",
+      answer: "c",
+      acceptedAnswers: ["c", "C", "89"],
+      hint: "$89^2 = (90-1)^2 = 8100-180+1 = 7921$. $90^2 = 8100$. Since 8000 is between 7921 and 8100, $\\sqrt{8000}$ is between 89 and 90.",
+      explanation:
+        "$89^2 = 7921$ and $90^2 = 8100$. Since $7921 < 8000 < 8100$: $89 < \\sqrt{8000} < 90$.\n$8000 - 7921 = 79$ and $8100 - 8000 = 100$. Since 8000 is closer to 7921, $\\sqrt{8000} \\approx 89.4$.\nClosest option: (c) 89.",
+    },
+    {
+      kind: "check",
+      id: "ns-c25f",
+      prompt:
+        "The number $2025$ has a special property: $2025 = 45^2 = (20+25)^2$. The number splits into two parts that sum to its square root! Find the next four-digit number with this property.",
+      format: "numeric",
+      answer: "3025",
+      hint: "We need $\\overline{ab\\;cd}$ where $\\overline{ab} + \\overline{cd} = \\sqrt{\\overline{abcd}}$. Try perfect squares: $55^2 = 3025$. Does $30+25 = 55$?",
+      explanation:
+        "$55^2 = 3025$. Split: $30 + 25 = 55 = \\sqrt{3025}$ ✓.\nSo 3025 is the next four-digit 'Kaprekar-like' number after 2025.\n(These are related to Kaprekar numbers.)",
     },
   ],
 

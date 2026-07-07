@@ -45,7 +45,7 @@ export function Figure({ diagram }: { diagram: Diagram }) {
   return (
     <figure className="my-5 flex flex-col items-center">
       <div
-        className="max-w-full overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"
+        className="max-w-full overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900 [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-w-md"
         role="img"
         aria-label={diagram.alt}
         dangerouslySetInnerHTML={{ __html: diagram.svg }}

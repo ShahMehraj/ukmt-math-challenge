@@ -3,6 +3,7 @@ import { foundationsChapter } from "./foundations";
 import { setsRealsChapter } from "./sets-reals";
 import { numberTheoryFoundations } from "./number-theory";
 import { countingChapter } from "./counting";
+import { combinatoricsChapter } from "./combinatorics";
 import { ratioChapter } from "./ratio";
 import { algebraChapter } from "./algebra";
 import { numberSenseChapter } from "./number-sense";
@@ -17,6 +18,7 @@ export const FULL_CHAPTERS: Chapter[] = [
   numberTheoryFoundations,
   ratioChapter,
   sequencesChapter,
+  combinatoricsChapter,
   countingChapter,
 ];
 
@@ -128,6 +130,17 @@ export const CURRICULUM: PlannedChapter[] = [
     "Probability (multi-stage)",
     "Expected frequency",
     "Pigeonhole principle",
+  ]),
+  toPlanned(combinatoricsChapter, [
+    "Fundamental principles of counting",
+    "Factorials & properties",
+    "Permutations",
+    "Permutations with restrictions",
+    "Combinations",
+    "Properties of combinations",
+    "Division & distribution",
+    "Derangements",
+    "Competition techniques",
   ]),
   {
     id: "ch-angles-1",

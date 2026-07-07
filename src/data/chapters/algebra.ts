@@ -1559,6 +1559,157 @@ export const algebraChapter: Chapter = {
       explanation:
         "Let $u = 3^x$: $u^2 - 4u + 3 = 0$, so $(u-1)(u-3) = 0$, giving $u = 1$ or $u = 3$.\n\n$3^x = 1 \\Rightarrow x = 0$. $3^x = 3 \\Rightarrow x = 1$.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced logarithm patterns:**\n\n**Pattern: The reciprocal-log identity**\n$$\\frac{1}{\\log_a bc + 1} + \\frac{1}{\\log_b ac + 1} + \\frac{1}{\\log_c ab + 1} = 1$$\nProof: $\\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a abc$. So each term $= \\frac{1}{\\log_a abc} = \\log_{abc} a$. Sum $= \\log_{abc} a + \\log_{abc} b + \\log_{abc} c = \\log_{abc}(abc) = 1$.\n\n**Pattern: The symmetric exchange identity**\n$$x^{\\log_a y} = y^{\\log_a x}$$\n\n**Pattern: Nested logs**\n\nSolve $\\log_{10}[\\log_2(\\log_3 9)] = x$.\n$\\log_3 9 = 2$. $\\log_2 2 = 1$. $\\log_{10} 1 = 0$. So $x = 0$.\n\n**Pattern: If $\\log x/(b-c) = \\log y/(c-a) = \\log z/(a-b)$, then $xyz = 1$.**\nLet each $= k$. Sum: $\\log x + \\log y + \\log z = k[(b-c)+(c-a)+(a-b)] = 0$. So $xyz = 1$.",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Advanced base-change formulas",
+      content:
+        "**Switching base and argument:** $\\log_a b = \\frac{1}{\\log_b a}$\n\n**Power in base:** $\\log_{a^n} b = \\frac{1}{n}\\log_a b$\n\n**Combined:** $\\log_{a^n} b^m = \\frac{m}{n}\\log_a b$\n\n**Chain rule:** $\\log_a b \\cdot \\log_b c \\cdot \\log_c d = \\log_a d$",
+    },
+    {
+      kind: "check",
+      id: "alg-c22j",
+      prompt:
+        "If $\\log_{10} 2 = 0.301$ and $\\log_{10} 5 = 0.699$, find $\\log_{10}\\sqrt[3]{40}$.",
+      format: "text",
+      answer: "0.534",
+      acceptedAnswers: ["0.534", "0.5340"],
+      hint: "$40 = 2^3 \\times 5$. So $\\log 40 = 3(0.301) + 0.699 = 1.602$. Then divide by 3.",
+      explanation:
+        "$\\log_{10} 40 = 3(0.301)+0.699 = 1.602$. $\\log_{10}\\sqrt[3]{40} = 1.602/3 = 0.534$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22k",
+      prompt:
+        "Evaluate: $\\dfrac{1}{\\log_2 36} + \\dfrac{1}{\\log_3 36}$.",
+      format: "text",
+      answer: "1/2",
+      acceptedAnswers: ["1/2", "0.5"],
+      hint: "$\\frac{1}{\\log_a b} = \\log_b a$. So sum $= \\log_{36} 2 + \\log_{36} 3 = \\log_{36} 6$.",
+      explanation:
+        "$\\log_{36} 2 + \\log_{36} 3 = \\log_{36} 6 = \\log_{36} 36^{1/2} = 1/2$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22l",
+      prompt:
+        "Find: $\\log_3 2 \\cdot \\log_4 3 \\cdot \\log_5 4 \\cdots \\log_{16} 15 = \\dfrac{1}{k}$. What is $k$?",
+      format: "numeric",
+      answer: "4",
+      hint: "Chain rule telescopes: the product $= \\log_{16} 2 = \\frac{1}{4}$.",
+      explanation:
+        "By chain rule: product $= \\log_{16} 2 = \\log_{2^4} 2 = 1/4$. So $k = 4$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22m",
+      prompt:
+        "If $\\log_x 6 = m$ and $\\log_x 3 = n$, find $\\log_x(x/2)$ in terms of $m$ and $n$.",
+      format: "text",
+      answer: "1-m+n",
+      acceptedAnswers: ["1-m+n", "1 - m + n", "n-m+1"],
+      hint: "$\\log_x 2 = \\log_x(6/3) = m - n$. Then $\\log_x(x/2) = 1 - \\log_x 2$.",
+      explanation:
+        "$\\log_x 2 = m - n$. $\\log_x(x/2) = 1 - (m-n) = 1-m+n$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22n",
+      prompt:
+        "If $\\log_{10}[\\log_2(\\log_3 x)] = 0$, find $x$.",
+      format: "numeric",
+      answer: "9",
+      hint: "Peel from outside: $\\log_{10}(\\cdot) = 0 \\implies$ argument $= 1$. Then $\\log_2(\\cdot) = 1 \\implies$ argument $= 2$.",
+      explanation:
+        "$\\log_2(\\log_3 x) = 1 \\implies \\log_3 x = 2 \\implies x = 9$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22o",
+      prompt:
+        "Show $\\frac{1}{\\log_a bc + 1} + \\frac{1}{\\log_b ca + 1} + \\frac{1}{\\log_c ab + 1} = 1$. What is the key step?",
+      format: "text",
+      answer: "log_a bc + 1 = log_a abc",
+      acceptedAnswers: ["log_a bc + 1 = log_a abc", "add log_a a to get log_a(abc)", "each term = log_abc of a"],
+      hint: "$\\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a(abc)$.",
+      explanation:
+        "Each term becomes $\\log_{abc} a$, $\\log_{abc} b$, $\\log_{abc} c$. Sum $= \\log_{abc}(abc) = 1$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22p",
+      prompt:
+        "If $\\log_3 2$, $\\log_3(2^x - 5)$, $\\log_3(2^x - 7/2)$ are in A.P., find $x$.",
+      format: "numeric",
+      answer: "3",
+      hint: "AP condition: $2\\log_3(2^x-5) = \\log_3 2 + \\log_3(2^x-7/2)$. Let $t = 2^x$.",
+      explanation:
+        "$(2^x-5)^2 = 2(2^x-7/2) = 2^{x+1}-7$. Let $t=2^x$: $t^2-12t+32=0$, $(t-4)(t-8)=0$.\n$t=4$: $\\log_3(-1)$ undefined ✗. $t=8$: $x=3$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22q",
+      prompt:
+        "If $\\log_4 2 + \\log_4 4 + \\log_4 x + \\log_4 16 = 6$, find $x$.",
+      format: "numeric",
+      answer: "32",
+      hint: "$\\log_4 2 = 1/2$, $\\log_4 4 = 1$, $\\log_4 16 = 2$. So $1/2+1+\\log_4 x+2 = 6$.",
+      explanation:
+        "$\\log_4 2 + \\log_4 4 + \\log_4 x + \\log_4 16 = 1/2+1+\\log_4 x+2 = 7/2+\\log_4 x = 6$.\n$\\log_4 x = 5/2$. So $x = 4^{5/2} = (2^2)^{5/2} = 2^5 = 32$... Wait: $4^{5/2} = (\\sqrt{4})^5 = 2^5 = 32$. But $7/2 + \\log_4 x = 6$ gives $\\log_4 x = 5/2$. $x = 4^{5/2} = 32$.\n\nHmm let me recheck: $1/2 + 1 + 2 = 3.5 = 7/2$. $7/2 + \\log_4 x = 6$, $\\log_4 x = 5/2$, $x = 4^{5/2} = 32$. Answer: 32.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22r",
+      prompt:
+        "Simplify: $\\log_a b \\cdot \\log_b c \\cdot \\log_c a$.",
+      format: "numeric",
+      answer: "1",
+      hint: "Use the chain rule: $\\log_a b \\cdot \\log_b c = \\log_a c$. Then multiply by $\\log_c a$.",
+      explanation:
+        "$\\log_a b \\cdot \\log_b c \\cdot \\log_c a = \\log_a c \\cdot \\log_c a = 1$.\n(Since $\\log_a c \\cdot \\log_c a = 1$ always, by the reciprocal rule.)",
+    },
+    {
+      kind: "check",
+      id: "alg-c22s",
+      prompt:
+        "If $x = \\log_a bc$, $y = \\log_b ca$, $z = \\log_c ab$, prove that $\\dfrac{1}{x+1} + \\dfrac{1}{y+1} + \\dfrac{1}{z+1} = 1$. What does $x+1$ simplify to?",
+      format: "text",
+      answer: "log_a abc",
+      acceptedAnswers: ["log_a abc", "log_a(abc)", "log_a abc"],
+      hint: "$x + 1 = \\log_a bc + \\log_a a = \\log_a(abc)$.",
+      explanation:
+        "$x+1 = \\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a(abc)$.\nSo $\\frac{1}{x+1} = \\frac{1}{\\log_a(abc)} = \\log_{abc} a$.\nSimilarly: $\\frac{1}{y+1} = \\log_{abc} b$, $\\frac{1}{z+1} = \\log_{abc} c$.\nSum $= \\log_{abc}(abc) = 1$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22t",
+      prompt:
+        "If $2^x \\cdot 3^{x+4} = 7^x$, express $x$ in terms of logarithms. What is $x = \\dfrac{4\\log 3}{\\log 7 - \\log 6}$? Verify this is correct (answer yes/no).",
+      format: "text",
+      answer: "yes",
+      acceptedAnswers: ["yes", "Yes", "YES"],
+      hint: "Take $\\log$ of both sides: $x\\log 2 + (x+4)\\log 3 = x\\log 7$. Expand and collect terms in $x$.",
+      explanation:
+        "$x\\log 2 + x\\log 3 + 4\\log 3 = x\\log 7$.\n$x(\\log 2 + \\log 3) + 4\\log 3 = x\\log 7$.\n$x\\log 6 + 4\\log 3 = x\\log 7$.\n$4\\log 3 = x(\\log 7 - \\log 6)$.\n$x = \\frac{4\\log 3}{\\log 7 - \\log 6}$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c22u",
+      prompt:
+        "Find the value of $\\dfrac{\\log_3 5 \\times \\log_{25} 27 \\times \\log_{49} 7}{\\log_{81} 3}$.",
+      format: "numeric",
+      answer: "3",
+      hint: "Convert everything to natural logs or use the formula $\\log_{a^n} b^m = \\frac{m}{n}\\log_a b$. $\\log_{25} 27 = \\log_{5^2} 3^3 = \\frac{3}{2}\\log_5 3$.",
+      explanation:
+        "$\\log_{25} 27 = \\log_{5^2} 3^3 = \\frac{3}{2}\\log_5 3 = \\frac{3}{2} \\cdot \\frac{1}{\\log_3 5}$.\n$\\log_{49} 7 = \\log_{7^2} 7 = 1/2$.\n$\\log_{81} 3 = \\log_{3^4} 3 = 1/4$.\n\nNumerator: $\\log_3 5 \\times \\frac{3}{2\\log_3 5} \\times \\frac{1}{2} = \\frac{3}{4}$.\nDenominator: $1/4$.\nResult: $\\frac{3/4}{1/4} = 3$.\n\nWait let me recompute: $\\log_3 5 \\times \\frac{3}{2}\\log_5 3 \\times \\frac{1}{2} = \\log_3 5 \\times \\frac{3}{2} \\times \\frac{1}{\\log_3 5} \\times \\frac{1}{2} = \\frac{3}{4}$.\nDivide by $\\log_{81}3 = 1/4$: $\\frac{3/4}{1/4} = 3$.\n\nHmm, answer is 3 not 6. Let me recheck $\\log_{25} 27$: $25 = 5^2$, $27 = 3^3$. $\\log_{5^2}3^3 = \\frac{3}{2}\\log_5 3$. And $\\log_5 3 = 1/\\log_3 5$. So numerator $= \\log_3 5 \\cdot \\frac{3}{2\\log_3 5} \\cdot \\frac{1}{2} = 3/4$. Divide by $1/4 = 3$. Answer: 3.",
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SECTION 9: Location of roots
@@ -1604,95 +1755,74 @@ export const algebraChapter: Chapter = {
       kind: "prose",
       heading: "",
       content:
-        "**Advanced logarithm patterns (from S.Chand / competition papers):**\n\n**Pattern: The reciprocal-log identity**\n$$\\frac{1}{\\log_a bc + 1} + \\frac{1}{\\log_b ac + 1} + \\frac{1}{\\log_c ab + 1} = 1$$\nProof: $\\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a abc$. So each term $= \\frac{1}{\\log_a abc} = \\log_{abc} a$. Sum $= \\log_{abc} a + \\log_{abc} b + \\log_{abc} c = \\log_{abc}(abc) = 1$.\n\n**Pattern: The symmetric exchange identity**\n$$x^{\\log_a y} = y^{\\log_a x}$$\nProof: Take $\\log_a$ of both sides: $\\log_a y \\cdot \\log_a x = \\log_a x \\cdot \\log_a y$ ✓.\n\n**Pattern: Nested logs**\n\nSolve $\\log_{10}[\\log_2(\\log_3 9)] = x$.\n$\\log_3 9 = 2$. $\\log_2 2 = 1$. $\\log_{10} 1 = 0$. So $x = 0$.\n\n**Pattern: If $\\log x/(b-c) = \\log y/(c-a) = \\log z/(a-b)$, then $xyz = 1$.**\nLet each $= k$. Then $\\log x = k(b-c)$, etc. Sum: $\\log x + \\log y + \\log z = k[(b-c)+(c-a)+(a-b)] = 0$. So $\\log(xyz) = 0$, i.e. $xyz = 1$.",
+        "**More location-of-roots scenarios:**\n\n**Scenario: Roots on either side of $k$ (one root $< k$, one root $> k$)**\n\nFor $f(x) = ax^2+bx+c$ with $a > 0$: one root is less than $k$ and the other greater than $k$ if and only if:\n$$f(k) < 0$$\nThat's it! No discriminant or vertex condition needed — if $f(k) < 0$, the parabola must cross the $x$-axis on both sides of $k$.\n\n**Scenario: Both roots in $[p, q]$**\n\nAll four conditions must hold simultaneously:\n$$\\Delta \\ge 0, \\quad f(p) \\ge 0, \\quad f(q) \\ge 0, \\quad p \\le -\\frac{b}{2a} \\le q$$\n\n**Scenario: Exactly one root in $(p, q)$**\n$$f(p) \\cdot f(q) < 0$$\n(If $f(p)$ and $f(q)$ have opposite signs, the continuous parabola must cross zero exactly once between them.)\n\n**Scenario: Both roots negative**\n$$\\Delta \\ge 0, \\quad \\alpha + \\beta < 0 \\;(-b/a < 0), \\quad \\alpha\\beta > 0 \\;(c/a > 0)$$\n\n**Scenario: Roots of opposite sign**\n$$\\alpha\\beta < 0 \\quad \\text{i.e.} \\quad c/a < 0$$\n(No need for $\\Delta$ or sum conditions — if the product is negative, the roots are automatically real and of opposite sign.)",
     },
     {
       kind: "callout",
-      variant: "definition",
-      title: "Advanced base-change formulas",
+      variant: "tip",
+      title: "The visual approach",
       content:
-        "**Switching base and argument:**\n$$\\log_a b = \\frac{1}{\\log_b a}$$\n\n**Power in base:**\n$$\\log_{a^n} b = \\frac{1}{n}\\log_a b$$\n\n**Power in argument:**\n$$\\log_a b^m = m \\log_a b$$\n\n**Combined:**\n$$\\log_{a^n} b^m = \\frac{m}{n}\\log_a b$$\n\n**Chain rule:**\n$$\\log_a b \\cdot \\log_b c \\cdot \\log_c d = \\log_a d$$\n\n**Sum identity (with $\\log_a m = x$):**\n$$\\log_{a^n} m = \\frac{x}{n}, \\quad \\text{so } \\log_a m + \\log_{a^2} m + \\log_{a^3} m + \\cdots + \\log_{a^n} m = x\\left(1 + \\frac{1}{2} + \\cdots + \\frac{1}{n}\\right)$$",
+        "Always sketch the parabola! For $a > 0$:\n\n- The parabola opens upward (U-shaped)\n- $f(k) < 0$ means the point $(k, f(k))$ is BELOW the x-axis → $k$ is between the roots\n- $f(k) > 0$ means $(k, f(k))$ is ABOVE → $k$ is outside both roots\n- The vertex is the lowest point: $x = -b/(2a)$\n\nDraw the scenario, mark where you want the roots, then translate into algebraic conditions.",
     },
     {
       kind: "check",
-      id: "alg-c22j",
+      id: "alg-c22h2",
       prompt:
-        "If $\\log_{10} 2 = 0.301$ and $\\log_{10} 5 = 0.699$, find $\\log_{10}\\sqrt[3]{40}$.",
+        "Find the values of $a$ for which $x = 2$ lies between the roots of $x^2 + 2ax + a + 6 = 0$.",
       format: "text",
-      answer: "0.534",
-      acceptedAnswers: ["0.534", "0.5340"],
-      hint: "$40 = 2^3 \\times 5$. So $\\log 40 = 3(0.301) + 0.699 = 1.602$. Then $\\log\\sqrt[3]{40} = ?$.",
+      answer: "a < -2",
+      acceptedAnswers: ["a<-2", "a < -2"],
+      hint: "For $k=2$ between the roots of an upward parabola: $f(2) < 0$.",
       explanation:
-        "$\\log_{10} 40 = \\log(2^3 \\times 5) = 3\\log 2 + \\log 5 = 3(0.301)+0.699 = 0.903+0.699 = 1.602$.\n$\\log_{10}\\sqrt[3]{40} = \\frac{1}{3}\\log 40 = \\frac{1.602}{3} = 0.534$.",
+        "$f(2) = 4+4a+a+6 = 5a+10 < 0 \\implies a < -2$.\n(The discriminant is automatically positive when $f(2) < 0$, so no separate check needed.)",
     },
     {
       kind: "check",
-      id: "alg-c22k",
+      id: "alg-c22h3",
       prompt:
-        "Evaluate: $\\dfrac{1}{\\log_2 36} + \\dfrac{1}{\\log_3 36}$.",
+        "Find the range of $k$ for which $x^2 - 4x + k = 0$ has both roots in the interval $(0, 5)$.",
       format: "text",
-      answer: "1/2",
-      acceptedAnswers: ["1/2", "0.5"],
-      hint: "Use $\\frac{1}{\\log_a b} = \\log_b a$. So the sum $= \\log_{36} 2 + \\log_{36} 3 = \\log_{36}(2 \\times 3) = \\log_{36} 6$.",
+      answer: "0 < k <= 4",
+      acceptedAnswers: ["0<k<=4", "0 < k <= 4", "0 < k ≤ 4"],
+      hint: "Need: (1) $\\Delta \\ge 0$: $16-4k \\ge 0$. (2) $f(0) > 0$: $k > 0$. (3) $f(5) > 0$: $25-20+k > 0$. (4) Vertex in $(0,5)$: $0 < 2 < 5$.",
       explanation:
-        "$\\frac{1}{\\log_2 36} + \\frac{1}{\\log_3 36} = \\log_{36} 2 + \\log_{36} 3 = \\log_{36} 6$.\nSince $36 = 6^2$: $\\log_{36} 6 = 1/2$.",
+        "(1) $\\Delta \\ge 0$: $k \\le 4$.\n(2) $f(0) = k > 0$ ✓.\n(3) $f(5) = 25-20+k = 5+k > 0$ ✓ (always since $k > 0$).\n(4) Vertex at $x = 2 \\in (0,5)$ ✓.\n\nCombining: $0 < k \\le 4$.",
     },
     {
       kind: "check",
-      id: "alg-c22l",
+      id: "alg-c22h4",
       prompt:
-        "Prove that $\\log_3 2 \\cdot \\log_4 3 \\cdot \\log_5 4 \\cdots \\log_{16} 15 = \\dfrac{1}{k}$. Find $k$.",
-      format: "numeric",
-      answer: "4",
-      hint: "This is a telescoping product using the chain rule: $\\log_a b \\cdot \\log_b c = \\log_a c$.",
-      explanation:
-        "By chain rule: $\\log_3 2 \\cdot \\log_4 3 \\cdot \\log_5 4 \\cdots \\log_{16} 15 = \\log_{16} 2$.\n$\\log_{16} 2 = \\log_{2^4} 2 = \\frac{1}{4}$. So $k = 4$.",
-    },
-    {
-      kind: "check",
-      id: "alg-c22m",
-      prompt:
-        "If $\\log_x 6 = m$ and $\\log_x 3 = n$, what is $\\log_x(x/2)$ in terms of $m$ and $n$?",
+        "For what values of $p$ does $x^2 - (p+1)x + p^2 + p - 8 = 0$ have one root greater than 2 and the other less than 2?",
       format: "text",
-      answer: "1-m+n",
-      acceptedAnswers: ["1-m+n", "1 - m + n", "n-m+1"],
-      hint: "$x/2 = x \\cdot (1/2)$. $\\log_x(x/2) = 1 + \\log_x(1/2) = 1 - \\log_x 2$. And $\\log_x 2 = \\log_x 6 - \\log_x 3 = m - n$.",
+      answer: "-2 < p < 3",
+      acceptedAnswers: ["-2<p<3", "-2 < p < 3"],
+      hint: "One root on each side of 2 means $f(2) < 0$.",
       explanation:
-        "$\\log_x 2 = \\log_x(6/3) = \\log_x 6 - \\log_x 3 = m - n$.\n$\\log_x(x/2) = \\log_x x - \\log_x 2 = 1 - (m-n) = 1-m+n$.",
+        "$f(2) = 4 - 2(p+1) + p^2+p-8 = 4-2p-2+p^2+p-8 = p^2-p-6 < 0$.\n$(p-3)(p+2) < 0 \\implies -2 < p < 3$.\n\nWait: $(p-3)(p+2) < 0$ gives $-2 < p < 3$. Let me verify the computation:\n$f(2) = 4 - (p+1)(2) + p^2+p-8 = 4-2p-2+p^2+p-8 = p^2-p-6$.\n$p^2-p-6 < 0$, $(p-3)(p+2) < 0$, so $-2 < p < 3$.",
     },
     {
       kind: "check",
-      id: "alg-c22n",
+      id: "alg-c22h5",
       prompt:
-        "If $\\log_{10}[\\log_2(\\log_3 x)] = 0$, find $x$.",
-      format: "numeric",
-      answer: "9",
-      hint: "Work from outside in: $\\log_{10}(\\cdot) = 0$ means the argument $= 10^0 = 1$. Then $\\log_2(\\cdot) = 1$ means...",
-      explanation:
-        "$\\log_{10}[\\log_2(\\log_3 x)] = 0 \\implies \\log_2(\\log_3 x) = 10^0 = 1$.\n$\\log_2(\\log_3 x) = 1 \\implies \\log_3 x = 2^1 = 2$.\n$\\log_3 x = 2 \\implies x = 3^2 = 9$.",
-    },
-    {
-      kind: "check",
-      id: "alg-c22o",
-      prompt:
-        "Show that $\\dfrac{1}{\\log_a bc + 1} + \\dfrac{1}{\\log_b ca + 1} + \\dfrac{1}{\\log_c ab + 1} = 1$. What is the key step?",
+        "Find the values of $a$ for which $2x^2 - 2(2a+1)x + a(a+1) = 0$ has roots of opposite sign.",
       format: "text",
-      answer: "log_a bc + 1 = log_a abc",
-      acceptedAnswers: ["log_a bc + 1 = log_a abc", "add log_a a to get log_a(abc)", "each term = log_abc of a"],
-      hint: "Note $\\log_a bc + 1 = \\log_a bc + \\log_a a = \\log_a(abc)$. So $\\frac{1}{\\log_a(abc)} = \\log_{abc} a$.",
+      answer: "-1 < a < 0",
+      acceptedAnswers: ["-1<a<0", "-1 < a < 0"],
+      hint: "Roots of opposite sign: product of roots $< 0$. Product $= c/a = a(a+1)/2 < 0$.",
       explanation:
-        "$\\log_a bc + 1 = \\log_a(abc)$. So $\\frac{1}{\\log_a(abc)} = \\log_{abc} a$.\nSimilarly the other two terms become $\\log_{abc} b$ and $\\log_{abc} c$.\nSum $= \\log_{abc}(a \\cdot b \\cdot c) = \\log_{abc}(abc) = 1$. ✓",
+        "Product of roots $= \\frac{a(a+1)}{2} < 0$.\n$a(a+1) < 0 \\implies -1 < a < 0$.\n(No discriminant check needed — opposite-sign product guarantees real roots.)",
     },
     {
       kind: "check",
-      id: "alg-c22p",
+      id: "alg-c22h6",
       prompt:
-        "If $\\log_3 2$, $\\log_3(2^x - 5)$, and $\\log_3(2^x - 7/2)$ are in A.P., find $x$.",
-      format: "numeric",
-      answer: "3",
-      hint: "In AP: $2 \\times \\text{middle} = \\text{first} + \\text{last}$. So $2\\log_3(2^x-5) = \\log_3 2 + \\log_3(2^x-7/2)$.",
+        "Find all values of $m$ for which both roots of $x^2 + 2(m-1)x + m + 5 = 0$ are less than 1.",
+      format: "text",
+      answer: "m >= 4",
+      acceptedAnswers: ["m>=4", "m ≥ 4", "m >= 4"],
+      hint: "Both roots $< 1$: need (1) $\\Delta \\ge 0$, (2) $f(1) > 0$, (3) vertex $x$-coord $< 1$.",
       explanation:
-        "AP condition: $2\\log_3(2^x-5) = \\log_3 2 + \\log_3(2^x-7/2)$.\n$\\log_3(2^x-5)^2 = \\log_3[2(2^x-7/2)]$.\n$(2^x-5)^2 = 2(2^x-7/2) = 2^{x+1}-7$.\nLet $t = 2^x$: $(t-5)^2 = 2t-7$.\n$t^2-10t+25 = 2t-7$.\n$t^2-12t+32 = 0$.\n$(t-4)(t-8) = 0$, so $t = 4$ or $t = 8$.\n$t = 4$: $2^x = 4$, $x = 2$. Check: $\\log_3(4-5) = \\log_3(-1)$ — undefined! ✗\n$t = 8$: $2^x = 8$, $x = 3$. Check: $\\log_3 2$, $\\log_3 3 = 1$, $\\log_3(9/2)$. Is $2(1) = \\log_3 2 + \\log_3(9/2)$? $2 = \\log_3(2 \\times 9/2) = \\log_3 9 = 2$ ✓.\n\n$x = 3$.",
+        "Vertex: $x = -(m-1) = 1-m$. Need $1-m < 1$, i.e. $m > 0$.\n$f(1) = 1+2(m-1)+m+5 = 3m+4 > 0 \\implies m > -4/3$ (redundant with $m>0$).\n$\\Delta \\ge 0$: $4(m-1)^2-4(m+5) \\ge 0 \\implies m^2-3m-4 \\ge 0 \\implies (m-4)(m+1) \\ge 0$.\nSince $m > 0$: need $m \\ge 4$.\n\nAnswer: $m \\ge 4$.",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -1760,6 +1890,88 @@ export const algebraChapter: Chapter = {
       hint: "Let $y = 4x/(x^2+4)$. Rearrange to $yx^2 - 4x + 4y = 0$. For real $x$, require $\\Delta \\ge 0$.",
       explanation:
         "Set $y = \\frac{4x}{x^2+4}$, so $yx^2 - 4x + 4y = 0$. For real $x$ (when $y \\neq 0$): $\\Delta = 16 - 16y^2 \\ge 0$, i.e. $y^2 \\le 1$, so $-1 \\le y \\le 1$. The maximum is $1$, achieved when $x = 2$ (check: $4(2)/(4+4) = 8/8 = 1$). ✓",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More inequality techniques:**\n\n**Technique: AM-GM with multiple terms**\n\nFor $n$ positive reals:\n$$\\frac{a_1+a_2+\\cdots+a_n}{n} \\ge \\sqrt[n]{a_1 a_2 \\cdots a_n}$$\nEquality iff all $a_i$ are equal.\n\nExample: For $a,b,c > 0$, prove $a+b+c \\ge 3\\sqrt[3]{abc}$.\n\n**Technique: Splitting and applying AM-GM**\n\nTo minimize $x + \\frac{4}{x} + \\frac{9}{x^2}$ for $x > 0$: split cleverly:\n$$x + \\frac{4}{x} + \\frac{9}{x^2} \\ge 3\\sqrt[3]{x \\cdot \\frac{4}{x} \\cdot \\frac{9}{x^2}}$$\nBut this only gives a bound if the product simplifies nicely (here $= 36/x^2$, depends on $x$ — so AM-GM of 3 terms doesn't directly apply).\n\nBetter: use AM-GM on 2 terms: $x + \\frac{4}{x} \\ge 4$ (with equality at $x=2$). Then evaluate $9/x^2 = 9/4$. Total $\\ge 4 + 9/4 = 25/4$. Check equality holds at $x=2$ everywhere? $2 + 2 + 9/4 = 25/4$ ✓.\n\n**Technique: The Cauchy-Schwarz inequality (basic form)**\n\n$$(a^2+b^2)(c^2+d^2) \\ge (ac+bd)^2$$\nUseful for bounding expressions like $(x+y)^2 \\le 2(x^2+y^2)$.",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Key inequality results",
+      content:
+        "**Squares are non-negative:**\n$$(a-b)^2 \\ge 0 \\implies a^2+b^2 \\ge 2ab$$\n$$(a-b)^2+(b-c)^2+(c-a)^2 \\ge 0 \\implies a^2+b^2+c^2 \\ge ab+bc+ca$$\n\n**AM-GM (2 variables):** $\\dfrac{a+b}{2} \\ge \\sqrt{ab}$ for $a,b \\ge 0$\n\n**AM-GM (3 variables):** $\\dfrac{a+b+c}{3} \\ge \\sqrt[3]{abc}$ for $a,b,c \\ge 0$\n\n**Minimum of $x + k/x$:** For $x > 0$, $x + k/x \\ge 2\\sqrt{k}$, achieved at $x = \\sqrt{k}$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c23b",
+      prompt:
+        "Prove that $a^2 + b^2 + c^2 \\ge ab + bc + ca$ for all real $a, b, c$. What inequality does the proof start from?",
+      format: "text",
+      answer: "(a-b)^2 + (b-c)^2 + (c-a)^2 >= 0",
+      acceptedAnswers: ["(a-b)^2+(b-c)^2+(c-a)^2>=0", "sum of squares >= 0"],
+      hint: "Expand $(a-b)^2 + (b-c)^2 + (c-a)^2 \\ge 0$.",
+      explanation:
+        "$(a-b)^2+(b-c)^2+(c-a)^2 \\ge 0$.\nExpand: $2a^2+2b^2+2c^2-2ab-2bc-2ca \\ge 0$.\nDivide by 2: $a^2+b^2+c^2 \\ge ab+bc+ca$ ✓.\nEquality iff $a=b=c$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c23c",
+      prompt:
+        "Find the minimum value of $\\dfrac{x^2+x+1}{x^2-x+1}$ for real $x$.",
+      format: "text",
+      answer: "1/3",
+      acceptedAnswers: ["1/3"],
+      hint: "Let $y = \\frac{x^2+x+1}{x^2-x+1}$. Cross-multiply: $(y-1)x^2-(y+1)x+(y-1)=0$. For real $x$: $\\Delta \\ge 0$.",
+      explanation:
+        "Let $y = \\frac{x^2+x+1}{x^2-x+1}$. Then $(y-1)x^2-(y+1)x+(y-1) = 0$.\nIf $y=1$: $-2x=0$, $x=0$ ✓. For $y \\neq 1$: $\\Delta \\ge 0$.\n$\\Delta = (y+1)^2-4(y-1)^2 \\ge 0$.\n$(y+1+2(y-1))(y+1-2(y-1)) \\ge 0$.\n$(3y-1)(3-y) \\ge 0$.\n$\\frac{1}{3} \\le y \\le 3$.\nMinimum $= 1/3$ (at $x = -1$: $\\frac{1}{3}$ ✓). Maximum $= 3$ (at $x=1$: $\\frac{3}{1}=3$ ✓).",
+    },
+    {
+      kind: "check",
+      id: "alg-c23d",
+      prompt:
+        "If $x, y > 0$ and $x + y = 10$, find the maximum value of $xy$.",
+      format: "numeric",
+      answer: "25",
+      hint: "By AM-GM: $\\frac{x+y}{2} \\ge \\sqrt{xy}$, so $5 \\ge \\sqrt{xy}$, i.e. $xy \\le 25$.",
+      explanation:
+        "AM-GM: $\\sqrt{xy} \\le \\frac{x+y}{2} = 5$. So $xy \\le 25$.\nEquality when $x = y = 5$. Maximum $= 25$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c23e",
+      prompt:
+        "For $x > 0$, find the minimum value of $x^2 + \\dfrac{16}{x}$.",
+      format: "numeric",
+      answer: "12",
+      hint: "Split: $x^2 + \\frac{16}{x} = x^2 + \\frac{8}{x} + \\frac{8}{x}$. Apply AM-GM to 3 terms.",
+      explanation:
+        "AM-GM on three terms $x^2, 8/x, 8/x$:\n$$\\frac{x^2+8/x+8/x}{3} \\ge \\sqrt[3]{x^2 \\cdot \\frac{8}{x} \\cdot \\frac{8}{x}} = \\sqrt[3]{\\frac{64}{x^0}} = \\sqrt[3]{64} = 4$$\nSo $x^2+16/x \\ge 12$. Equality when $x^2 = 8/x$, i.e. $x^3 = 8$, $x = 2$.\nCheck: $4 + 8 = 12$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "alg-c23f",
+      prompt:
+        "If $a + b = 1$ (with $a, b > 0$), find the minimum value of $\\dfrac{1}{a} + \\dfrac{1}{b}$.",
+      format: "numeric",
+      answer: "4",
+      hint: "By AM-HM inequality: $\\frac{a+b}{2} \\ge \\frac{2}{1/a+1/b}$. Or use AM-GM: $\\frac{1}{a}+\\frac{1}{b} = \\frac{a+b}{ab} = \\frac{1}{ab}$. Maximize $ab$ first.",
+      explanation:
+        "$\\frac{1}{a}+\\frac{1}{b} = \\frac{a+b}{ab} = \\frac{1}{ab}$.\nBy AM-GM: $ab \\le \\left(\\frac{a+b}{2}\\right)^2 = \\frac{1}{4}$.\nSo $\\frac{1}{ab} \\ge 4$. Minimum $= 4$ when $a = b = 1/2$.",
+    },
+    {
+      kind: "check",
+      id: "alg-c23g",
+      prompt:
+        "Prove that for all real $x$: $\\dfrac{x^2}{x^4+1} \\le \\dfrac{1}{2}$. (Hint: what is $x^4+1$ compared to $2x^2$?)",
+      format: "text",
+      answer: "x^4 + 1 >= 2x^2 by AM-GM",
+      acceptedAnswers: ["x^4+1>=2x^2", "AM-GM on x^4 and 1", "x^4+1>=2x^2 by AM-GM"],
+      hint: "$x^4 + 1 \\ge 2\\sqrt{x^4 \\cdot 1} = 2x^2$. So $\\frac{x^2}{x^4+1} \\le \\frac{x^2}{2x^2}$.",
+      explanation:
+        "By AM-GM: $x^4+1 \\ge 2\\sqrt{x^4} = 2x^2$ (for $x \\neq 0$).\nSo $\\frac{x^2}{x^4+1} \\le \\frac{x^2}{2x^2} = \\frac{1}{2}$.\nFor $x = 0$: LHS $= 0 < 1/2$ ✓.\nEquality at $x^4 = 1$, i.e. $x = \\pm 1$.",
     },
   ],
 

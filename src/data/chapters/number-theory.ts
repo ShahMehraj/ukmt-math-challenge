@@ -150,6 +150,58 @@ export const numberTheoryFoundations: Chapter = {
       explanation:
         "By the linear combination property, $7 \\mid (1\\cdot a + 1\\cdot b) = a+b$ and $7 \\mid (3a - 5b)$. Since $7 \\mid a$ also gives $7 \\mid a^2$ (the scaling property), we get $7 \\mid (a^2 + b)$ by the linear combination property again. So all three hold.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More divisibility techniques:**\n\n**Technique: Proving $n^2 - n$ is always even**\n$n^2-n = n(n-1)$. Since one of $n$ or $n-1$ must be even (consecutive integers), the product is always even. More generally: the product of $k$ consecutive integers is always divisible by $k!$.\n\n**Technique: Proving $n^3 - n$ is always divisible by 6**\n$n^3-n = n(n^2-1) = (n-1) \\cdot n \\cdot (n+1)$. This is a product of 3 consecutive integers, so it's divisible by $3! = 6$.\n\n**Technique: Using $a-b \\mid a^n - b^n$**\n\nFor any integers $a, b$ and positive integer $n$:\n$$(a-b) \\mid (a^n-b^n) \\quad \\text{always}$$\n$$(a+b) \\mid (a^n-b^n) \\quad \\text{when } n \\text{ is even}$$\n$$(a+b) \\mid (a^n+b^n) \\quad \\text{when } n \\text{ is odd}$$\n\nExample: $7^{100}-3^{100}$ is divisible by $7-3=4$ and also by $7+3=10$ (since $n=100$ is even).\n\n**Technique: Remainders and modular thinking**\n\nInstead of dividing, ask 'what's the remainder?' Any integer $n$ when divided by $d$ gives:\n$$n = dq + r \\quad \\text{where } 0 \\le r < d$$\nTwo numbers with the same remainder mod $d$ are **congruent**: $a \\equiv b \\pmod{d}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c13b",
+      prompt:
+        "Is $7^{20} - 1$ divisible by 6? (Answer yes/no.)",
+      format: "text",
+      answer: "yes",
+      acceptedAnswers: ["yes", "Yes", "YES"],
+      hint: "Use $a-b \\mid a^n-b^n$. Here $a=7$, $b=1$, so $6 \\mid (7^{20}-1^{20})$.",
+      explanation:
+        "$7-1 = 6$ divides $7^n-1^n$ for all $n$. So $6 \\mid (7^{20}-1)$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "nt-c13c",
+      prompt:
+        "Prove that $n^3-n$ is divisible by 6 for every integer $n$. What does $n^3-n$ factor as?",
+      format: "text",
+      answer: "(n-1)n(n+1)",
+      acceptedAnswers: ["(n-1)n(n+1)", "(n-1)(n)(n+1)", "n(n-1)(n+1)"],
+      hint: "$n^3-n = n(n^2-1) = n(n-1)(n+1)$. Three consecutive integers!",
+      explanation:
+        "$n^3-n = n(n-1)(n+1) = (n-1) \\cdot n \\cdot (n+1)$. This is the product of three consecutive integers, which always contains a multiple of 2 and a multiple of 3. So it's divisible by $2 \\times 3 = 6$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c13d",
+      prompt:
+        "What is the remainder when $2^{100}$ is divided by 7?",
+      format: "numeric",
+      answer: "2",
+      hint: "Find the cycle of $2^k \\bmod 7$: $2, 4, 1, 2, 4, 1, \\ldots$ (period 3). Then $100 \\bmod 3 = ?$.",
+      explanation:
+        "$2^1 \\equiv 2$, $2^2 \\equiv 4$, $2^3 \\equiv 1 \\pmod{7}$. Period $= 3$.\n$100 = 33 \\times 3 + 1$, so $2^{100} \\equiv 2^1 \\equiv 2 \\pmod{7}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c13e",
+      prompt:
+        "What is the remainder when $123456789$ is divided by $9$?",
+      format: "numeric",
+      answer: "0",
+      hint: "Remainder mod 9 = digit sum mod 9. Digit sum $= 1+2+3+4+5+6+7+8+9 = 45$.",
+      explanation:
+        "Digit sum $= 1+2+\\cdots+9 = 45$. $45/9 = 5$ exactly. Remainder $= 0$.\n(So $123456789$ is divisible by 9.)",
+    },
 
     // ─────────── Section 2: Primes & factorisation ───────────
     {
@@ -191,6 +243,75 @@ export const numberTheoryFoundations: Chapter = {
       hint: "Start by pulling out factors of $2$: $84 = 2\\times42 = 2\\times2\\times21$.",
       explanation:
         "$84 = 2 \\times 42 = 2 \\times 2 \\times 21 = 2^2 \\times 3 \\times 7$. Every branch ends in a prime.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Applications of prime factorisation:**\n\n**Finding GCD and LCM from factorisation:**\n$$\\text{If } a = 2^3 \\times 3^2 \\times 5 \\text{ and } b = 2^2 \\times 3^4 \\times 7:$$\n$$\\gcd(a,b) = 2^{\\min(3,2)} \\times 3^{\\min(2,4)} = 2^2 \\times 3^2 = 36$$\n$$\\text{lcm}(a,b) = 2^{\\max(3,2)} \\times 3^{\\max(2,4)} \\times 5 \\times 7 = 2^3 \\times 3^4 \\times 5 \\times 7 = 45360$$\n\nKey relationship: $\\gcd(a,b) \\times \\text{lcm}(a,b) = a \\times b$.\n\n**Counting divisors:**\n\nIf $n = p_1^{a_1} \\times p_2^{a_2} \\times \\cdots \\times p_k^{a_k}$, then:\n$$\\text{Number of divisors} = (a_1+1)(a_2+1)\\cdots(a_k+1)$$\n\nExample: $360 = 2^3 \\times 3^2 \\times 5^1$. Divisors $= (3+1)(2+1)(1+1) = 24$.\n\n**Useful facts about primes:**\n\n• There are infinitely many primes (Euclid's proof by contradiction)\n• Every even number $> 2$ can be written as a sum of two primes (Goldbach's conjecture — unproven but tested to $10^{18}$)\n• If $p$ is prime and $p \\mid ab$, then $p \\mid a$ or $p \\mid b$ (Euclid's lemma)\n• Primes less than 50: $2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47$ (15 primes)",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "The 'exactly N divisors' trick",
+      content:
+        "To find the smallest number with exactly $N$ divisors:\n1. Write $N$ as a product of factors in decreasing order: $N = d_1 \\times d_2 \\times \\cdots$\n2. Subtract 1 from each: exponents $= d_1-1, d_2-1, \\ldots$\n3. Assign the LARGEST exponents to the SMALLEST primes\n\nExample: smallest with 12 divisors. $12 = 4 \\times 3 = 3 \\times 2 \\times 2$.\nOption 1: $2^{11}$ (divisors: 12). $= 2048$.\nOption 2: $2^3 \\times 3^2 = 72$ (divisors: $(3+1)(2+1)=12$).\nOption 3: $2^2 \\times 3 \\times 5 = 60$ (divisors: $(2+1)(1+1)(1+1)=12$).\nSmallest: $60$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c4b",
+      prompt:
+        "How many positive divisors does $720$ have?",
+      format: "numeric",
+      answer: "30",
+      hint: "$720 = 2^4 \\times 3^2 \\times 5$. Number of divisors $= (4+1)(2+1)(1+1)$.",
+      explanation:
+        "$720 = 2^4 \\times 3^2 \\times 5^1$. Divisors $= (4+1)(2+1)(1+1) = 5 \\times 3 \\times 2 = 30$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c4c",
+      prompt:
+        "Find $\\gcd(180, 252)$.",
+      format: "numeric",
+      answer: "36",
+      hint: "$180 = 2^2 \\times 3^2 \\times 5$ and $252 = 2^2 \\times 3^2 \\times 7$. Take min of each exponent.",
+      explanation:
+        "$180 = 2^2 \\times 3^2 \\times 5$. $252 = 2^2 \\times 3^2 \\times 7$.\n$\\gcd = 2^2 \\times 3^2 = 36$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c4d",
+      prompt:
+        "What is the smallest positive integer with exactly 6 divisors?",
+      format: "numeric",
+      answer: "12",
+      hint: "$6 = 6$ or $6 = 3 \\times 2$. Options: $2^5 = 32$ or $2^2 \\times 3 = 12$.",
+      explanation:
+        "Ways to get 6 divisors: $p^5$ (smallest: $2^5 = 32$) or $p^2 \\times q$ (smallest: $2^2 \\times 3 = 12$).\nSmallest is $12$. Check: divisors of 12 are 1,2,3,4,6,12 — indeed 6 divisors ✓.",
+    },
+    {
+      kind: "check",
+      id: "nt-c4e",
+      prompt:
+        "If $\\gcd(a, b) = 12$ and $\\text{lcm}(a, b) = 180$, find $a \\times b$.",
+      format: "numeric",
+      answer: "2160",
+      hint: "Use the relationship $\\gcd(a,b) \\times \\text{lcm}(a,b) = a \\times b$.",
+      explanation:
+        "$a \\times b = \\gcd(a,b) \\times \\text{lcm}(a,b) = 12 \\times 180 = 2160$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c4f",
+      prompt:
+        "Is $221$ prime? If not, find its factors.",
+      format: "text",
+      answer: "13 × 17",
+      acceptedAnswers: ["13*17", "13 × 17", "13x17", "not prime, 13 and 17"],
+      hint: "Test primes up to $\\sqrt{221} \\approx 14.9$: try 2, 3, 5, 7, 11, 13.",
+      explanation:
+        "$221/13 = 17$. So $221 = 13 \\times 17$ — it's composite.\n(This catches many students who assume 'looks prime' means prime. Always test!)",
     },
 
     // ─────────── Section 3: Modular arithmetic ───────────
@@ -259,11 +380,79 @@ export const numberTheoryFoundations: Chapter = {
       explanation:
         "$5 \\equiv 2 \\equiv -1 \\pmod 3$. So $5^{21} \\equiv (-1)^{21} = -1 \\equiv 2 \\pmod 3$. The remainder is $2$.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Advanced modular arithmetic techniques:**\n\n**The '$-1$ trick':** When $a \\equiv -1 \\pmod n$, then $a^k \\equiv (-1)^k$: alternates between $1$ (even $k$) and $-1$ (odd $k$). This instantly solves problems like 'remainder of $99^{50} \\div 100$': $99 \\equiv -1$, so $99^{50} \\equiv 1 \\pmod{100}$.\n\n**Repeated squaring for large powers:**\n\nTo find $7^{200} \\bmod 13$:\n$$7^2 = 49 \\equiv 10 \\pmod{13}$$\n$$7^4 \\equiv 10^2 = 100 \\equiv 9 \\pmod{13}$$\n$$7^8 \\equiv 9^2 = 81 \\equiv 3 \\pmod{13}$$\n$$7^{16} \\equiv 3^2 = 9 \\pmod{13}$$\n$$7^{32} \\equiv 9^2 = 81 \\equiv 3 \\pmod{13}$$\nThen decompose: $200 = 128+64+8$, or notice $7^{12} \\equiv 1 \\pmod{13}$ (by Fermat's little theorem) so $7^{200} = 7^{12 \\times 16 + 8} \\equiv 7^8 \\equiv 3 \\pmod{13}$.\n\n**Useful modular results:**\n• $10 \\equiv 1 \\pmod 9$ (this is WHY the digit-sum divisibility rule works)\n• $10 \\equiv -1 \\pmod{11}$ (WHY the alternating-sum rule works)\n• $100 \\equiv 1 \\pmod{99}$ and $100 \\equiv -1 \\pmod{101}$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Fermat's Little Theorem (the competition shortcut)",
+      content:
+        "If $p$ is prime and $\\gcd(a, p) = 1$:\n$$a^{p-1} \\equiv 1 \\pmod{p}$$\n\nSo to find $a^{\\text{big}} \\bmod p$: reduce the exponent mod $p-1$ first!\n\nExample: $2^{100} \\bmod 13$. Since $13-1=12$: $2^{100} = 2^{12 \\times 8 + 4} \\equiv 2^4 = 16 \\equiv 3 \\pmod{13}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c16b",
+      prompt:
+        "What is the remainder when $99^{100}$ is divided by $100$?",
+      format: "numeric",
+      answer: "1",
+      hint: "$99 \\equiv -1 \\pmod{100}$. So $99^{100} \\equiv (-1)^{100} = ?$.",
+      explanation:
+        "$99 \\equiv -1 \\pmod{100}$. $(-1)^{100} = 1$. Remainder $= 1$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c16c",
+      prompt:
+        "Find the remainder when $7^{82}$ is divided by $5$.",
+      format: "numeric",
+      answer: "4",
+      hint: "By Fermat's Little Theorem: $7^4 \\equiv 1 \\pmod{5}$ (since $5-1=4$). So reduce $82 \\bmod 4$.",
+      explanation:
+        "FLT: $7^4 \\equiv 1 \\pmod 5$. $82 = 4 \\times 20 + 2$. So $7^{82} \\equiv 7^2 = 49 \\equiv 4 \\pmod 5$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c16d",
+      prompt:
+        "Find the last two digits of $99^{99}$ (i.e. $99^{99} \\bmod 100$).",
+      format: "numeric",
+      answer: "99",
+      hint: "$99 \\equiv -1 \\pmod{100}$. So $99^{99} \\equiv (-1)^{99} = ?$.",
+      explanation:
+        "$99 \\equiv -1 \\pmod{100}$. $(-1)^{99} = -1 \\equiv 99 \\pmod{100}$. Last two digits: 99.",
+    },
+    {
+      kind: "check",
+      id: "nt-c16e",
+      prompt:
+        "Prove that $n^2 + n$ is always even for any integer $n$. What does $n^2+n$ equal mod 2?",
+      format: "numeric",
+      answer: "0",
+      hint: "$n^2+n = n(n+1)$. One of $n, n+1$ is always even.",
+      explanation:
+        "$n^2+n = n(n+1)$. Consecutive integers: one is even, so the product is even. $n^2+n \\equiv 0 \\pmod 2$ always.",
+    },
+    {
+      kind: "check",
+      id: "nt-c16f",
+      prompt:
+        "What is the remainder when $1! + 2! + 3! + \\cdots + 100!$ is divided by $12$?",
+      format: "numeric",
+      answer: "9",
+      hint: "For $n \\ge 4$: $n!$ is divisible by 12 (since $n! \\ge 4! = 24$ contains factors $4 \\times 3$). So only $1!+2!+3!$ contribute to the remainder.",
+      explanation:
+        "For $n \\ge 4$: $n!$ contains both $4$ and $3$ as factors, so $12 \\mid n!$. These terms contribute $0 \\bmod 12$.\nRemaining: $1! + 2! + 3! = 1+2+6 = 9$.\nRemainder $= 9$.",
+    },
 
     // ─────────── Section 4: Divisibility proofs ───────────
     {
       kind: "prose",
-      heading: "4 · Divisibility proofs — the $(a - b) \\mid (a^n - b^n)$ technique",
+      heading: "4 · Divisibility proofs & factoring identities",
       content:
         "A powerful family of competition problems asks you to *prove* that some expression is always divisible by a given number. The key algebraic facts that power these proofs are:\n\n" +
         "- $(x - y) \\mid (x^n - y^n)$ for all positive integers $n$.\n" +
@@ -339,6 +528,60 @@ export const numberTheoryFoundations: Chapter = {
       explanation:
         "Among $4$ consecutive integers, exactly one is $\\equiv 0 \\pmod 4$ (contributing $2^2$), and exactly one other is $\\equiv 2 \\pmod 4$ (contributing $2^1$). So $2^3 = 8$ always divides the product. But $1 \\cdot 2 \\cdot 3 \\cdot 4 = 24$ is not divisible by $16 = 2^4$, so the answer is $3$.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More divisibility proof techniques:**\n\n**Technique: Factoring $a^n - b^n$ explicitly**\n$$a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + a^{n-3}b^2 + \\cdots + b^{n-1})$$\nThe second factor has $n$ terms. This immediately shows:\n• $10^n - 1 = 9 \\times \\underbrace{111\\ldots1}_{n}$\n• $2^n - 1$ is divisible by $2-1=1$ (trivially) but NOT by $2+1=3$ unless $n$ is even\n\n**Technique: Proving $n^p - n \\equiv 0 \\pmod p$ for prime $p$**\n\nThis is Fermat's Little Theorem in disguise: $n^p - n = n(n^{p-1}-1) \\equiv 0 \\pmod p$ (either $p \\mid n$ or $p \\mid n^{p-1}-1$).\n\n**Technique: Using congruences to prove divisibility**\n\nProve $7 \\mid (3^{2n+1} + 2^{n+2})$ for all $n \\ge 0$:\n$$3^{2n+1} = 3 \\cdot 9^n \\equiv 3 \\cdot 2^n \\pmod 7 \\quad (\\text{since } 9 \\equiv 2)$$\n$$2^{n+2} = 4 \\cdot 2^n$$\n$$\\text{Sum} = 3 \\cdot 2^n + 4 \\cdot 2^n = 7 \\cdot 2^n \\equiv 0 \\pmod 7. \\quad \\blacksquare$$\n\n**Technique: Mathematical induction for divisibility**\n\nTo prove $6 \\mid (n^3-n)$ by induction:\n- Base: $n=1$: $0$ ✓.\n- Step: assume $6 \\mid (k^3-k)$. Show $6 \\mid ((k+1)^3-(k+1))$.\n$(k+1)^3-(k+1) = k^3+3k^2+3k+1-k-1 = (k^3-k)+3k(k+1)$.\n$6 \\mid (k^3-k)$ by hypothesis, and $6 \\mid 3k(k+1)$ since $k(k+1)$ is always even. Done. ✓",
+    },
+    {
+      kind: "check",
+      id: "nt-c20b",
+      prompt:
+        "Prove that $3 \\mid (4^n - 1)$ for all $n \\ge 1$. What is the key congruence?",
+      format: "text",
+      answer: "4 ≡ 1 mod 3",
+      acceptedAnswers: ["4≡1 mod 3", "4 ≡ 1 (mod 3)", "4 equiv 1 mod 3"],
+      hint: "$4 \\equiv 1 \\pmod 3$. So $4^n \\equiv 1^n = 1 \\pmod 3$. Then $4^n - 1 \\equiv 0$.",
+      explanation:
+        "$4 \\equiv 1 \\pmod 3$, so $4^n \\equiv 1 \\pmod 3$ for all $n$. Then $4^n-1 \\equiv 0 \\pmod 3$, i.e. $3 \\mid (4^n-1)$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c20c",
+      prompt:
+        "Show that $7 \\mid (3^{2n+1} + 2^{n+2})$ for all $n \\ge 0$. What does the expression simplify to mod 7?",
+      format: "text",
+      answer: "7 × 2^n",
+      acceptedAnswers: ["7*2^n", "7·2^n", "7 times 2^n"],
+      hint: "$9 \\equiv 2 \\pmod 7$. So $3^{2n+1} = 3 \\cdot 9^n \\equiv 3 \\cdot 2^n$. And $2^{n+2} = 4 \\cdot 2^n$. Add them.",
+      explanation:
+        "$3^{2n+1} = 3 \\cdot 9^n \\equiv 3 \\cdot 2^n \\pmod 7$ (since $9 \\equiv 2$).\n$2^{n+2} = 4 \\cdot 2^n$.\nSum $= 3 \\cdot 2^n + 4 \\cdot 2^n = 7 \\cdot 2^n \\equiv 0 \\pmod 7$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "nt-c20d",
+      prompt:
+        "Is $11 \\mid (2^{10} - 1)$? (Answer yes/no.)",
+      format: "text",
+      answer: "yes",
+      acceptedAnswers: ["yes", "Yes", "YES"],
+      hint: "$2^{10} = 1024$. $1024-1 = 1023$. Does $11 \\mid 1023$? Or: by Fermat's, $2^{10} \\equiv 1 \\pmod{11}$.",
+      explanation:
+        "By Fermat's Little Theorem: $2^{10} \\equiv 1 \\pmod{11}$ (since $11$ is prime and $\\gcd(2,11)=1$).\nSo $2^{10}-1 \\equiv 0 \\pmod{11}$. Yes! ($1023 = 11 \\times 93$.)",
+    },
+    {
+      kind: "check",
+      id: "nt-c20e",
+      prompt:
+        "Prove that $n^5 - n$ is divisible by 30 for all integers $n$. What three primes divide it?",
+      format: "text",
+      answer: "2, 3, 5",
+      acceptedAnswers: ["2, 3, 5", "2,3,5", "2, 3 and 5"],
+      hint: "$n^5-n = n(n^4-1) = n(n^2-1)(n^2+1) = (n-1)n(n+1)(n^2+1)$. The first three factors are consecutive → divisible by $6$. For the factor 5: $n^5 \\equiv n \\pmod 5$ by Fermat.",
+      explanation:
+        "$n^5-n = n(n-1)(n+1)(n^2+1)$.\n• $2 \\mid n^5-n$: $(n-1)n(n+1)$ contains consecutive integers → one even.\n• $3 \\mid n^5-n$: three consecutive → one divisible by 3.\n• $5 \\mid n^5-n$: by FLT, $n^5 \\equiv n \\pmod 5$ for all $n$.\nSince $\\gcd(2,3,5)=1$: $30 \\mid (n^5-n)$. The primes are $2, 3, 5$.",
+    },
 
     // ─────────── Section 5: Euclidean Algorithm & Bézout ───────────
     {
@@ -404,6 +647,65 @@ export const numberTheoryFoundations: Chapter = {
       hint: "Use the Euclidean algorithm on $8$ and $5$: $8 = 1 \\times 5 + 3$, $5 = 1 \\times 3 + 2$, $3 = 1 \\times 2 + 1$. Back-substitute.",
       explanation:
         "Back-substituting: $1 = 3 - 1 \\times 2 = 3 - (5 - 3) = 2 \\times 3 - 5 = 2(8 - 5) - 5 = 2 \\times 8 - 3 \\times 5$. So $5 \\times (-3) + 8 \\times 2 = -15 + 16 = 1$. The $x$ with smallest $|x|$ is $x = -3$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**Important consequences of the Euclidean algorithm:**\n\n**1. The GCD is the SMALLEST positive linear combination:**\n\nThe equation $ax + by = d$ (where $d = \\gcd(a,b)$) has infinitely many solutions. Once you find one $(x_0, y_0)$, all others are:\n$$x = x_0 + \\frac{b}{d}t, \\quad y = y_0 - \\frac{a}{d}t \\quad (t \\in \\mathbb{Z})$$\n\n**2. Coprime cancellation (the most important application):**\n\nIf $\\gcd(a,b) = 1$ and $a \\mid bc$, then $a \\mid c$.\n\nThis is used constantly: 'if a prime $p$ divides $ab$, then $p$ divides $a$ or $p$ divides $b$' is a special case.\n\n**3. Solving linear Diophantine equations:**\n\nThe equation $ax + by = c$ has integer solutions iff $\\gcd(a,b) \\mid c$.\n\nExample: Does $15x + 21y = 12$ have integer solutions?\n$\\gcd(15,21) = 3$, and $3 \\mid 12$. Yes!\nDivide through: $5x + 7y = 4$. Find one solution by trial or Euclidean: $x = -1, y = 1$ works ($-5+7=2$... no). Try: $5(3)+7(-1)=8$... $5(-4)+7(3)=1$. Multiply by 4: $5(-16)+7(12)=4$. ✓.\n\n**4. Computing LCM via GCD:**\n$$\\text{lcm}(a,b) = \\frac{|ab|}{\\gcd(a,b)}$$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Quick GCD tricks",
+      content:
+        "• $\\gcd(a, 0) = a$ for any $a > 0$\n• $\\gcd(a, a) = a$\n• $\\gcd(a, b) = \\gcd(a, b-a)$ (repeated subtraction — slow Euclid)\n• $\\gcd(a, b) = \\gcd(b, a \\bmod b)$ (fast Euclid)\n• $\\gcd(ka, kb) = k \\cdot \\gcd(a, b)$ (scaling)\n• $\\gcd(a, b) = 1$ and $\\gcd(a, c) = 1$ $\\implies$ $\\gcd(a, bc) = 1$\n• For consecutive integers: $\\gcd(n, n+1) = 1$ always",
+    },
+    {
+      kind: "check",
+      id: "nt-c23b",
+      prompt:
+        "Find $\\gcd(1001, 385)$ using the Euclidean algorithm.",
+      format: "numeric",
+      answer: "77",
+      hint: "$1001 = 2 \\times 385 + 231$. $385 = 1 \\times 231 + 154$. $231 = 1 \\times 154 + 77$. $154 = 2 \\times 77 + 0$.",
+      explanation:
+        "$1001 = 2(385)+231$; $385 = 1(231)+154$; $231 = 1(154)+77$; $154 = 2(77)+0$. GCD $= 77$.\n(Check: $1001 = 7 \\times 11 \\times 13$ and $385 = 5 \\times 7 \\times 11$. GCD $= 7 \\times 11 = 77$ ✓.)",
+    },
+    {
+      kind: "check",
+      id: "nt-c23c",
+      prompt:
+        "Does the equation $12x + 18y = 7$ have integer solutions? (Answer yes/no.)",
+      format: "text",
+      answer: "no",
+      acceptedAnswers: ["no", "No", "NO"],
+      hint: "$\\gcd(12, 18) = 6$. Does $6 \\mid 7$?",
+      explanation:
+        "$\\gcd(12,18) = 6$. Since $6 \\nmid 7$, the equation $12x+18y=7$ has NO integer solutions.",
+    },
+    {
+      kind: "check",
+      id: "nt-c23d",
+      prompt:
+        "If $\\gcd(a, 12) = 1$ and $a \\mid 60$, what are the possible values of $a$? (List all.)",
+      format: "text",
+      answer: "1, 5",
+      acceptedAnswers: ["1, 5", "1,5", "5, 1", "1 and 5"],
+      hint: "Divisors of 60: $1,2,3,4,5,6,10,12,15,20,30,60$. Which of these are coprime to 12?",
+      explanation:
+        "Divisors of $60$: $1,2,3,4,5,6,10,12,15,20,30,60$.\nCoprime to $12 = 2^2 \\times 3$: must share no factors of 2 or 3.\n$1$: ✓. $5$: ✓. All others have a factor of 2 or 3.\nAnswer: $a \\in \\{1, 5\\}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c23e",
+      prompt:
+        "Two ropes have lengths 56 cm and 84 cm. What is the greatest length of equal pieces you can cut both ropes into (with no rope left over)?",
+      format: "numeric",
+      answer: "28",
+      hint: "This is asking for $\\gcd(56, 84)$. Both ropes must be cut into pieces of that length.",
+      explanation:
+        "$\\gcd(56, 84)$: $84 = 1(56)+28$; $56 = 2(28)+0$. GCD $= 28$ cm.\nRope 1: $56/28 = 2$ pieces. Rope 2: $84/28 = 3$ pieces. ✓",
     },
 
     // ─────────── Section 6: Counting divisors (expanded) ───────────
@@ -497,6 +799,56 @@ export const numberTheoryFoundations: Chapter = {
       explanation:
         "Product of divisors $= n^{\\tau(n)/2} = n^3$, so $\\tau(n)/2 = 3$, giving $\\tau(n) = 6$. (Consistent with the given '6 divisors'.)",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More divisor-counting applications:**\n\n**Finding the number of even/odd divisors:**\n\nIf $n = 2^a \\times m$ (where $m$ is odd), then:\n• Number of odd divisors of $n$ = number of divisors of $m$ = $\\tau(m)$\n• Number of even divisors = $\\tau(n) - \\tau(m) = a \\cdot \\tau(m)$\n\n**Smallest number with exactly $N$ divisors:**\n\nWrite $N$ as a product of integers $\\ge 2$ in descending order. Assign as exponents (subtract 1) to primes $2, 3, 5, \\ldots$ to minimise.\n\nExample: $N = 12 = 4 \\times 3$ or $3 \\times 2 \\times 2$ or $2 \\times 2 \\times 3$ etc.\n• $2^{11}$: divisors $= 12$, value $= 2048$\n• $2^3 \\times 3^2$: divisors $= 12$, value $= 72$\n• $2^2 \\times 3 \\times 5$: divisors $= 12$, value $= 60$ ← smallest!\n\n**Sum of divisors for special forms:**\n$$\\sigma(p) = p+1 \\quad (\\text{prime})$$\n$$\\sigma(p^2) = p^2+p+1$$\n$$\\sigma(p \\cdot q) = (p+1)(q+1) \\quad (\\text{distinct primes})$$",
+    },
+    {
+      kind: "check",
+      id: "nt-c25b",
+      prompt:
+        "How many positive divisors does $2^5 \\times 3^3 \\times 7^2$ have?",
+      format: "numeric",
+      answer: "72",
+      hint: "$(5+1)(3+1)(2+1) = ?$.",
+      explanation:
+        "$(5+1)(3+1)(2+1) = 6 \\times 4 \\times 3 = 72$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c25c",
+      prompt:
+        "How many odd divisors does $360$ have?",
+      format: "numeric",
+      answer: "6",
+      hint: "$360 = 2^3 \\times 3^2 \\times 5$. The odd part is $3^2 \\times 5$. Count its divisors.",
+      explanation:
+        "Odd divisors of $360$ = divisors of its odd part $3^2 \\times 5 = 45$.\n$\\tau(45) = (2+1)(1+1) = 6$. (They are: 1, 3, 5, 9, 15, 45.)",
+    },
+    {
+      kind: "check",
+      id: "nt-c25d",
+      prompt:
+        "What is the smallest positive integer with exactly 10 divisors?",
+      format: "numeric",
+      answer: "48",
+      hint: "$10 = 10$ or $10 = 5 \\times 2$. Options: $p^9$ (smallest $2^9=512$) or $p^4 \\times q$ (smallest $2^4 \\times 3 = 48$).",
+      explanation:
+        "Ways to get 10 divisors:\n• $p^9$: smallest $= 2^9 = 512$.\n• $p^4 \\times q$: smallest $= 2^4 \\times 3 = 48$.\nSmallest: $48$. Check: $\\tau(48) = (4+1)(1+1) = 10$ ✓.",
+    },
+    {
+      kind: "check",
+      id: "nt-c25e",
+      prompt:
+        "If $n$ is a perfect square and $\\tau(n) = 9$, what form must $n$ have? Give the smallest such $n$.",
+      format: "numeric",
+      answer: "36",
+      hint: "$\\tau(n) = 9$. For a perfect square, all exponents must be even. $9 = 9$ or $9 = 3 \\times 3$. So either $p^8$ or $p^2 \\times q^2$.",
+      explanation:
+        "$\\tau(n) = 9 = 9$ or $3 \\times 3$. For perfect square: exponents all even.\n• $p^8$: $\\tau = 9$ ✓, exponents even ✓. Smallest $= 2^8 = 256$.\n• $p^2 \\times q^2$: $\\tau = (2+1)(2+1) = 9$ ✓, exponents even ✓. Smallest $= 2^2 \\times 3^2 = 36$.\n\nWait: $36$ is smaller and satisfies both conditions! $\\tau(36) = \\tau(2^2 \\times 3^2) = 3 \\times 3 = 9$ ✓, and $36 = 6^2$ is a perfect square ✓.\n\nSmallest: $36$.",
+    },
 
     // ─────────── Section 7: HCF & LCM ───────────
     {
@@ -541,6 +893,63 @@ export const numberTheoryFoundations: Chapter = {
       explanation:
         "LCM$(24,36)$: $24 = 2^3\\cdot3$, $36 = 2^2\\cdot3^2$, so LCM $= 2^3\\cdot3^2 = 72$.",
     },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More HCF/LCM techniques:**\n\n**HCF and LCM of three numbers:**\n$$\\text{HCF}(a,b,c) = \\text{HCF}(\\text{HCF}(a,b), c)$$\n$$\\text{LCM}(a,b,c) = \\text{LCM}(\\text{LCM}(a,b), c)$$\nUse the prime factorisation: take min (for HCF) or max (for LCM) of each prime's exponent across all numbers.\n\n**Key properties:**\n• $\\text{HCF}(a,b) \\le \\min(a,b)$ and $\\text{LCM}(a,b) \\ge \\max(a,b)$\n• $\\text{HCF}(a,b) \\mid a$ and $\\text{HCF}(a,b) \\mid b$\n• $a \\mid \\text{LCM}(a,b)$ and $b \\mid \\text{LCM}(a,b)$\n• If $\\gcd(a,b) = 1$: $\\text{LCM}(a,b) = ab$\n• $\\text{LCM}(a,b) / a = b / \\gcd(a,b)$\n\n**Common competition patterns:**\n\n1. 'Two bells ring every $m$ and $n$ minutes. When do they ring together?' → LCM$(m,n)$\n2. 'Cut $a$-cm and $b$-cm ropes into largest equal pieces' → HCF$(a,b)$\n3. 'Find all pairs $(a,b)$ with HCF $= d$ and LCM $= l$' → write $a = dx$, $b = dy$ where $\\gcd(x,y)=1$ and $xy = l/d$",
+    },
+    {
+      kind: "callout",
+      variant: "tip",
+      title: "Finding all pairs with given HCF and LCM",
+      content:
+        "If $\\gcd(a,b) = d$ and $\\text{lcm}(a,b) = l$, write $a = dx$ and $b = dy$ where:\n• $\\gcd(x,y) = 1$ (coprime)\n• $xy = l/d$\n\nSo you need to find all coprime factor pairs of $l/d$.\n\nExample: $\\gcd = 6$, $\\text{lcm} = 180$. Then $l/d = 30$. Coprime factor pairs of 30: $(1,30), (2,15), (3,10), (5,6)$. So $(a,b) \\in \\{(6,180), (12,90), (18,60), (30,36)\\}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c9b",
+      prompt:
+        "Find $\\text{LCM}(12, 18, 24)$.",
+      format: "numeric",
+      answer: "72",
+      hint: "$12 = 2^2 \\times 3$, $18 = 2 \\times 3^2$, $24 = 2^3 \\times 3$. Take max exponent of each prime.",
+      explanation:
+        "Max powers: $2^3$ (from 24), $3^2$ (from 18). LCM $= 2^3 \\times 3^2 = 8 \\times 9 = 72$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c9c",
+      prompt:
+        "Three lights flash every 4, 6, and 10 seconds respectively. If they all flash together at time 0, after how many seconds do they next all flash together?",
+      format: "numeric",
+      answer: "60",
+      hint: "Find LCM$(4, 6, 10)$.",
+      explanation:
+        "$4 = 2^2$, $6 = 2 \\times 3$, $10 = 2 \\times 5$. LCM $= 2^2 \\times 3 \\times 5 = 60$ seconds.",
+    },
+    {
+      kind: "check",
+      id: "nt-c9d",
+      prompt:
+        "How many pairs of positive integers $(a,b)$ satisfy $\\gcd(a,b) = 5$ and $\\text{lcm}(a,b) = 150$?",
+      format: "numeric",
+      answer: "4",
+      hint: "Write $a = 5x$, $b = 5y$ with $\\gcd(x,y) = 1$ and $xy = 150/5 = 30$. Count coprime factor pairs of 30.",
+      explanation:
+        "$xy = 30$ with $\\gcd(x,y) = 1$. Factor pairs of 30: $(1,30), (2,15), (3,10), (5,6), (6,5), (10,3), (15,2), (30,1)$.\nCoprime pairs: $\\gcd(1,30)=1$ ✓, $\\gcd(2,15)=1$ ✓, $\\gcd(3,10)=1$ ✓, $\\gcd(5,6)=1$ ✓.\nNon-coprime: $\\gcd(6,5)=1$ ✓ (same as $(5,6)$ reversed).\n\nOrdered pairs: 8. Unordered: 4 (since $(x,y)$ and $(y,x)$ give different $(a,b)$ unless $x=y$).\n\nActually the question asks for pairs $(a,b)$, which are ordered by convention. So 8 ordered pairs. But if unordered: $(5,150), (10,75), (15,50), (25,30)$ = 4.\n\nAssuming unordered: 4.",
+    },
+    {
+      kind: "check",
+      id: "nt-c9e",
+      prompt:
+        "If $\\text{HCF}(a, b) = 14$ and $a \\times b = 2940$, find $\\text{LCM}(a, b)$.",
+      format: "numeric",
+      answer: "210",
+      hint: "$\\text{HCF} \\times \\text{LCM} = a \\times b$. So $\\text{LCM} = ab / \\text{HCF}$.",
+      explanation:
+        "$\\text{LCM} = \\frac{ab}{\\text{HCF}} = \\frac{2940}{14} = 210$.",
+    },
 
     // ─────────── Section 8: Coprimality & parity ───────────
     {
@@ -566,6 +975,65 @@ export const numberTheoryFoundations: Chapter = {
       title: "A parity argument in one line",
       content:
         "Can $1 + 2 + 3 + \\cdots + 100$ be odd? Pair the $50$ odd numbers among $1\\ldots100$: an even count of odd numbers sums to an even total, and adding the even numbers keeps it even. So the sum is even — without computing $5050$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More on coprimality:**\n\n**Euler's totient function $\\varphi(n)$:** counts integers from 1 to $n$ coprime to $n$.\n$$\\varphi(n) = n \\prod_{p \\mid n} \\left(1 - \\frac{1}{p}\\right)$$\nExamples:\n• $\\varphi(12) = 12(1-1/2)(1-1/3) = 12 \\times 1/2 \\times 2/3 = 4$\n• $\\varphi(p) = p-1$ for any prime $p$\n• $\\varphi(p^k) = p^k - p^{k-1} = p^{k-1}(p-1)$\n\n**Key coprimality facts:**\n• $\\gcd(a, b) = 1$ and $\\gcd(a, c) = 1$ $\\implies$ $\\gcd(a, bc) = 1$\n• $\\gcd(n, n+1) = 1$ always (consecutive integers are coprime)\n• $\\gcd(2n+1, 2n+3) = 1$ (consecutive odd numbers are coprime)\n• If $\\gcd(a,b)=1$ and $a \\mid c$ and $b \\mid c$, then $ab \\mid c$\n\n**Parity as a proof technique:**\n\nParity arguments prove impossibility. The logic:\n1. Show the LHS of an equation is always even (or odd)\n2. Show the RHS is always odd (or even)\n3. Conclude: no solutions exist.\n\nExample: Prove $x^2 + y^2 = 4k+3$ has no integer solutions.\n- Squares mod 4: $0^2 \\equiv 0$, $1^2 \\equiv 1$, $2^2 \\equiv 0$, $3^2 \\equiv 1$. So $x^2 \\equiv 0$ or $1 \\pmod 4$.\n- $x^2+y^2 \\equiv 0, 1, \\text{ or } 2 \\pmod 4$. Never $\\equiv 3$. Done! ✓",
+    },
+    {
+      kind: "callout",
+      variant: "definition",
+      title: "Parity arithmetic rules",
+      content:
+        "**Addition/subtraction:**\n• even $\\pm$ even $=$ even\n• odd $\\pm$ odd $=$ even\n• even $\\pm$ odd $=$ odd\n\n**Multiplication:**\n• even $\\times$ anything $=$ even\n• odd $\\times$ odd $=$ odd\n\n**Powers:**\n• even$^k =$ even (for $k \\ge 1$)\n• odd$^k =$ odd\n\n**Key consequence:** A product of integers is odd iff ALL factors are odd.",
+    },
+    {
+      kind: "check",
+      id: "nt-c10b",
+      prompt:
+        "Compute $\\varphi(30)$ (Euler's totient of 30).",
+      format: "numeric",
+      answer: "8",
+      hint: "$30 = 2 \\times 3 \\times 5$. $\\varphi(30) = 30(1-1/2)(1-1/3)(1-1/5)$.",
+      explanation:
+        "$\\varphi(30) = 30 \\times \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{4}{5} = 30 \\times \\frac{8}{30} = 8$.\n(The numbers coprime to 30 from 1–30: 1, 7, 11, 13, 17, 19, 23, 29.)",
+    },
+    {
+      kind: "check",
+      id: "nt-c10c",
+      prompt:
+        "Can the equation $n^2 = 4k + 2$ have an integer solution for $n$? (Answer yes/no.)",
+      format: "text",
+      answer: "no",
+      acceptedAnswers: ["no", "No", "NO"],
+      hint: "Squares mod 4 can only be 0 or 1. Is 2 possible?",
+      explanation:
+        "$n^2 \\bmod 4$: if $n$ is even, $n^2 \\equiv 0$; if $n$ is odd, $n^2 \\equiv 1 \\pmod 4$. Never 2. So $n^2 = 4k+2$ is impossible.",
+    },
+    {
+      kind: "check",
+      id: "nt-c10d",
+      prompt:
+        "If $a$ and $b$ are both odd, prove that $a^2 - b^2$ is divisible by 8. What is $\\dfrac{7^2-3^2}{8}$?",
+      format: "numeric",
+      answer: "5",
+      hint: "$a^2-b^2 = (a+b)(a-b)$. Both $a+b$ and $a-b$ are even (odd $\\pm$ odd). Moreover one is divisible by 4...",
+      explanation:
+        "$a+b$ and $a-b$ are both even (sum/difference of two odds). Write $a+b = 2m$, $a-b = 2n$. Then $m+n = a$ (odd), so $m$ and $n$ have different parity, meaning one of $2m, 2n$ is divisible by 4.\nSo $(a+b)(a-b)$ is divisible by $2 \\times 4 = 8$.\n$7^2-3^2 = 49-9 = 40$. $40/8 = 5$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c10e",
+      prompt:
+        "Is it possible to find integers $x, y, z$ such that $x^2 + y^2 + z^2 = 8k + 7$ for some integer $k$? (Answer yes/no.)",
+      format: "text",
+      answer: "no",
+      acceptedAnswers: ["no", "No", "NO"],
+      hint: "Squares mod 8: $0^2=0, 1^2=1, 2^2=4, 3^2=1, 4^2=0, 5^2=1, 6^2=4, 7^2=1$. Possible residues: $\\{0,1,4\\}$. What sums of three such values are possible?",
+      explanation:
+        "Squares mod 8 $\\in \\{0, 1, 4\\}$. Maximum sum of three: $4+4+4=12 \\equiv 4$. Possible sums: $\\{0,1,2,3,4,5,6\\}$ (check all combinations). Specifically $7$ is NOT achievable: $4+1+1=6$, $4+4+0=8\\equiv0$, $4+4+1=9\\equiv1$. No combination gives 7.\nSo $x^2+y^2+z^2 \\equiv 7 \\pmod 8$ is impossible.",
     },
 
     // ─────────── Section 9: Remainders, cycles & Fermat's Little Theorem ───────────
@@ -628,6 +1096,57 @@ export const numberTheoryFoundations: Chapter = {
       hint: "By FLT with $p = 11$: $3^{10} \\equiv 1 \\pmod{11}$. Since $1000 = 10 \\times 100$...",
       explanation:
         "$3^{10} \\equiv 1 \\pmod{11}$ (Fermat). $3^{1000} = (3^{10})^{100} \\equiv 1^{100} = 1 \\pmod{11}$. Remainder is $1$.",
+    },
+    {
+      kind: "prose",
+      heading: "",
+      content:
+        "**More cycle and remainder patterns:**\n\n**Euler's theorem (generalisation of Fermat's):**\n$$\\gcd(a, n) = 1 \\implies a^{\\varphi(n)} \\equiv 1 \\pmod n$$\nFermat's is the special case $n = p$ (prime), giving $\\varphi(p) = p-1$.\n\n**Finding last two digits (mod 100):**\n\nSince $\\varphi(100) = 40$, any $a$ coprime to 100 satisfies $a^{40} \\equiv 1 \\pmod{100}$.\nSo for last two digits of $a^k$: reduce $k \\bmod 40$.\n\nExample: Last two digits of $3^{200}$: $200/40 = 5$ exactly. $3^{200} = (3^{40})^5 \\equiv 1^5 = 01 \\pmod{100}$.\n\n**The Chinese Remainder Theorem (idea):**\n\nTo find $n \\bmod 12$, you can separately find $n \\bmod 3$ and $n \\bmod 4$ (since $\\gcd(3,4)=1$), then combine. This splits a hard modular computation into easier ones.\n\n**Wilson's Theorem (competition bonus):**\n$$(p-1)! \\equiv -1 \\pmod p \\quad \\text{for prime } p$$\nUseful for: 'what is the remainder when $16!$ is divided by $17$?' Answer: $-1 \\equiv 16 \\pmod{17}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c27b",
+      prompt:
+        "What are the last two digits of $3^{200}$?",
+      format: "text",
+      answer: "01",
+      acceptedAnswers: ["01", "1"],
+      hint: "$\\varphi(100) = 40$. $200 = 40 \\times 5$. So $3^{200} \\equiv 1 \\pmod{100}$.",
+      explanation:
+        "Since $\\gcd(3,100)=1$: $3^{40} \\equiv 1 \\pmod{100}$ (Euler). $3^{200} = (3^{40})^5 \\equiv 1$. Last two digits: 01.",
+    },
+    {
+      kind: "check",
+      id: "nt-c27c",
+      prompt:
+        "What is the remainder when $16!$ is divided by $17$?",
+      format: "numeric",
+      answer: "16",
+      hint: "Wilson's Theorem: $(p-1)! \\equiv -1 \\pmod p$ for prime $p$. Here $p=17$.",
+      explanation:
+        "By Wilson's Theorem: $16! \\equiv -1 \\equiv 16 \\pmod{17}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c27d",
+      prompt:
+        "Find the remainder when $2^{256}$ is divided by $17$.",
+      format: "numeric",
+      answer: "1",
+      hint: "FLT: $2^{16} \\equiv 1 \\pmod{17}$. $256 = 16 \\times 16$.",
+      explanation:
+        "$2^{16} \\equiv 1 \\pmod{17}$ (Fermat, since 17 is prime). $2^{256} = (2^{16})^{16} \\equiv 1^{16} = 1 \\pmod{17}$.",
+    },
+    {
+      kind: "check",
+      id: "nt-c27e",
+      prompt:
+        "What is the remainder when $7^{7^7}$ is divided by $5$?",
+      format: "numeric",
+      answer: "3",
+      hint: "First find $7^7 \\bmod 4$ (since the cycle of 7 mod 5 has period 4 by FLT). $7 \\equiv 3 \\pmod 4$, so $7^7 \\equiv 3^7 \\pmod 4$...",
+      explanation:
+        "By FLT: $7^4 \\equiv 1 \\pmod 5$. Need $7^7 \\bmod 4$.\n$7 \\equiv 3 \\equiv -1 \\pmod 4$. So $7^7 \\equiv (-1)^7 = -1 \\equiv 3 \\pmod 4$.\nTherefore $7^{7^7} \\equiv 7^3 \\pmod 5$.\n$7^3 = 343 \\equiv 343 - 68(5) = 343-340 = 3 \\pmod 5$.\nRemainder $= 3$.",
     },
   ],
 

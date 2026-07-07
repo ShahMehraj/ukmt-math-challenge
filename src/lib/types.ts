@@ -47,7 +47,12 @@ export type ProblemSource =
 
 // ─── Math / rendering ────────────────────────────────────────────────────────
 
-/** Inline SVG diagram (string markup) with accessibility text. */
+/**
+ * Inline diagram with accessibility text. The `svg` field accepts any HTML
+ * markup (SVG, styled divs, tables, etc.) — it's rendered via
+ * dangerouslySetInnerHTML. For simple structural diagrams (boxes, arrows,
+ * grids), prefer plain HTML/CSS over SVG for reliability and readability.
+ */
 export interface Diagram {
   svg: string;
   alt: string;
