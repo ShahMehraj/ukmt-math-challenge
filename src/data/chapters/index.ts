@@ -248,4 +248,30 @@ export const CHAPTER_BY_ID = Object.fromEntries(
   FULL_CHAPTERS.map((c) => [c.id, c])
 ) as Record<string, Chapter>;
 
-export const CURRICULUM_SORTED = [...CURRICULUM].sort((a, b) => a.order - b.order);
+/**
+ * Build the final sorted curriculum. We start with the manually-curated
+ * CURRICULUM list (which defines planned stubs + explicit subtopic labels for
+ * authored chapters), then auto-append any fully-authored chapter that hasn't
+ * been explicitly listed — so adding a new chapter to FULL_CHAPTERS is enough
+ * to make it appear in the curriculum grid without manual bookkeeping.
+ */
+const explicitIds = new Set(CURRICULUM.map((c) => c.id));
+const autoEntries: PlannedChapter[] = FULL_CHAPTERS
+  .filter((c) => !explicitIds.has(c.id))
+  .map((c) => ({
+    id: c.id,
+    title: c.title,
+    topic: c.topic,
+    order: c.order,
+    examFocus: c.examFocus,
+    difficulty: c.difficulty,
+    estMinutes: c.estMinutes,
+    prerequisites: c.prerequisites,
+    blurb: c.blurb,
+    subtopics: c.subChapters?.map((sc) => sc.title) ?? [],
+    status: "available" as const,
+  }));
+
+export const CURRICULUM_SORTED = [...CURRICULUM, ...autoEntries].sort(
+  (a, b) => a.order - b.order
+);

@@ -25,7 +25,37 @@ const CHAPTER_ICONS: Record<string, JSX.Element> = {
       <line x1="10" y1="10" x2="10" y2="38" strokeWidth="1" opacity="0.3"/>
     </svg>
   ),
-  /* Counting & probability: dice + branching */
+  /* Sets & Real Numbers: Venn diagram */
+  "ch-sets-reals": (
+    <svg viewBox="0 0 48 48" className="h-full w-full" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+      <circle cx="18" cy="24" r="13" fill="currentColor" opacity="0.08"/>
+      <circle cx="30" cy="24" r="13" fill="currentColor" opacity="0.08"/>
+      <circle cx="18" cy="24" r="13"/>
+      <circle cx="30" cy="24" r="13"/>
+      <rect x="3" y="6" width="42" height="36" rx="2" strokeWidth="1.2" opacity="0.4"/>
+    </svg>
+  ),
+  /* Combinatorics: branching tree */
+  "ch-comb-1": (
+    <svg viewBox="0 0 48 48" className="h-full w-full" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+      <circle cx="10" cy="24" r="3" fill="currentColor" opacity="0.3"/>
+      <line x1="13" y1="24" x2="25" y2="12"/><line x1="13" y1="24" x2="25" y2="24"/><line x1="13" y1="24" x2="25" y2="36"/>
+      <circle cx="28" cy="12" r="2.5" fill="currentColor"/><circle cx="28" cy="24" r="2.5" fill="currentColor"/><circle cx="28" cy="36" r="2.5" fill="currentColor"/>
+      <line x1="30.5" y1="12" x2="39" y2="8"/><line x1="30.5" y1="12" x2="39" y2="16"/>
+      <line x1="30.5" y1="24" x2="39" y2="20"/><line x1="30.5" y1="24" x2="39" y2="28"/>
+      <line x1="30.5" y1="36" x2="39" y2="32"/><line x1="30.5" y1="36" x2="39" y2="40"/>
+      <g fill="currentColor" opacity="0.5"><circle cx="41" cy="8" r="1.5"/><circle cx="41" cy="16" r="1.5"/><circle cx="41" cy="20" r="1.5"/><circle cx="41" cy="28" r="1.5"/><circle cx="41" cy="32" r="1.5"/><circle cx="41" cy="40" r="1.5"/></g>
+    </svg>
+  ),
+  /* Probability: dice */
+  "ch-count-1": (
+    <svg viewBox="0 0 48 48" className="h-full w-full" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
+      <rect x="8" y="8" width="32" height="32" rx="5" fill="currentColor" opacity="0.08"/>
+      <rect x="8" y="8" width="32" height="32" rx="5"/>
+      <g fill="currentColor"><circle cx="16" cy="16" r="2.5"/><circle cx="32" cy="16" r="2.5"/><circle cx="24" cy="24" r="2.5"/><circle cx="16" cy="32" r="2.5"/><circle cx="32" cy="32" r="2.5"/></g>
+    </svg>
+  ),
+  /* Counting & probability (legacy fallback): dice + branching */
   "ch-cp-1": (
     <svg viewBox="0 0 48 48" className="h-full w-full" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
       <rect x="10" y="10" width="18" height="18" rx="3" fill="currentColor" opacity="0.1" />
