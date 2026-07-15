@@ -8,20 +8,22 @@
 //  - Progress/analytics types are storage-agnostic (persisted via zustand).
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Top-level subject areas. Kept deliberately small; subtopics add granularity. */
+/** Top-level subject areas — one per authored/planned chapter. */
 export type TopicId =
   | "foundations"
-  | "number"
+  | "sets-reals"
+  | "number-sense"
   | "number-theory"
   | "algebra"
   | "sequences"
   | "ratio-proportion"
+  | "combinatorics"
+  | "probability"
   | "geometry-angles"
   | "geometry-area"
   | "geometry-circles"
   | "coordinate-geometry"
   | "mensuration-3d"
-  | "counting-probability"
   | "logic-strategy";
 
 export type Difficulty =

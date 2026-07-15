@@ -11,7 +11,7 @@ import type { Chapter } from "@/lib/types";
 export const setsRealsChapter: Chapter = {
   id: "ch-sets-reals",
   title: "Sets & Real Numbers",
-  topic: "number",
+  topic: "sets-reals",
   order: 3,
   examFocus: "both",
   difficulty: "easy",

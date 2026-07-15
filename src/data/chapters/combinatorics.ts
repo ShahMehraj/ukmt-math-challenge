@@ -306,7 +306,7 @@ const sub12: SubChapter = {
 export const combinatoricsChapter: Chapter = {
   id: "ch-comb-1",
   title: "Combinatorics",
-  topic: "counting-probability",
+  topic: "combinatorics",
   order: 59,
   examFocus: "both",
   difficulty: "medium",

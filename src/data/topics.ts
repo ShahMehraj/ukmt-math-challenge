@@ -14,8 +14,16 @@ export const TOPICS: TopicMeta[] = [
     icon: "GraduationCap",
   },
   {
-    id: "number",
-    name: "Number & Arithmetic",
+    id: "sets-reals",
+    name: "Sets & Real Numbers",
+    description:
+      "Set notation, Venn diagrams, the number hierarchy, surds, rationalisation and exponent laws.",
+    accent: "emerald",
+    icon: "CircleDot",
+  },
+  {
+    id: "number-sense",
+    name: "Number Sense & Calculation",
     description:
       "Place value, operations, fractions, decimals, percentages, powers, roots and clever calculation.",
     accent: "emerald",
@@ -94,11 +102,19 @@ export const TOPICS: TopicMeta[] = [
     icon: "Box",
   },
   {
-    id: "counting-probability",
-    name: "Counting & Probability",
+    id: "combinatorics",
+    name: "Combinatorics",
     description:
-      "Systematic counting, the multiplication principle, combinations and basic probability.",
+      "Systematic counting, permutations, combinations, distribution, and derangements.",
     accent: "emerald",
+    icon: "Network",
+  },
+  {
+    id: "probability",
+    name: "Probability",
+    description:
+      "Classical probability, conditional probability, independent events, and expected value.",
+    accent: "teal",
     icon: "Dices",
   },
   {

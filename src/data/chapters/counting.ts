@@ -905,7 +905,7 @@ const sub8: SubChapter = {
 export const countingChapter: Chapter = {
   id: "ch-count-1",
   title: "Probability",
-  topic: "counting-probability",
+  topic: "probability",
   order: 60,
   examFocus: "both",
   difficulty: "medium",

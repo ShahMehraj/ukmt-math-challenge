@@ -11,7 +11,7 @@ import type { Chapter } from "@/lib/types";
 export const numberSenseChapter: Chapter = {
   id: "ch-num-1",
   title: "Number Sense & Clever Calculation",
-  topic: "number",
+  topic: "number-sense",
   order: 10,
   examFocus: "IMC",
   difficulty: "easy",
