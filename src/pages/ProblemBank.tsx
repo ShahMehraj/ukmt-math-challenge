@@ -7,16 +7,19 @@ import { ProblemCard } from "@/components/ProblemCard";
 import { useProgress } from "@/store/progress";
 import { cn } from "@/lib/cn";
 
-const DIFFICULTIES: Difficulty[] = ["foundation", "easy", "medium", "hard", "olympiad"];
-const SOURCES: ProblemSource[] = [
-  "IMC",
-  "Hamilton",
-  "Cayley",
-  "Maclaurin",
-  "JMC",
-  "Kangaroo",
-  "original",
-];
+/** Only show topics that actually have problems in the bank. */
+const ACTIVE_TOPICS = TOPICS.filter((t) =>
+  PROBLEMS.some((p) => p.topic === t.id)
+);
+
+/** Only show filter values that actually have problems in the bank. */
+const ACTIVE_DIFFICULTIES = (
+  ["foundation", "easy", "medium", "hard", "olympiad"] as Difficulty[]
+).filter((d) => PROBLEMS.some((p) => p.difficulty === d));
+
+const ACTIVE_SOURCES = (
+  ["IMC", "Hamilton", "Cayley", "Maclaurin", "JMC", "Kangaroo", "original"] as ProblemSource[]
+).filter((s) => PROBLEMS.some((p) => p.source === s));
 
 export function ProblemBank() {
   const [topic, setTopic] = useState<TopicId | "all">("all");
@@ -112,7 +115,7 @@ export function ProblemBank() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <Select label="Topic" value={topic} onChange={(v) => setTopic(v as any)}>
             <option value="all">All topics</option>
-            {TOPICS.map((t) => (
+            {ACTIVE_TOPICS.map((t) => (
               <option key={t.id} value={t.id}>
                 {t.name}
               </option>
@@ -124,7 +127,7 @@ export function ProblemBank() {
             onChange={(v) => setDifficulty(v as any)}
           >
             <option value="all">All difficulties</option>
-            {DIFFICULTIES.map((d) => (
+            {ACTIVE_DIFFICULTIES.map((d) => (
               <option key={d} value={d}>
                 {d[0].toUpperCase() + d.slice(1)}
               </option>
@@ -132,7 +135,7 @@ export function ProblemBank() {
           </Select>
           <Select label="Source" value={source} onChange={(v) => setSource(v as any)}>
             <option value="all">All sources</option>
-            {SOURCES.map((s) => (
+            {ACTIVE_SOURCES.map((s) => (
               <option key={s} value={s}>
                 {s}
               </option>
